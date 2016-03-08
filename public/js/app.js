@@ -17,3 +17,52 @@
 
 })();
 
+$(document).ready(function(){
+    $("#slide1").hover(function(){
+            $(this).css("background-color","#B0D2D9");
+            $("#slide2,#slide3,#slide4").css("background-color","#E8FCFF");
+        },
+        function(){
+            $(this).css("background-color","#E8FCFF");
+            $("#slide2").css("background-color","#D4F4FA");
+            $("#slide3").css("background-color","#C0E6ED");
+            $("#slide4").css("background-color","#B0D2D9");
+        });
+    $("#slide2").hover(function(){
+            $(this).css("background-color","#B0D2D9");
+            $("#slide1,#slide3,#slide4").css("background-color","#E8FCFF");
+        },
+        function(){
+            $(this).css("background-color","#D4F4FA");
+            $("#slide1").css("background-color","#E8FCFF");
+            $("#slide3").css("background-color","#C0E6ED");
+            $("#slide4").css("background-color","#B0D2D9");
+
+        });
+    $("#slide3").hover(function(){
+            $(this).css("background-color","#B0D2D9");
+            $("#slide1,#slide2,#slide4").css("background-color","#E8FCFF");
+        },
+        function(){
+            $(this).css("background-color","#C0E6ED");
+            $("#slide1").css("background-color","#E8FCFF");
+            $("#slide2").css("background-color","#D4F4FA");
+            $("#slide4").css("background-color","#B0D2D9");
+
+        });
+    $("#slide4").hover(function(){
+            $(this).css("background-color","#B0D2D9");
+            $("#slide1,#slide2,#slide3").css("background-color","#E8FCFF");
+
+        },
+        function(){
+            $(this).css("background-color","#B0D2D9");
+            $("#slide1").css("background-color","#E8FCFF");
+            $("#slide2").css("background-color","#D4F4FA");
+            $("#slide3").css("background-color","#C0E6ED");
+        });
+
+
+
+});
+

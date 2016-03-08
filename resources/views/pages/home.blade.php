@@ -7,20 +7,20 @@
                 <div class=" hidden-xs col-sm-3 col-md-3 col-lg-3 " style="padding-right: 0px; padding-left: 0px; ">
 
                     <div class="col-sm-3 col-md-3 col-lg-3"
-                         style=" height:450px;background-color:#E8FCFF; padding-right: 0px; padding-left: 0px; float: right;">
-                        <a href="#" > <img src="/images/pictures/slide/60.png" ></a>
+                         style=" height:450px;background-color:#E8FCFF; padding-right: 0px; padding-left: 0px; float: right;" >
+                        <a href="/tagmoatna" > <img id="slide1" src="/images/pictures/slide/60.png" ></a>
                     </div>
                         <div class="col-sm-3 col-md-3 col-lg-3"
                              style=" height:450px;background-color:#D4F4FA; padding-right: 0px; padding-left: 0px; float: right;  ">
-                            <a href="#"><img src="/images/pictures/slide/70.png"/></a>
+                            <a href="#"><img id="slide2" src="/images/pictures/slide/70.png"/></a>
                         </div>
                         <div class="col-sm-3 col-md-3 col-lg-3"
                              style=" height:450px;background-color:#C0E6ED; padding-right: 0px; padding-left: 0px; float:right;">
-                            <a href="#"><img src="/images/pictures/slide/80.png"/></a>
+                            <a href="#"><img id="slide3" src="/images/pictures/slide/80.png"/></a>
                         </div>
                         <div class="col-sm-3 col-md-3 col-lg-3"
                              style=" height:450px;background-color:#B0D2D9; padding-right: 0px; float: right; padding-left: 0px; border-radius:5px 0px 0px 5px ;">
-                            <a href="#"><img src="/images/pictures/slide/90.png"/></a>
+                            <a href="#"><img  id="slide4"src="/images/pictures/slide/90.png"/></a>
                         </div>
                     </div>
                 <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9"  id="smallslider"style=" padding-right:0px; padding-left:0; ">

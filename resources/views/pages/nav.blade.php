@@ -51,7 +51,7 @@
         </li>
 
         <li><a href="#"> الرئيسية </a></li>
-        <li><a href="#"> تجمعاتنا </a></li>
+        <li><a href="/tagmoatna"> تجمعاتنا </a></li>
         <li><a href="#"> دنيانا </a></li>
         <li><a href="#"> انضمي لنا </a></li>
         <li><a href="#"> إتكلمى </a></li>
