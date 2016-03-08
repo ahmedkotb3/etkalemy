@@ -29,8 +29,6 @@ class HomeController extends Controller {
     public function get(){
         return Vote_Answers::with("vote")->get();
     }
-	public function hend(){
 
-	}
 
 }
