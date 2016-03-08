@@ -23,4 +23,7 @@ class pagescontroller extends Controller {
 	{
 		return view('pages/slider1');
 	}
+    public function ahmed(){
+        
+    }
 }
