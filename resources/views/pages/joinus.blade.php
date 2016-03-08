@@ -1,7 +1,7 @@
 @extends('pages.templet')
 @section('content')
     <div  class="top">
-        <img src="/images/pictures/m1.png" class="imgstyle">
+        <img src="/images/pictures/m1.jpg" class="imgstyle">
         انضمى لنا 
 
     </div>
@@ -40,8 +40,11 @@
      <div class="form-group" style="padding-left:88px; padding-right: 280px; ">
          <label class="control-label col-sm-4" for="country" style=" color: #376773; font-family: Calibri;font-weight: bold; font-size: 15px;  text-align: left;"> Country </label>
          <div row class=" col-sm-8" style="padding: 0;">
-         <div class="col-sm-5" style=" padding-left: 26px; height: 23px">
-             <input type="text" class="form-control" id="country" style="background-color: #D5E4E8;">
+         <div class="col-sm-5" style=" height: 23px">
+             <select  id="country" style="background-color: #D5E4E8; width: 225px;
+    height: 36px;
+    border: 1px solid #ccc;
+    border-radius: 4px;" class="form-controlinput-medium bfh-countries" data-country="EG"></select>
          </div>
 
          <label class="control-label  col-sm-1 col-sm-offset-2" for="city" style=" color: #376773; font-family: Calibri;font-weight: bold; font-size: 15px;  text-align: left;"> city </label>
