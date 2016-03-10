@@ -41,23 +41,23 @@
       <file leaf-file-name="tagmoatna-event.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/pages/tagmoatna-event.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.66487455">
-              <caret line="36" column="44" selection-start-line="36" selection-start-column="44" selection-end-line="36" selection-end-column="44" />
+            <state vertical-scroll-proportion="0.3297491">
+              <caret line="25" column="122" selection-start-line="25" selection-start-column="122" selection-end-line="25" selection-end-column="122" />
               <folding>
                 <element signature="e#361#398#0#HTML" expanded="true" />
                 <element signature="e#892#954#0#HTML" expanded="true" />
                 <element signature="e#993#1037#0#HTML" expanded="true" />
-                <element signature="e#1295#1358#0#HTML" expanded="true" />
-                <element signature="e#1381#1452#0#HTML" expanded="true" />
-                <element signature="e#1917#1979#0#HTML" expanded="true" />
-                <element signature="e#2068#2109#0#HTML" expanded="true" />
-                <element signature="e#2178#2250#0#HTML" expanded="true" />
-                <element signature="e#2344#2382#0#HTML" expanded="true" />
-                <element signature="e#2486#2514#0#HTML" expanded="true" />
-                <element signature="e#2688#2750#0#HTML" expanded="true" />
-                <element signature="e#2862#2934#0#HTML" expanded="true" />
-                <element signature="e#2965#3028#0#HTML" expanded="true" />
-                <element signature="e#3107#3171#0#HTML" expanded="true" />
+                <element signature="e#1295#1389#0#HTML" expanded="true" />
+                <element signature="e#1412#1483#0#HTML" expanded="true" />
+                <element signature="e#1948#2010#0#HTML" expanded="true" />
+                <element signature="e#2099#2140#0#HTML" expanded="true" />
+                <element signature="e#2209#2281#0#HTML" expanded="true" />
+                <element signature="e#2375#2413#0#HTML" expanded="true" />
+                <element signature="e#2517#2545#0#HTML" expanded="true" />
+                <element signature="e#2719#2781#0#HTML" expanded="true" />
+                <element signature="e#2893#2965#0#HTML" expanded="true" />
+                <element signature="e#2996#3059#0#HTML" expanded="true" />
+                <element signature="e#3138#3202#0#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -192,6 +192,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="pages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="talk" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="etkalemy" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -779,23 +797,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/pages/tagmoatna-event.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.66487455">
-          <caret line="36" column="44" selection-start-line="36" selection-start-column="44" selection-end-line="36" selection-end-column="44" />
+        <state vertical-scroll-proportion="0.3297491">
+          <caret line="25" column="122" selection-start-line="25" selection-start-column="122" selection-end-line="25" selection-end-column="122" />
           <folding>
             <element signature="e#361#398#0#HTML" expanded="true" />
             <element signature="e#892#954#0#HTML" expanded="true" />
             <element signature="e#993#1037#0#HTML" expanded="true" />
-            <element signature="e#1295#1358#0#HTML" expanded="true" />
-            <element signature="e#1381#1452#0#HTML" expanded="true" />
-            <element signature="e#1917#1979#0#HTML" expanded="true" />
-            <element signature="e#2068#2109#0#HTML" expanded="true" />
-            <element signature="e#2178#2250#0#HTML" expanded="true" />
-            <element signature="e#2344#2382#0#HTML" expanded="true" />
-            <element signature="e#2486#2514#0#HTML" expanded="true" />
-            <element signature="e#2688#2750#0#HTML" expanded="true" />
-            <element signature="e#2862#2934#0#HTML" expanded="true" />
-            <element signature="e#2965#3028#0#HTML" expanded="true" />
-            <element signature="e#3107#3171#0#HTML" expanded="true" />
+            <element signature="e#1295#1389#0#HTML" expanded="true" />
+            <element signature="e#1412#1483#0#HTML" expanded="true" />
+            <element signature="e#1948#2010#0#HTML" expanded="true" />
+            <element signature="e#2099#2140#0#HTML" expanded="true" />
+            <element signature="e#2209#2281#0#HTML" expanded="true" />
+            <element signature="e#2375#2413#0#HTML" expanded="true" />
+            <element signature="e#2517#2545#0#HTML" expanded="true" />
+            <element signature="e#2719#2781#0#HTML" expanded="true" />
+            <element signature="e#2893#2965#0#HTML" expanded="true" />
+            <element signature="e#2996#3059#0#HTML" expanded="true" />
+            <element signature="e#3138#3202#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>

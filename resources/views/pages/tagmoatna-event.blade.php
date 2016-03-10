@@ -23,7 +23,7 @@
                 <div class="col-xs-7 col-sm-5 col-md-4 col-lg-3" id="tgm"> عن الإيفينت </div>
                 <hr  class="col-xs-5 col-sm-7 col-md-8 col-lg-9" id="hrte">
             </div>
-            <div class="row" style=" direction: rtl;  padding:25px; background-color:white;">
+            <div class="row" style=" direction: rtl;  padding:25px; background-color:white; margin-bottom: 20px!important;">
                 <div style="font-size:29px; font-family:ebold;padding-left:150px!important;">
                     لاقى الملتقى الأول لاتكلمى نجاحا عظيما و مجموعة كبيرة من المتكلمات اللاتى قمن بحكى قصص نجاحهن 
                     و ما قمن بمواجهته من مشاكل و صعاب كما حضر الايفنت مجموعه من ضيوف الشرف فى مجالات مختلفة
