@@ -39,4 +39,77 @@ class Events extends Model {
     public function speeches(){
         return $this->hasMany("App\Event_Speeches","event_id");
     }
+
+    /* save event into database */
+    public static function save_event($name,$image,$place,$facebook_link,$twitter_link,$date,$day,$description,$PDF){
+
+        $event = new Events;
+        $event->name = $name;
+        $event->image = $image;
+        $event->place = $place;
+        $event->facebook_link = $facebook_link;
+        $event->twitter_link = $twitter_link;
+        $event->date = $date;
+        $event->day = $day;
+        $event->description = $description;
+        $event->PDF = $PDF;
+        $event->save();
+    }
+
+    /* update the exiting event */
+    public static function update_event($id,$name,$image,$place,$facebook_link,$twitter_link,$date,$day,$description,$PDF){
+
+        $event = Events::find($id);
+        $event->name = $name;
+        $event->image = $image;
+        $event->place = $place;
+        $event->facebook_link = $facebook_link;
+        $event->twitter_link = $twitter_link;
+        $event->date = $date;
+        $event->day = $day;
+        $event->description = $description;
+        $event->PDF = $PDF;
+        $event->save();
+
+    }
+
+    /* convert the date to day and convert it from English to Arabic */
+   public static function convert($date){
+
+       if(date('D', strtotime($date))=='Sat'){
+
+           $day = "السبت";
+
+       }elseif(date('D', strtotime($date))=='Sun'){
+
+           $day = "الأحد";
+
+       }elseif(date('D', strtotime($date))=='Mon'){
+
+           $day = "الإثنين";
+
+       }elseif(date('D', strtotime($date))=='Tue'){
+
+           $day = "الثلاثاء";
+
+       }elseif(date('D', strtotime($date))=='Wed'){
+
+           $day = "الأربعاء";
+
+       }elseif(date('D', strtotime($date))=='Thu'){
+
+           $day = "الخميس";
+
+       }elseif(date('D', strtotime($date))=='Fri'){
+
+           $day = "الجمعة";
+
+       }else{
+
+           $day = "";
+       }
+       return $day;
+
+   }
+
 }

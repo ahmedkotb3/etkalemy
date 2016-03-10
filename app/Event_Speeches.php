@@ -23,4 +23,17 @@ class Event_Speeches extends Model {
     public function comments(){
         return $this->hasMany("App\Speech_Comments","speech_id");
     }
+
+    /* add vedios to specified event */
+
+    public static function add_event_vedios($event_id,$title,$desc,$youtube_url){
+
+        $event_speeches = new Event_Speeches;
+        $event_speeches->event_id=$event_id;
+        $event_speeches->title=$title;
+        $event_speeches->desc=$desc;
+        $event_speeches->youtube_url=$youtube_url;
+        $event_speeches->save();
+
+    }
 }
