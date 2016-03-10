@@ -359,7 +359,7 @@ a{
 }
 
 .list>ul>li:nth-child(2) {
-    padding: 15px 20px;
+    padding: 11px 11px;
 }
 
 .list>ul>li>a{
@@ -378,13 +378,17 @@ a{
 /* style icon */
 .inner-addon .glyphicon {
     position: absolute;
-    padding-top:40px ;
+    padding-top:20px ;
     pointer-events: none;
     right:25px;
 }
+@media (min-height: 430px)and (max-height: 500px) {
+    .fa-3x {
+        font-size: 2em!important;
+    }
+}
 
 .close-list{
-    height:65px;
     width:10%;
     top:0;
     left:-60%;
@@ -514,7 +518,7 @@ label{
     padding-bottom: 0px;
     height: 46px!important;
     float: left;
-    padding-right: 46px;
+    padding-right: 16px;
     }
 }
 
@@ -749,7 +753,7 @@ label{
 }
 .form-horizontal{
     background-color: white!important;
-    margin: 35px 55px 206px 55px!important;
+    margin: 35px 55px 18px 55px!important;
 }
 
 .active{
@@ -890,7 +894,6 @@ h2{
 .imgWrap:hover .imgDescription {
     visibility: visible;
     opacity: 1;
-    cursor: pointer;
 }
 
 #txtimg{

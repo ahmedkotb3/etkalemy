@@ -3,13 +3,12 @@
 <div class="row" id="rtagmo">
     <div  class=" col-xs-6 col-sm-8 col-md-9 col-lg-10 top pull-right" id="tagmo">
     <img src="/images/pictures/m1.jpg" class="imgstyle">
-          تجمعاتنا
-    
+        <span>  تجمعاتنا      </span>
     </div>
 <div class=" col-xs-6  col-sm-4 col-md-3  col-lg-2 pull-left" id="dtyr">
     <div class="row dropdown">
         <a id="dLabel" role="button" data-toggle="dropdown" class="btn drop" data-target="#" href="#">
-            <span id='tarek'> التاريخ</span>
+            <span id='tarek' style="font-size:20px!important"> تاريخ التجمع</span>
 
             <span class="caret"></span>
         </a>
@@ -74,17 +73,17 @@
     <div class="col-md-6"  id="pic">
         <div class="imgWrap img-responsive">
             <img  class="imgWrap img-responsive" src="images/pictures/pic/1.jpg" alt="polaroid" />
-            <p class="imgDescription">
+            <a href="#"><p class="imgDescription">
             <span  id ="txtimg">   تجمع اتكلمى الاول  </span>
-            </p>
+            </p></a>
         </div>
     </div>
     <div class="col-md-6" id="pic" >
         <div class="imgWrap img-responsive">
-            <img  class="imgWrap img-responsive" src="images/pictures/pic/2.jpg" alt="polaroid" />
-            <p class="imgDescription">
+           <img  class="imgWrap img-responsive" src="images/pictures/pic/2.jpg" alt="polaroid" />
+            <a href="#"><p class="imgDescription">
                 <span  id ="txtimg"> تجمع اتكلمى التانى </span>
-            </p>
+            </p></a>
         </div>
     </div>
     </div>
@@ -92,17 +91,17 @@
     <div class="col-md-6" id="pic">
         <div class="imgWrap img-responsive">
             <img  class="imgWrap img-responsive" src="images/pictures/pic/3.jpg" alt="polaroid" />
-            <p class="imgDescription">
+            <a href="#"><p class="imgDescription">
                 <span  id ="txtimg"> تجمع اتكلمى الثالث </span>
-            </p>
+            </p></a>
         </div>
         </div>
     <div class="col-md-6" id="pic">
         <div class="imgWrap img-responsive">
             <img  class="imgWrap img-responsive" src="images/pictures/pic/4.jpg" alt="polaroid" />
-            <p class="imgDescription">
+            <a href="#"><p class="imgDescription">
                 <span  id ="txtimg"> تجمع اتكلمى الرابع </span>
-            </p>
+            </p></a>
         </div>
     </div>
 </div>
