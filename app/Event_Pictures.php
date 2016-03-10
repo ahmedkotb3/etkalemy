@@ -6,7 +6,7 @@ class Event_Pictures extends Model {
 
     protected $table = "event-pictures";
 
-    protected $fillable = ["id","pic_url","event_id"];
+    protected $fillable = ["id","pic","event_id"];
 
     public function event(){
         return $this->belongsTo("App\Events","event_id");

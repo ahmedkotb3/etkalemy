@@ -16,7 +16,7 @@ class CreateEventPicturesTable extends Migration {
         {
             $table->increments('id');
             $table->integer('event_id')->unsigned()->index();
-            $table->string('pic_url');
+            $table->string('pic');
             $table->timestamps();
         });
 

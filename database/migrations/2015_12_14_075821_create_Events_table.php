@@ -16,12 +16,14 @@ class CreateEventsTable extends Migration {
         {
             $table->increments('id');
             $table->string('name');
-            $table->string('video_url');
-            $table->string('map_long', 60);
-            $table->string('map_lat', 60);
+            $table->string('image');
+            $table->string('place');
             $table->string('facebook_link', 60);
             $table->string('twitter_link', 60);
-            $table->string('type', 60);
+            $table->dateTime('date');
+			$table->string('day');
+			$table->text('description');
+			$table->text('PDF');
             $table->timestamps();
         });
 	}

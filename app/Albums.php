@@ -6,7 +6,7 @@ class Albums extends Model {
 
     protected $table ="albums";
 
-    protected $fillable = ["name"];
+    protected $fillable = ["name","image"];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

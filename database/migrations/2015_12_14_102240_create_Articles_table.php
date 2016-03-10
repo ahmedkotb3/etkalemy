@@ -15,18 +15,19 @@ class CreateArticlesTable extends Migration {
         Schema::create('articles', function(Blueprint $table)
         {
             $table->increments('id');
-            $table->integer('user_id')->unsigned()->index();
+//            $table->integer('user_id')->unsigned()->index();
             $table->string("title");
             $table->string("subject");
             $table->string("video_url");
-            $table->string("audio_url");
+//            $table->string("audio_url");
             $table->string("picture_url");
+            $table->string('type');
             $table->timestamps();
         });
 
-        Schema::table("articles" , function(Blueprint $table){
-            $table->foreign("user_id")->references("id")->on("users")->onDelete("cascade");
-        });
+//        Schema::table("articles" , function(Blueprint $table){
+//            $table->foreign("user_id")->references("id")->on("users")->onDelete("cascade");
+//        });
 	}
 
 	/**
