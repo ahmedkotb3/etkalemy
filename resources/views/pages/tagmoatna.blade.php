@@ -3,12 +3,12 @@
 <div class="row" id="rtagmo">
     <div  class=" col-xs-6 col-sm-8 col-md-9 col-lg-10 top pull-right" id="tagmo">
     <img src="/images/pictures/m1.jpg" class="imgstyle">
-        <span>  تجمعاتنا      </span>
+        <span id="ta">  تجمعاتنا      </span>
     </div>
 <div class=" col-xs-6  col-sm-4 col-md-3  col-lg-2 pull-left" id="dtyr">
     <div class="row dropdown">
         <a id="dLabel" role="button" data-toggle="dropdown" class="btn drop" data-target="#" href="#">
-            <span id='tarek' style="font-size:20px!important"> تاريخ التجمع</span>
+            <span id='tarek'> تاريخ التجمع</span>
 
             <span class="caret"></span>
         </a>
@@ -17,12 +17,12 @@
             <li><a href="#">2015</a></li>
             <li class="dropdown-submenu">
                 <a tabindex="-1" href="#">2016</a>
-                <ul class="dropdown-menu" style="background-color: #C4E9F2; font-family: ebold; font-size: 16px; width: 195px; direction: rtl; text-align:right;">
-                    <li><a tabindex="-1" href="#">تجمع اتكلمى الأول</a></li>
+                <ul class="dropdown-menu" id="dds">
+                    <li><a tabindex="-1"  id="lis" href="#">تجمع اتكلمى الأول</a></li>
                     <li class="divider" style="width: 100%"></li>
-                    <li><a href="#">تجمع اتكلمى الثانى</a></li>
+                    <li><a id="lis"href="#">تجمع اتكلمى الثانى</a></li>
                     <li class="divider" style=" width:100% "></li>
-                    <li><a href="#">تجمع اتكلمى الشامل</a></li>
+                    <li><a id="lis"href="#">تجمع اتكلمى الشامل</a></li>
                 </ul>
             </li>
             <li><a href="#">2017</a></li>
@@ -39,7 +39,7 @@
 
             <div class="carousel-inner">
                 <div class="item active">
-                    <img src="images/pictures/s1.jpg" class="img-responsive" alt="...">
+                    <a href="http://facebook.com"><img src="images/pictures/s1.jpg" class="img-responsive" alt="..."></a>
                     <div class="carousel-caption2">
                         اعرفى اهم اللحظات فى أولى تجمعات اتكلمى فبراير 2016
                     </div>

@@ -19,9 +19,9 @@ class pagescontroller extends Controller {
 	{
 		return view('pages/joinus');
 	}
-	public function slider1()
+	public function tagmoatnaevent()
 	{
-		return view('pages/slider1');
+		return view('pages/tagmoatna-event');
 	}
 
 }
