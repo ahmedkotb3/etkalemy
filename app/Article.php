@@ -24,4 +24,27 @@ class Article extends Model {
         return $this->hasMany("App\Article_Comments","article_id");
     }
 
+
+    /* add new article to database */
+    public static function add_article($title,$subject,$video_url,$picture_url){
+
+        $article = new Article;
+        $article->title=$title;
+        $article->subject=$subject;
+        $article->video_url=$video_url;
+        $article->picture_url=$picture_url;
+        $article->save();
+    }
+
+    /* update exiting article  */
+    public static function edit_article($id,$title,$subject,$video_url,$picture_url){
+
+        $article =Article::find($id);
+        $article->title=$title;
+        $article->subject=$subject;
+        $article->video_url=$video_url;
+        $article->picture_url=$picture_url;
+        $article->save();
+    }
+
 }

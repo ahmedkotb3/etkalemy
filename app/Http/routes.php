@@ -23,3 +23,17 @@ Route::get('/tagmoatna','pagescontroller@tagmoatna');
 Route::get('/joinus','pagescontroller@joinus');
 Route::get('/tagmoatna-event','pagescontroller@tagmoatnaevent');
 
+/********* Slider Routes ************/
+
+Route::resource('/slider','SliderController');
+Route::post('/delete_slider/{id}','SliderController@delete_slider');
+Route::post('/update_slider/{id}','SliderController@update_slider');
+
+/********** Event Routes ************/
+
+Route::resource('/event','EventController');
+Route::post('/delete_event/{id}','EventController@delete_event');
+Route::post('/update_event/{id}','EventController@update_event');
+Route::post('/add_pictures/{id}','EventController@add_pictures');
+Route::post('/add_vedios/{id}','EventController@add_vedios');
+

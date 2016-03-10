@@ -12,5 +12,15 @@ class Event_Pictures extends Model {
         return $this->belongsTo("App\Events","event_id");
     }
 
+    /* add pictures to specified event */
+
+    public static function add_event_pics($event_id,$pic){
+
+        $event_pictures = new Event_Pictures;
+        $event_pictures->event_id=$event_id;
+        $event_pictures->pic=$pic;
+        $event_pictures->save();
+    }
+
 
 }
