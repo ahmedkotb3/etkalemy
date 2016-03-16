@@ -74,7 +74,7 @@
     <div class="col-md-6"  id="pic">
         <div class="imgWrap img-responsive">
             <img  class="imgWrap img-responsive" src="images/pictures/pic/1.jpg" alt="polaroid" />
-            <a href="#"><p class="imgDescription">
+            <a href="/tagmoatna-event"><p class="imgDescription">
             <span  id ="txtimg">   تجمع اتكلمى الاول  </span>
             </p></a>
         </div>

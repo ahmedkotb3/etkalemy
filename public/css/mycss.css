@@ -1209,17 +1209,17 @@ margin-bottom: 10px;}
     }
 }
 #moreimg {position: relative; top: 77px;left:6px;}
-@media (min-width: 900px) and (max-width: 1199px){
+@media (min-width: 911px) and (max-width: 1199px){
     #moreimg {position: relative; top: 330px;left:250px;}
 }
-@media (min-width: 768px) and (max-width: 800px){
-    #moreimg {position: relative; top: 330px;left:250px;}
+@media (min-width: 840px) and (max-width: 912px){
+    #moreimg {position: relative; top: 90px;left:160px;}
 }
-@media  (min-width: 500px) and (max-width: 767px){
-    #moreimg {position: relative; top: 650px;left:15px;}
+@media  (min-width: 476px) and (max-width: 840px){
+    #moreimg {position: relative; top: 650px;left:3px;}
 }
-@media  (max-width: 500px){
-    #moreimg {position: relative; top: 860px;left:15px;}
+@media  (max-width: 476px){
+    #moreimg {position: relative; top: 4px;left:15px;}
 }
 /* tadmoevent end*/
 

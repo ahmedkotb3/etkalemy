@@ -109,7 +109,7 @@
                     </p></a>
             </div>
         </span></div>
-                <a href="#"> <img  src="images/pictures/tagmoevent/3.png" id="moreimg"/></a>
+                <a href="#"> <img src="images/pictures/tagmoevent/3.png" id="moreimg"/></a>
             </div>
         </div>
         <div class="container-fluid" id="marginmobile">
