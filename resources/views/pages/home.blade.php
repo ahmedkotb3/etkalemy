@@ -3,7 +3,7 @@
 
     <div class="row"  id="middle">
         <div class=" col-md-9 col-lg-9 pull-right" id="slider" >
-            <div class="row  slider-main-navigator " style=" margin-top: 0!important; margin-left:15px!important; margin-right: 15px!important;margin-bottom: 16px!important;">
+            <div class="row  slider-main-navigator " style=" margin-top: 0!important; margin-left:15px!important; margin-right: 15px!important;margin-bottom: 28px!important;">
                 <div class=" hidden-xs col-sm-3 col-md-3 col-lg-3 " style="padding-right: 0px; padding-left: 0px; ">
 
                     <div class="col-sm-3 col-md-3 col-lg-3"
@@ -37,7 +37,7 @@
                         <!-- Wrapper for slides -->
                         <div class="carousel-inner" role="listbox">
                             <div class="item active">
-                                <img src="/images/pictures/fa/slider1.jpg"  alt="...">
+                                <img src="/images/pictures/slider1.jpg"  alt="...">
 
                                 <div class="carousel-caption">
                                     اعرفى اهم اللحظات فى أولى تجمعات اتكلمى فبراير 2016
@@ -59,7 +59,7 @@
                                 </div>
                             </div>
                             <div class="item">
-                                <img src="/images/pictures/fa/3.jpg" alt="...">
+                                <img src="/images/pictures/fa/3.jpg" alt="..."">
 
                                     <span class="carousel-caption"
                                           style="font-size: 25px ;display: inline;text-align: right">

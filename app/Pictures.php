@@ -6,7 +6,7 @@ class Pictures extends Model {
 
     protected $table ="pictures";
 
-    protected $fillable = ["album_id","images"];
+    protected $fillable = ["album_id","images","images_en"];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -21,6 +21,7 @@ class Pictures extends Model {
         $pictures = new Pictures;
         $pictures->album_id=$album_id;
         $pictures->images=$images;
+
         $pictures->save();
 
     }

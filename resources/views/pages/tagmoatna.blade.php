@@ -1,29 +1,28 @@
 @extends('pages.templet')
 @section('content')
-    <div class="container-fluid" id="row1170">
 <div class="row" id="rtagmo">
     <div  class=" col-xs-6 col-sm-8 col-md-9 col-lg-10 top pull-right" id="tagmo">
     <img src="/images/pictures/m1.jpg" class="imgstyle">
-        <span id="ta">  تجمعاتنا      </span>
+        <span>  تجمعاتنا      </span>
     </div>
 <div class=" col-xs-6  col-sm-4 col-md-3  col-lg-2 pull-left" id="dtyr">
     <div class="row dropdown">
-        <a id="dLabel" role="button" data-toggle="dropdown" class="btn drop" data-target="#" href="#" style="outline: 0!important;">
-            <span id='tarek'> تاريخ التجمع</span>
+        <a id="dLabel" role="button" data-toggle="dropdown" class="btn drop" data-target="#" href="#">
+            <span id='tarek' style="font-size:20px!important"> تاريخ التجمع</span>
 
-            <button class="btn btn-success" id="btncaret"> <span class="caret"></span></button>
+            <span class="caret"></span>
         </a>
         
         <ul class="dropdown-menu multi-level" id="dxs" role="menu" aria-labelledby="dropdownMenu">
             <li><a href="#">2015</a></li>
             <li class="dropdown-submenu">
                 <a tabindex="-1" href="#">2016</a>
-                <ul class="dropdown-menu" id="dds">
-                    <li><a tabindex="-1"  id="lis" href="#">تجمع اتكلمى الأول</a></li>
+                <ul class="dropdown-menu" style="background-color: #C4E9F2; font-family: ebold; font-size: 16px; width: 195px; direction: rtl; text-align:right;">
+                    <li><a tabindex="-1" href="#">تجمع اتكلمى الأول</a></li>
                     <li class="divider" style="width: 100%"></li>
-                    <li><a id="lis"href="#">تجمع اتكلمى الثانى</a></li>
+                    <li><a href="#">تجمع اتكلمى الثانى</a></li>
                     <li class="divider" style=" width:100% "></li>
-                    <li><a id="lis"href="#">تجمع اتكلمى الشامل</a></li>
+                    <li><a href="#">تجمع اتكلمى الشامل</a></li>
                 </ul>
             </li>
             <li><a href="#">2017</a></li>
@@ -40,7 +39,7 @@
 
             <div class="carousel-inner">
                 <div class="item active">
-                    <a href="http://facebook.com"><img src="images/pictures/s1.jpg" class="img-responsive" alt="..."></a>
+                    <img src="images/pictures/s1.jpg" class="img-responsive" alt="...">
                     <div class="carousel-caption2">
                         اعرفى اهم اللحظات فى أولى تجمعات اتكلمى فبراير 2016
                     </div>
@@ -74,7 +73,7 @@
     <div class="col-md-6"  id="pic">
         <div class="imgWrap img-responsive">
             <img  class="imgWrap img-responsive" src="images/pictures/pic/1.jpg" alt="polaroid" />
-            <a href="/tagmoatna-event"><p class="imgDescription">
+            <a href="#"><p class="imgDescription">
             <span  id ="txtimg">   تجمع اتكلمى الاول  </span>
             </p></a>
         </div>
@@ -106,8 +105,5 @@
         </div>
     </div>
 </div>
-
-</div>
-    </div>
 
 @stop

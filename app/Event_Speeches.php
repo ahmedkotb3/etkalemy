@@ -6,7 +6,7 @@ class Event_Speeches extends Model {
 
     protected $table = "event-speeches";
 
-    protected $fillable = ["title","event_id","desc","youtube_url"];
+    protected $fillable = ["title","title_en","event_id","desc","desc_en","youtube_url","youtube_url_en"];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -29,6 +29,16 @@ class Event_Speeches extends Model {
     public static function add_event_vedios($event_id,$title,$desc,$youtube_url){
 
         $event_speeches = new Event_Speeches;
+        $event_speeches->event_id=$event_id;
+        $event_speeches->title=$title;
+        $event_speeches->desc=$desc;
+        $event_speeches->youtube_url=$youtube_url;
+        $event_speeches->save();
+
+    }
+    public static function edit_event_vedios($id,$event_id,$title,$desc,$youtube_url){
+
+        $event_speeches =Event_Speeches::find($id);
         $event_speeches->event_id=$event_id;
         $event_speeches->title=$title;
         $event_speeches->desc=$desc;

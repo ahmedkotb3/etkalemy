@@ -10,7 +10,6 @@
 
     <link rel="stylesheet" type="text/css" href="/css/bs/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="/css/mycss.css">
-    <link rel="stylesheet" type="text/css" href="/css/radio.css">
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
     <!--[if lte IE 8]>
     <p style="font-size: 200px;">Notice: As you are using an old browser some features of this
@@ -22,10 +21,6 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <link href="http://vjs.zencdn.net/5.8.0/video-js.css" rel="stylesheet">
-
-    <!-- If you'd like to support IE8 -->
-    <script src="http://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
 </head>
 <body>
 
@@ -46,6 +41,5 @@
 <script src="/js/countres.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script src="/js/app.js"></script>
-<script src="http://vjs.zencdn.net/5.8.0/video.js"></script>
 </body>
 </html>
