@@ -10,7 +10,12 @@ use Illuminate\Support\Facades\Input;
 
 class GalleryController extends Controller
 {
+	public function __construct()
+	{
 
+		$this->middleware('auth');
+
+	}
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -18,7 +23,8 @@ class GalleryController extends Controller
 	 */
 	public function index()
 	{
-		//
+		$almums = Albums::all();
+		return view('admin.showAlbums',array('albums'=>$almums));
 	}
 
 	/**
@@ -28,7 +34,7 @@ class GalleryController extends Controller
 	 */
 	public function create()
 	{
-		//
+		return View('admin.addGallery');
 	}
 
 	/**
@@ -62,7 +68,6 @@ class GalleryController extends Controller
 
 		}
 
-
 		if (!empty($images)) {
 
 			foreach ($images as $album_image) {
@@ -70,11 +75,11 @@ class GalleryController extends Controller
 				$album_image_name = $album_image->getClientOriginalName();
 
 				if ($album_image->move($destinationPath, $album_image_name)) {
-
-					Pictures::add_pics_to_album($album->id, $images);
+					Pictures::add_pics_to_album($album->id, $album_image_name);
 				}
 			}
 		}
+		return redirect('/gallery');
 	}
 
 	/**
@@ -126,8 +131,52 @@ class GalleryController extends Controller
 
 		$album = Albums::find($id);
 		$album->delete();
-//		array_map('unlink', glob("" . $portoflio->section_name . "/*"));
-		unlink("uploadfiles/albums/" . $album->name);
+		array_map('unlink', glob("uploadfiles/albums/" .$album->name . "/*"));
+//		unlink("uploadfiles/albums/" . $album->name);
+		rmdir("uploadfiles/albums/" . $album->name);
+	}
+
+	public function images_of_album($id){
+
+		$images = Albums::find($id)->pictures;
+		$album = Albums::find($id);
+		$album_name = $album->name;
+		return view('admin.albumImages',array('images'=>$images,'album_name'=>$album_name));
+	}
+
+	public function update_image_of_album($id){
+
+		$picture = Pictures::find($id);
+		$album = Albums::where('id','=',$picture->album_id)->first();
+		$album_name =$album->name;
+
+		$image = Input::file('image');
+
+		$destinationPath = "uploadfiles/albums/" .$album_name;
+
+		if (!empty($image)) {
+			unlink($destinationPath . "/" . $picture->images);
+			$image_name = $image->getClientOriginalName();
+			if ($image->move($destinationPath, $image_name)) {
+
+				Pictures::edit_pic_to_album($id,$album->id,$image_name);
+			}
+
+		} else {
+			$image_name = $picture->images;
+			Pictures::edit_pic_to_album($id,$album->id,$image_name);
+		}
+		return redirect('images_of_album/'.$album->id);
+
+	}
+	public function delete_image_of_album($id){
+
+		$picture = Pictures::find($id);
+		$album = Albums::where('id','=',$picture->album_id)->first();
+		$picture->delete();
+//		array_map('unlink', glob("uploadfiles/albums/" .$album->name . "/*"));
+		unlink("uploadfiles/albums/" . $album->name."/".$picture->images);
+
 	}
 
 	public function update_album($id)
@@ -139,7 +188,7 @@ class GalleryController extends Controller
 
 		if ($album_name !== $album->name) {
 
-			rename("uploadfiles/albums/" . $album->name, "uploadfiles/events/" . $album_name);
+			rename("uploadfiles/albums/" . $album->name, "uploadfiles/albums/" . $album_name);
 			$destinationPath = "uploadfiles/albums/" . $album_name;
 
 		} else {
@@ -158,6 +207,22 @@ class GalleryController extends Controller
 			$image_name = $album->image;
 			Albums::edit_album($id, $album_name, $image_name);
 		}
+		return redirect('/gallery');
 
+	}
+
+	public function add_image_to_album($id){
+
+		$album_name = Albums::find($id)->first()->name;
+		$destinationPath = "uploadfiles/albums/" . $album_name;
+
+		$image = Input::file('image');
+		if (!empty($image)) {
+			$image_name = $image->getClientOriginalName();
+			if ($image->move($destinationPath, $image_name)) {
+				Pictures::add_pics_to_album($id,$image_name);
+			}
+		}
+		return redirect('/images_of_album/'.$id);
 	}
 }

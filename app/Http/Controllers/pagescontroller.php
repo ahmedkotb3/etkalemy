@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Events;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -20,6 +21,14 @@ class pagescontroller extends Controller
 
 	public function tagmoatna()
 	{
+		$date = date("Y-m-d");
+		$events = Events::all();
+		foreach($events as $event){
+
+
+		}
+//		$future_event = Events::where('date', '>=',$date)->get()->toArray();
+//		$back_event = Events::where('date', '<',$date)->get()->toArray();
 		return view('pages/tagmoatna');
 	}
 
