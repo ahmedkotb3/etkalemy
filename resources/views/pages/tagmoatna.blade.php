@@ -1,5 +1,6 @@
 @extends('pages.templet')
 @section('content')
+    <div class="container-fluid" id="row1170">
 <div class="row" id="rtagmo">
     <div  class=" col-xs-6 col-sm-8 col-md-9 col-lg-10 top pull-right" id="tagmo">
     <img src="/images/pictures/m1.jpg" class="imgstyle">
@@ -7,10 +8,10 @@
     </div>
 <div class=" col-xs-6  col-sm-4 col-md-3  col-lg-2 pull-left" id="dtyr">
     <div class="row dropdown">
-        <a id="dLabel" role="button" data-toggle="dropdown" class="btn drop" data-target="#" href="#">
+        <a id="dLabel" role="button" data-toggle="dropdown" class="btn drop" data-target="#" href="#" style="outline: 0!important;">
             <span id='tarek'> تاريخ التجمع</span>
 
-            <span class="caret"></span>
+            <button class="btn btn-success" id="btncaret"> <span class="caret"></span></button>
         </a>
         
         <ul class="dropdown-menu multi-level" id="dxs" role="menu" aria-labelledby="dropdownMenu">
@@ -105,5 +106,8 @@
         </div>
     </div>
 </div>
+
+</div>
+    </div>
 
 @stop

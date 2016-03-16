@@ -30,7 +30,7 @@
         </div>
     </div>
     <div class="col-xs-2 pull-right " style=" padding-right:0;text-align:center">
-        <a href="/" ><img src="/images/pictures/55.png" class="logo-icon"></a>
+        <a href="/" ><img src="/images/pictures/home/1.jpg" class="logo-icon"></a>
     </div>
 
 </div>
@@ -94,7 +94,7 @@
 </div>
 
 {{--navbar appear only in large and medium screens--}}
-<div class="navbar navbar-default navbar-static-top  hidden-xs hidden-sm" style="background-color:#376773;>
+<div class="navbar navbar-default navbar-static-top  hidden-xs hidden-sm" style="background-color:#376773;  margin-bottom: 16px;">
 
     <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navHeaderCollapse"
             aria-expanded="false">
