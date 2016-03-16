@@ -6,7 +6,7 @@ class Article extends Model {
 
     protected $table = "articles";
 
-    protected $fillable = ["title","title_en","subject","subject_en","video_url","video_url_en","picture_url","picture_url_en"];
+    protected $fillable = ["title","subject","video_url","picture_url"];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -26,26 +26,24 @@ class Article extends Model {
 
 
     /* add new article to database */
-    public static function add_article($title,$subject,$video_url,$picture_url,$type){
+    public static function add_article($title,$subject,$video_url,$picture_url){
 
         $article = new Article;
         $article->title=$title;
         $article->subject=$subject;
         $article->video_url=$video_url;
         $article->picture_url=$picture_url;
-        $article->type=$type;
         $article->save();
     }
 
     /* update exiting article  */
-    public static function edit_article($id,$title,$subject,$video_url,$picture_url,$type){
+    public static function edit_article($id,$title,$subject,$video_url,$picture_url){
 
         $article =Article::find($id);
         $article->title=$title;
         $article->subject=$subject;
         $article->video_url=$video_url;
         $article->picture_url=$picture_url;
-        $article->type=$type;
         $article->save();
     }
 

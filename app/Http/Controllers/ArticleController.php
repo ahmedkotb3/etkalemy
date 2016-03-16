@@ -6,16 +6,8 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\View;
 
 class ArticleController extends Controller {
-
-	public function __construct()
-	{
-
-		$this->middleware('auth');
-
-	}
 
 	/**
 	 * Display a listing of the resource.
@@ -34,7 +26,7 @@ class ArticleController extends Controller {
 	 */
 	public function create()
 	{
-		return view('admin.addArticle');
+		//
 	}
 
 	/**
@@ -44,33 +36,25 @@ class ArticleController extends Controller {
 	 */
 	public function store()
 	{
+		$title=Input::get('title');
+		$subject=Input::get('subject');
+		$video_url=Input::get('video_url');
+		$image=Input::file('picture_url');
 
-		$title = Input::get('title');
-		$subject = Input::get('description');
-		$video_url = Input::get('vedio');
-		$image = Input::file('image');
+		$destinationPath = "uploadfiles/articles/".$title;
 
-		if (!empty($video_url)) {
-
-			Article::add_article($title, $subject, $video_url, "", "1");
-			return redirect('/showVedios');
-		} else {
-			$destinationPath = "uploadfiles/articles/" . $title;
-			if (!file_exists($destinationPath)) {
-				mkdir("uploadfiles/articles/" . $title);
-			}
-
-			if (!empty($image)) {
-
-				$image_name = $image->getClientOriginalName();
-				if ($image->move($destinationPath, $image_name)) {
-
-					Article::add_article($title, $subject, "", $image_name,"2");
-				}
-			}
-			return redirect('/showArticles');
+		if(!file_exists($destinationPath)){
+			mkdir("uploadfiles/events/".$title);
 		}
 
+		if(!empty($image)){
+
+			$image_name = $image->getClientOriginalName();
+			if($image->move($destinationPath, $image_name)){
+
+				Article::add_article($title,$subject,$video_url,$image_name);
+			}
+		}
 	}
 
 	/**
@@ -120,18 +104,8 @@ class ArticleController extends Controller {
 	public function delete_article($id){
 
 		$article = Article::find($id);
-		$article->comments()->delete();
-		$article->delete();
-		array_map('unlink', glob("uploadfiles/articles/" .$article->title . "/*"));
-//		unlink("uploadfiles/albums/" . $album->name);
-		rmdir("uploadfiles/articles/" . $article->title);
-
-	}
-	public function delete_vedio($id){
-
-		$article = Article::find($id);
-		$article->comments()->delete();
-		$article->delete();
+		$article->delete;
+		unlink("uploadfiles/articles/".$article->title);
 
 	}
 
@@ -140,59 +114,30 @@ class ArticleController extends Controller {
 		$article = Article::find($id);
 
 		$title=Input::get('title');
-		$subject=Input::get('description');
-		$video_url=Input::get('vedio');
-		$image=Input::file('image');
+		$subject=Input::get('subject');
+		$video_url=Input::get('video_url');
+		$image=Input::file('picture_url');
 
-		if(!empty($video_url)){
+		if($title !== $article->title){
 
-			Article::edit_article($id,$title,$subject,$video_url,"","1");
-			return redirect('/showVedios');
+			rename("uploadfiles/articles/".$article->title,"uploadfiles/articles/".$title);
+
+			$destinationPath = "uploadfiles/articles/".$title;
+
 		}else{
 
-			if($title !== $article->title){
+			$destinationPath = "uploadfiles/articles/".$article->title;
 
-				rename("uploadfiles/articles/".$article->title,"uploadfiles/articles/".$title);
-
-				$destinationPath = "uploadfiles/articles/".$title;
-
-			}else{
-
-				$destinationPath = "uploadfiles/articles/".$article->title;
-
-			}
-			if(!empty($image)){
-				unlink("uploadfiles/articles/".$article->title."/".$article->picture_url);
-
-				$image_name = $image->getClientOriginalName();
-				if($image->move($destinationPath, $image_name)){
-
-					Article::edit_article($id,$title,$subject,"",$image_name,"2");
-				}
-			}else{
-				Article::edit_article($id,$title,$subject,"",$article->picture_url,"2");
-			}
-			return redirect('/showArticles');
 		}
-	}
 
-	public function doniana(){
-		return view('admin.doniana');
-	}
-	public function create_vedio()
-	{
-		return view('admin.addVedio');
-	}
-	public function showArticles(){
-		 $articles = Article::where('type','=','2')->get();
-		return View('admin.showArticles',array('articles'=>$articles));
+		if(!empty($image)){
 
-	}
-	public function showVedios(){
+			$image_name = $image->getClientOriginalName();
+			if($image->move($destinationPath, $image_name)){
 
-		 $vedios = Article::where('type','=','1')->get();
-		return View('admin.showVedio',array('vedios'=>$vedios));
-
+				Article::edit_article($id,$title,$subject,$video_url,$image_name);
+			}
+		}
 	}
 
 }

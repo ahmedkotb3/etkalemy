@@ -9,13 +9,6 @@ use Illuminate\Support\Facades\Input;
 
 class SliderController extends Controller {
 
-	public function __construct()
-	{
-
-		$this->middleware('auth');
-
-	}
-
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -23,8 +16,7 @@ class SliderController extends Controller {
 	 */
 	public function index()
 	{
-		 $sliders =  Slider::all();
-		return View('admin.showSlider',array('sliders'=>$sliders));
+		return $sliders =  Slider::all();
 	}
 
 	/**
@@ -34,7 +26,6 @@ class SliderController extends Controller {
 	 */
 	public function create()
 	{
-		return view('admin.addSlider');
 	}
 
 	/**
@@ -58,7 +49,6 @@ class SliderController extends Controller {
 				Slider::save_slider($description,$image_name);
 			}
 		}
-		return redirect('/slider');
 	}
 
 	/**
@@ -110,6 +100,8 @@ class SliderController extends Controller {
 		$slider = Slider::find($id);
 		$slider->delete();
 		unlink("uploadfiles/slider/".$slider->image."");
+
+
 	}
 
 	public function update_slider($id){
@@ -137,7 +129,6 @@ class SliderController extends Controller {
 
 			Slider::update_slider($id,$description,$slider->image);
 		}
-		return redirect('/slider');
 	}
 
 }

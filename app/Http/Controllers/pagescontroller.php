@@ -2,7 +2,6 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 
@@ -20,20 +19,9 @@ class pagescontroller extends Controller {
 	{
 		return view('pages/joinus');
 	}
-	public function slider1()
+	public function tagmoatnaevent()
 	{
-		return view('pages/slider1');
-	}
-	public function showadmin(){
-
-		if (Auth::user()){
-
-			return redirect('/slider');
-
-		}else{
-
-			return view('auth.login');
-		}
+		return view('pages/tagmoatna-event');
 	}
 
 }
