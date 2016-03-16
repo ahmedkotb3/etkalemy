@@ -6,7 +6,8 @@ class Events extends Model {
 
     protected $table = "events";
 
-    protected $fillable = ["name","image","place","facebook_link","twitter_link","date","day","description","PDF"];
+    protected $fillable = ["name","name_en","image","image_en","place","place_en","facebook_link","facebook_link_en","twitter_link","twitter_link_en",
+        "date","day","day_en","description","description_en","PDF","PDF_en"];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

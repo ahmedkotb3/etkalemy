@@ -1,4 +1,7 @@
 {{--This appear only when large or mideum screen--}}
+{{--@if(Session::get('lang') == 'en')--}}
+    {{--{{trans('hend.welcome')}}--}}
+{{--@endif--}}
 <div class="row hidden-sm hidden-xs" id="header">
     <div class="col-xs-10" style="padding-left: 0;">
         <div class="row">
@@ -21,8 +24,8 @@
                     </div>
                 </form>
 
-                <a href="#" class="button" style="border-right:1px solid black !important; font-family: my; font-size: 17px;"> English </a>
-                <a href="#" class="button" style=" font-size:17px;font-family:elight;"> عربي </a>
+                <a href="/lang/en" class="button" style="border-right:1px solid black !important; font-family: my; font-size: 17px;"> English </a>
+                <a href="/lang/er" class="button" style=" font-size:17px;font-family:elight;"> عربي </a>
                 <div id="header"></div>
             </div>
 
@@ -30,7 +33,7 @@
         </div>
     </div>
     <div class="col-xs-2 pull-right " style=" padding-right:0;text-align:center">
-        <a href="/" ><img src="/images/pictures/home/1.jpg" class="logo-icon"></a>
+        <a href="/" ><img src="/images/pictures/55.png" class="logo-icon"></a>
     </div>
 
 </div>
@@ -94,7 +97,7 @@
 </div>
 
 {{--navbar appear only in large and medium screens--}}
-<div class="navbar navbar-default navbar-static-top  hidden-xs hidden-sm" style="background-color:#376773;  margin-bottom: 16px;">
+<div class="navbar navbar-default navbar-static-top  hidden-xs hidden-sm" style="background-color:#376773;>
 
     <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navHeaderCollapse"
             aria-expanded="false">

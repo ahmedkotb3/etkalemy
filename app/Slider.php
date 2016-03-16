@@ -14,7 +14,6 @@ class Slider extends Model {
         $slider->description = $description;
         $slider->image = $image;
         $slider->save();
-
     }
     public static function update_slider($id,$description,$image){
 
