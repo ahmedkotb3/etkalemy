@@ -3,7 +3,9 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Slider;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class pagescontroller extends Controller
 {
@@ -11,7 +13,9 @@ class pagescontroller extends Controller
 
 	public function index()
 	{
-		return view('pages/home');
+
+		$sliders = Slider::all();
+		return view('pages/home',array('sliders'=>$sliders));
 	}
 
 	public function tagmoatna()

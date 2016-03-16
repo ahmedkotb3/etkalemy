@@ -9,6 +9,13 @@ use Illuminate\Support\Facades\Input;
 
 class SliderController extends Controller {
 
+	public function __construct()
+	{
+
+		$this->middleware('auth');
+
+	}
+
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -16,7 +23,8 @@ class SliderController extends Controller {
 	 */
 	public function index()
 	{
-		return $sliders =  Slider::all();
+		$sliders =  Slider::all();
+		return View('admin.showSlider',array('sliders'=>$sliders));
 	}
 
 	/**
@@ -26,6 +34,7 @@ class SliderController extends Controller {
 	 */
 	public function create()
 	{
+		return view('admin.addSlider');
 	}
 
 	/**
@@ -35,20 +44,21 @@ class SliderController extends Controller {
 	 */
 	public function store()
 	{
-		 $description = Input::get('description');
-		 $image = Input::file('image');
+		$description = Input::get('description');
+		$image = Input::file('image');
 
 		if(!empty($image)){
 
 			$destinationPath = "uploadfiles/slider";
 
-			 $image_name = $image->getClientOriginalName();
+			$image_name = $image->getClientOriginalName();
 
 			if($image->move($destinationPath, $image_name)){
 
 				Slider::save_slider($description,$image_name);
 			}
 		}
+		return redirect('/slider');
 	}
 
 	/**
@@ -100,8 +110,6 @@ class SliderController extends Controller {
 		$slider = Slider::find($id);
 		$slider->delete();
 		unlink("uploadfiles/slider/".$slider->image."");
-
-
 	}
 
 	public function update_slider($id){
@@ -129,6 +137,7 @@ class SliderController extends Controller {
 
 			Slider::update_slider($id,$description,$slider->image);
 		}
+		return redirect('/slider');
 	}
 
 }

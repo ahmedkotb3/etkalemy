@@ -23,62 +23,45 @@
                             <a href="#"><img class="img-responsive" style="height: 450px" id="slide4"src="/images/pictures/slide/90.png"/></a>
                         </div>
                     </div>
+                <!-- Start the Slider -->
                 <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9"  id="smallslider"style=" padding-right:0px; padding-left:0; ">
                     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                         <!-- Indicators -->
                         <ol class="carousel-indicators ">
-                            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                            <li data-target="#carousel-example-generic" data-slide-to="3"></li>
-                            <li data-target="#carousel-example-generic" data-slide-to="4"></li>
+                            @foreach($sliders as $key=>$slider)
+                                @if($key==0)
+                                     <li data-target="#carousel-example-generic" data-slide-to="{{$key}}" class="active"></li>
+                                @else
+                                    <li data-target="#carousel-example-generic" data-slide-to="{{$key}}"></li>
+                                @endif
+                            @endforeach
                         </ol>
 
                         <!-- Wrapper for slides -->
                         <div class="carousel-inner" role="listbox">
-                            <div class="item active">
-                                <img src="/images/pictures/fa/slider1.jpg"  alt="...">
+                            @foreach($sliders as $key=>$slider)
+                                @if($key==0)
+                                    <div class="item active">
+                                        <img src="/uploadfiles/slider/{{$slider->image}}"  alt="...">
 
-                                <div class="carousel-caption">
-                                    اعرفى اهم اللحظات فى أولى تجمعات اتكلمى فبراير 2016
+                                        <div class="carousel-caption">
+                                            {{$slider->description}}
+                                            </div>
                                     </div>
-                            </div>
-                            <div class="item">
-                                <img src="/images/pictures/fa/1.jpg"  alt="...">
+                                @else
+                                    <div class="item">
+                                        <img src="/uploadfiles/slider/{{$slider->image}}"  alt="...">
 
-                                <div class="carousel-caption">
-                                    اعرفى اهم اللحظات فى أولى تجمعات اتكلمى فبراير 2016
-                                </div>
-                            </div>
-
-                            <div class="item">
-                                <img src="/images/pictures/fa/2.jpg" class="img-responsive" alt="...">
-
-                                <div class="carousel-caption">
-                                    اعرفى اهم اللحظات فى أولى تجمعات اتكلمى فبراير 2016
-                                </div>
-                            </div>
-                            <div class="item">
-                                <img src="/images/pictures/fa/3.jpg" alt="...">
-
-                                    <span class="carousel-caption"
-                                          style="font-size: 25px ;display: inline;text-align: right">
-                                                                                                                                        اعرفى اهم اللحظات فى أولى تجمعات اتكلمى فبراير 2016
-
-                                    </span>
-                            </div>
-
-                            <div class="item">
-                                <img src="/images/pictures/fa/4.jpg" alt="..."style="min-height: 250px;">
-
-                                <div class="carousel-caption">
-                                    اعرفى اهم اللحظات فى أولى تجمعات اتكلمى فبراير 2016
-                                </div>
-                            </div>
+                                        <div class="carousel-caption">
+                                            {{$slider->description}}
+                                        </div>
+                                    </div>
+                                @endif
+                            @endforeach
                         </div>
                     </div>
-
                 </div>
+                <!-- End the Slider -->
             </div>
 
 
