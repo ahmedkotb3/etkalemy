@@ -577,7 +577,7 @@ label{
 
 
 #rtagmo{
-    margin-top: 24px!important; margin-bottom: 50px!important; height: 50px;
+    margin-top: 24px!important; margin-bottom: 20px!important; height: 50px;
 }
 @media (max-width: 767px) {
     #rtagmo{
@@ -811,7 +811,7 @@ background-color: #C4E9F2; font-family: ebold; font-size: 15px; width: 171px; di
 
 
 @media(min-width:1200px){
-#ro{ display: inline-flex; direction: rtl;margin-bottom: 50px!important;
+#ro{ display: inline-flex; direction: rtl;margin-bottom: 30px!important;
     margin-left: 55px;
     width: 1170px;
 }
@@ -935,7 +935,7 @@ background-color: #C4E9F2; font-family: ebold; font-size: 15px; width: 171px; di
 @media ( min-width: 1200px) {
     #sli{
         height: 640px; background-color: #D5E4E8; ;
-        margin-bottom: 50px!important;
+        margin-bottom: 20px!important;
     }
 }
 #sli{
