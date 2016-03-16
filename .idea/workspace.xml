@@ -49,12 +49,28 @@
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="routes.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-44.125">
               <caret line="83" column="0" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
               <folding />
+=======
+      <file leaf-file-name="tagmoatna.blade.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/pages/tagmoatna.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.40681005">
+              <caret line="79" column="14" selection-start-line="79" selection-start-column="14" selection-end-line="79" selection-end-column="14" />
+              <folding>
+                <element signature="e#526#555#0#HTML" expanded="true" />
+                <element signature="e#1139#1158#0#HTML" expanded="true" />
+                <element signature="e#1277#1297#0#HTML" expanded="true" />
+                <element signature="e#1796#1829#0#HTML" expanded="true" />
+                <element signature="e#3313#3351#0#HTML" expanded="true" />
+                <element signature="e#4085#4123#0#HTML" expanded="true" />
+              </folding>
+>>>>>>> origin/master
             </state>
           </provider>
         </entry>
@@ -62,20 +78,34 @@
       <file leaf-file-name="SliderController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SliderController.php">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state vertical-scroll-proportion="0.94736844">
               <caret line="143" column="0" selection-start-line="143" selection-start-column="0" selection-end-line="143" selection-end-column="0" />
               <folding>
                 <element signature="e#39#61#0#PHP" expanded="true" />
               </folding>
+=======
+            <state vertical-scroll-proportion="-13.730769">
+              <caret line="23" column="9" selection-start-line="23" selection-start-column="9" selection-end-line="23" selection-end-column="9" />
+              <folding />
+>>>>>>> origin/master
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="pagescontroller.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/pagescontroller.php">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-2.9411764">
               <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+=======
+      <file leaf-file-name="mycss.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/css/mycss.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-6.448276">
+              <caret line="11" column="1" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
+>>>>>>> origin/master
               <folding />
             </state>
           </provider>
@@ -105,13 +135,16 @@
         <option value="$PROJECT_DIR$/resources/views/pages/comment.plade.php" />
         <option value="$PROJECT_DIR$/resources/views/pages/nav.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/pages/tagmoatna-event.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/pages/tagmoatna.blade.php" />
         <option value="$PROJECT_DIR$/public/css/mycss.css" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/app/Http/routes.php" />
         <option value="$PROJECT_DIR$/config/app.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/pagescontroller.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/SliderController.php" />
         <option value="$PROJECT_DIR$/resources/views/pages/home.blade.php" />
+=======
+        <option value="$PROJECT_DIR$/resources/views/pages/tagmoatna.blade.php" />
+>>>>>>> origin/master
       </list>
     </option>
   </component>
@@ -756,25 +789,52 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/css/mycss.css">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state vertical-scroll-proportion="-23.208334">
           <caret line="941" column="1" selection-start-line="941" selection-start-column="1" selection-end-line="941" selection-end-column="1" />
+=======
+        <state vertical-scroll-proportion="-13.730769">
+          <caret line="23" column="9" selection-start-line="23" selection-start-column="9" selection-end-line="23" selection-end-column="9" />
+>>>>>>> origin/master
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/config/app.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.47368422">
           <caret line="146" column="72" selection-start-line="146" selection-start-column="0" selection-end-line="147" selection-end-column="0" />
+=======
+    <entry file="file://$PROJECT_DIR$/public/css/mycss.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.448276">
+          <caret line="11" column="1" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
+>>>>>>> origin/master
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/pagescontroller.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-2.9411764">
           <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
           <folding />
+=======
+    <entry file="file://$PROJECT_DIR$/resources/views/pages/tagmoatna.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.40681005">
+          <caret line="79" column="14" selection-start-line="79" selection-start-column="14" selection-end-line="79" selection-end-column="14" />
+          <folding>
+            <element signature="e#526#555#0#HTML" expanded="true" />
+            <element signature="e#1139#1158#0#HTML" expanded="true" />
+            <element signature="e#1277#1297#0#HTML" expanded="true" />
+            <element signature="e#1796#1829#0#HTML" expanded="true" />
+            <element signature="e#3313#3351#0#HTML" expanded="true" />
+            <element signature="e#4085#4123#0#HTML" expanded="true" />
+          </folding>
+>>>>>>> origin/master
         </state>
       </provider>
     </entry>
