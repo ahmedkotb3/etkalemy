@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration {
 			$table->string('work');
 			$table->date('birth_date');
 			$table->string('profile_image');
+			$table->string('role');
 			$table->rememberToken();
 			$table->timestamps();
 		});

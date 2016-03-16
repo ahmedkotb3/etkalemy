@@ -21,6 +21,11 @@ class CreateArticlesTable extends Migration {
             $table->string("video_url");
 //            $table->string("audio_url");
             $table->string("picture_url");
+			$table->string("title_en");
+			$table->string("subject_en");
+			$table->string("video_url_en");
+//            $table->string("audio_url");
+			$table->string("picture_url_en");
             $table->string('type');
             $table->timestamps();
         });

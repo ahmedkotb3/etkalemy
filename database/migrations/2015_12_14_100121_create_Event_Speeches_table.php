@@ -19,6 +19,9 @@ class CreateEventSpeechesTable extends Migration {
             $table->string('title');
             $table->string('desc');
             $table->string('youtube_url');
+            $table->string('title_en');
+            $table->string('desc_en');
+            $table->string('youtube_url_en');
             $table->timestamps();
         });
 
