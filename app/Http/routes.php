@@ -26,6 +26,10 @@ Route::get('/','pagescontroller@index');
 Route::get('/tagmoatna','pagescontroller@tagmoatna');
 Route::get('/joinus','pagescontroller@joinus');
 Route::get('/tagmoatna-event','pagescontroller@tagmoatnaevent');
+Route::get('/tagmoatna-videos','pagescontroller@tagmoatnavideos');
+Route::get('/tagmoatna-videoplay','pagescontroller@tagmoatnavideoplay');
+Route::get('/tagmoatna-pictures','pagescontroller@tagmoatnapictures');
+Route::get('/tagmoatna-donyana','pagescontroller@tagmoatnadonyana');
 Route::get('/AdminControl','pagescontroller@showadmin');
 
 /********* Slider Routes ************/

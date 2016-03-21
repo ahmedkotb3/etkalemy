@@ -19,11 +19,11 @@
             <li class="dropdown-submenu">
                 <a tabindex="-1" href="#">2016</a>
                 <ul class="dropdown-menu" id="dds">
-                    <li><a tabindex="-1"  id="lis" href="#">تجمع اتكلمى الأول</a></li>
+                    <li><a tabindex="-1"  id="lis" href="#">تجمع إتكلمى الأول</a></li>
                     <li class="divider" style="width: 100%"></li>
-                    <li><a id="lis"href="#">تجمع اتكلمى الثانى</a></li>
+                    <li><a id="lis"href="#">تجمع إتكلمى الثانى</a></li>
                     <li class="divider" style=" width:100% "></li>
-                    <li><a id="lis"href="#">تجمع اتكلمى الشامل</a></li>
+                    <li><a id="lis"href="#">تجمع إتكلمى الشامل</a></li>
                 </ul>
             </li>
             <li><a href="#">2017</a></li>
@@ -71,11 +71,11 @@
 </div>
 <div class="content row" id="cr">
     <div class="row" style="margin-bottom: 28px!important;">
-    <div class="col-md-6 "  id="pic">
+    <div class="col-md-6"  id="pic1">
         <div class="imgWrap img-responsive">
             <img  class="imgWrap img-responsive" src="images/pictures/pic/1.jpg" alt="polaroid" />
             <a href="/tagmoatna-event"><p class="imgDescription">
-            <span  id ="txtimg">   تجمع اتكلمى التانى  </span>
+            <span  id ="txtimg">   تجمع إتكلمى الأول  </span>
             </p></a>
         </div>
     </div>
@@ -83,17 +83,17 @@
         <div class="imgWrap img-responsive">
            <img  class="imgWrap img-responsive" src="images/pictures/pic/2.jpg" alt="polaroid" />
             <a href="#"><p class="imgDescription">
-                <span  id ="txtimg"> تجمع اتكلمى الأول </span>
+                <span  id ="txtimg"> تجمع إتكلمى الثانى </span>
             </p></a>
         </div>
     </div>
     </div>
     <div class="row" style="margin-bottom: 28px!important;">
-    <div class="col-md-6" id="pic">
+    <div class="col-md-6 " id="pic1">
         <div class="imgWrap img-responsive">
             <img  class="imgWrap img-responsive" src="images/pictures/pic/3.jpg" alt="polaroid" />
             <a href="#"><p class="imgDescription">
-                <span  id ="txtimg"> تجمع اتكلمى الرابع</span>
+                <span  id ="txtimg"> تجمع إتكلمى الثالث </span>
             </p></a>
         </div>
         </div>
@@ -101,7 +101,7 @@
         <div class="imgWrap img-responsive">
             <img  class="imgWrap img-responsive" src="images/pictures/pic/4.jpg" alt="polaroid" />
             <a href="#"><p class="imgDescription">
-                <span  id ="txtimg"> تجمع اتكلمى الثالث </span>
+                <span  id ="txtimg"> تجمع إتكلمى الرابع </span>
             </p></a>
         </div>
     </div>
