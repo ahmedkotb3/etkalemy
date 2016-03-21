@@ -27,6 +27,12 @@ Route::get('/tagmoatna','pagescontroller@tagmoatna');
 Route::get('/joinus','pagescontroller@joinus');
 Route::get('/tagmoatna-event','pagescontroller@tagmoatnaevent');
 Route::get('/AdminControl','pagescontroller@showadmin');
+Route::get('/etkalemy','pagescontroller@etkalemy');
+Route::get('/contactus','pagescontroller@contactus');
+Route::get('/aboutus','pagescontroller@aboutus');
+Route::get('/login','pagescontroller@login');
+Route::get('/personalPage','pagescontroller@personalPage');
+Route::get('/EditPersonalPage','pagescontroller@EditPersonalPage');
 
 /********* Slider Routes ************/
 
