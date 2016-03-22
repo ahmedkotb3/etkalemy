@@ -55,6 +55,24 @@ class pagescontroller extends Controller
 		return view('pages/tagmoatna-event');
 	}
 
+	public function tagmoatnavideos()
+	{
+		return view('pages/tagmoatna-videos');
+	}
+	public function tagmoatnavideoplay()
+	{
+		return view('pages/tagmoatna-videoplay');
+	}
+	public function tagmoatnapictures()
+	{
+		return view('pages/tagmoatna-pictures');
+	}
+	public function tagmoatnadonyana()
+	{
+		return view('pages/tagmoatna-donyana');
+	}
+
+
 	public function etkalemy(){
 		return view('pages/etkalemy');
 	}

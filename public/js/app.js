@@ -17,6 +17,44 @@
 
 })();
 
+$(function(){
+
+    $("#textbox").keypress(function(event){
+        if ( event.which == 13){
+            if ( $("#enter").prop("checked") ){
+
+                $("#send").click();
+                event.preventDefault();
+
+            }
+
+        }
+
+    });
+
+
+    $("#send").click(function(){
+
+        var newMessage = $("#textbox").val();
+
+        $("#textbox").val("");
+
+        var prevState = $("#container").html();
+
+        $("#container").html(prevState + "<br>" + newMessage);
+
+        $("#container").scrollTop($("#container").prop("scrollHeight"));
+
+    });
+
+});
+
+
+
+
+
+
+
 $(document).ready(function(){
     $("#slide1").hover(function(){
             $(this).css("background-color","#B0D2D9");

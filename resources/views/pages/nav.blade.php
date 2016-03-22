@@ -113,7 +113,7 @@
         <li><a href="#"> إتكلمى </a></li>
         <li><a href="#"> جاليري </a></li>
         <li><a href="#"> للاتصال بنا </a></li>
-        <li><a href="#"> عن اتكلمى </a></li>
+        <li><a href="#"> عن إتكلمى </a></li>
         <div style=" padding-top: 5px; background-color: white;">
             <a href="https://www.youtube.com/" style=" padding:0 7%;"><i class="fa fa-youtube-square fa-3x" style="background:white; color: red; border: 0;"></i></a>
             <a href="" style="padding:0 5%;"><i class="fa fa-facebook-official fa-3x" style=" background: white; color:#032C7C;"></i></a>
@@ -163,7 +163,7 @@
     <div class="collapse navbar-collapse" id="navHeaderCollapse">
         <ul class="nav navbar-nav navbar-right"
             style="text-align:center; width:100%; margin-right:15px!important;font-family: ebold!important; font-size: 18px; ">
-            <li><a href="#"> عن اتكلمى </a></li>
+            <li><a href="#"> عن إتكلمى </a></li>
             <li><a href="#"> للاتصال بنا </a></li>
             <li><a href="#"> جاليري </a></li>
             <li><a href="#"> إتكلمى </a></li>

@@ -26,11 +26,18 @@ Route::get('/','pagescontroller@index');
 Route::get('/tagmoatna','pagescontroller@tagmoatna');
 Route::get('/joinus','pagescontroller@joinus');
 Route::get('/tagmoatna-event','pagescontroller@tagmoatnaevent');
+Route::get('/tagmoatna-videos','pagescontroller@tagmoatnavideos');
+Route::get('/tagmoatna-videoplay','pagescontroller@tagmoatnavideoplay');
+Route::get('/tagmoatna-pictures','pagescontroller@tagmoatnapictures');
+Route::get('/tagmoatna-donyana','pagescontroller@tagmoatnadonyana');
 Route::get('/AdminControl','pagescontroller@showadmin');
 Route::get('/etkalemy','pagescontroller@etkalemy');
 Route::get('/contactus','pagescontroller@contactus');
 Route::get('/aboutus','pagescontroller@aboutus');
 Route::get('/login','pagescontroller@login');
+Route::get('/personalPage','pagescontroller@personalPage');
+Route::get('/EditPersonalPage','pagescontroller@EditPersonalPage');
+
 Route::get('/personalPage', [
     'middleware' => 'auth',
     'uses' => 'pagescontroller@personalPage'

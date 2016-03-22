@@ -38,6 +38,13 @@
                 {{--@foreach($eventnames_and_year as $eventname_and_year)--}}
                     {{--@if($eventname_and_year['year'] == $year)--}}
                 <ul class="dropdown-menu" id="dds">
+
+                    <li><a tabindex="-1"  id="lis" href="#">تجمع إتكلمى الأول</a></li>
+                    <li class="divider" style="width: 100%"></li>
+                    <li><a id="lis"href="#">تجمع إتكلمى الثانى</a></li>
+                    <li class="divider" style=" width:100% "></li>
+                    <li><a id="lis"href="#">تجمع إتكلمى الشامل</a></li>
+
                     @foreach($eventnames_and_year as $eventname_and_year)
                         @if($eventname_and_year['year'] == $year)
                     <li><a tabindex="-1"  id="lis" href="#">{{$eventname_and_year['name']}}</a></li>
@@ -63,6 +70,7 @@
 <div class="col-xs-7 col-sm-5 col-md-4 col-lg-3" id="tgm">تجمعات قادمة </div>
 <hr  class="col-xs-5 col-sm-7 col-md-8 col-lg-9" id="hrt">
 </div>
+
 <div class="row"  id="sli">
 <div id="the-slider" class="carousel slide" data-ride="carousel" style="margin: 50px 0!important;">
 
@@ -103,19 +111,7 @@
 <hr  class="col-xs-5 col-sm-7 col-md-8 col-lg-9" id="hrt">
 </div>
 
-<div class="content row" id="cr">
 
-<div class="row" style="margin-bottom: 28px!important;">
-  @foreach($last_events as $last_event)
-<div class="col-md-6 pull-right"  id="pic" >
-<div class="imgWrap img-responsive">
-<img  class="imgWrap img-responsive" src="uploadfiles/events/{{$last_event->name}}/{{$last_event->image}}" alt="polaroid" />
-<a href="/tagmoatna-event"><p class="imgDescription">
-<span  id ="txtimg">  {{$last_event->name}}  </span>
-</p></a>
-</div>
-</div>
-    @endforeach
 
 {{--<div class="col-md-6 " id="pic" >--}}
 {{--<div class="imgWrap img-responsive">--}}
@@ -125,7 +121,7 @@
 {{--</p></a>--}}
 {{--</div>--}}
 {{--</div>--}}
-</div>
+
 
 {{--<div class="row" style="margin-bottom: 28px!important;">--}}
 {{--<div class="col-md-6" id="pic">--}}
@@ -146,7 +142,22 @@
 {{--</div>--}}
 {{--</div>--}}
 
-</div>
-</div>
+
+        <div class="content row" id="cr">
+            <div class="row" style="margin-bottom: 28px!important;">
+                @foreach($last_events as $last_event)
+                <div class="col-md-6"  id="pic1">
+                    <div class="imgWrap img-responsive">
+                        <img  class="imgWrap img-responsive" src="uploadfiles/events/{{$last_event->name}}/{{$last_event->image}}" alt="polaroid" />
+                        <a href="/tagmoatna-event"><p class="imgDescription">
+                                <span  id ="txtimg">   {{$last_event->name}}  </span>
+                            </p></a>
+                    </div>
+                </div>
+                @endforeach
+                </div>
+    </div>
+    </div>
+
 
 @stop
