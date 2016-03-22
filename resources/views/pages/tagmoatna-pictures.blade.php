@@ -41,18 +41,21 @@
                 <div class="col-xs-4 col-sm-5 col-md-4 col-lg-3" id="tgm"> صور</div>
                 <hr class="col-xs-8 col-sm-7 col-md-8 col-lg-9" id="hrt">
             </div>
-            <div class="container-fluid" style="margin-bottom:50px;background-color: white; padding: 10px;">
-                <img id="" class=" imgdiv img-responsive pull-right" src="images/pictures/tagmoevent/5.jpg"/>
-                 <img id="" class=" imgdiv img-responsive pull-right" src="images/pictures/tagmoevent/6.jpg"/>
-                <img id="" class=" imgdiv img-responsive pull-right" src="images/pictures/tagmoevent/6.jpg"/>
-                <img id="" class=" imgdiv img-responsive pull-right" src="images/pictures/tagmoevent/5.jpg"/>
-                <img id="" class=" imgdiv img-responsive pull-right" src="images/pictures/tagmoevent/5.jpg"/>
-                <img id="" class=" imgdiv img-responsive pull-right" src="images/pictures/tagmoevent/6.jpg"/>
-                <img id="" class=" imgdiv img-responsive pull-right" src="images/pictures/tagmoevent/5.jpg"/>
-                <img id="" class=" imgdiv img-responsive pull-right" src="images/pictures/tagmoevent/5.jpg"/>
-                <img id="" class=" imgdiv img-responsive pull-right" src="images/pictures/tagmoevent/6.jpg"/>
+            <div class="container-fluid" id="links"style="margin-bottom:50px;background-color: white; padding: 10px;">
+                <a href="images/pictures/tagmoevent/5.jpg"><img id="" class=" imgdiv img-responsive pull-right" src="images/pictures/tagmoevent/5.jpg"/></a>
+                <a href="images/pictures/tagmoevent/6.jpg"><img id="" class=" imgdiv img-responsive pull-right" src="images/pictures/tagmoevent/6.jpg"/></a>
+                <a href="images/pictures/tagmoevent/5.jpg"><img id="" class=" imgdiv img-responsive pull-right" src="images/pictures/tagmoevent/5.jpg"/></a>
+                <a href="images/pictures/tagmoevent/6.jpg"><img id="" class=" imgdiv img-responsive pull-right" src="images/pictures/tagmoevent/6.jpg"/></a>
+                <a href="images/pictures/tagmoevent/5.jpg"><img id="" class=" imgdiv img-responsive pull-right" src="images/pictures/tagmoevent/5.jpg"/></a>
+                <a href="images/pictures/tagmoevent/6.jpg"><img id="" class=" imgdiv img-responsive pull-right" src="images/pictures/tagmoevent/6.jpg"/></a>
+
+
             </div>
             </div>
         </div>
+
+
+
+
 
     @stop

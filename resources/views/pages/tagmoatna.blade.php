@@ -6,6 +6,9 @@
     <img src="/images/pictures/m1.jpg" class="imgstyle">
         <span id="ta">  تجمعاتنا      </span>
     </div>
+
+    <!-- Start the dropdown date of events -->
+
 <div class=" col-xs-6  col-sm-4 col-md-3  col-lg-2 pull-left" id="dtyr">
     <div class="row dropdown">
         <a id="dLabel" role="button" data-toggle="dropdown" class="btn drop" data-target="#" href="#" style="outline: 0!important;">
@@ -15,99 +18,146 @@
         </a>
         
         <ul class="dropdown-menu multi-level" id="dxs" role="menu" aria-labelledby="dropdownMenu">
-            <li><a href="#">2015</a></li>
+            {{--<li><a href="#">2015</a></li>--}}
+            {{--<li class="dropdown-submenu">--}}
+                {{--<a tabindex="-1" href="#">2016</a>--}}
+                {{--<ul class="dropdown-menu" id="dds">--}}
+                    {{--<li><a tabindex="-1"  id="lis" href="#">تجمع اتكلمى الأول</a></li>--}}
+                    {{--<li class="divider" style="width: 100%"></li>--}}
+                    {{--<li><a id="lis"href="#">تجمع اتكلمى الثانى</a></li>--}}
+                    {{--<li class="divider" style=" width:100% "></li>--}}
+                    {{--<li><a id="lis"href="#">تجمع اتكلمى الشامل</a></li>--}}
+                {{--</ul>--}}
+            {{--</li>--}}
+            {{--<li><a href="#">2017</a></li>--}}
+
+            @foreach($years as $year)
             <li class="dropdown-submenu">
-                <a tabindex="-1" href="#">2016</a>
+
+                <a tabindex="-1" href="#">{{$year}}</a>
+                {{--@foreach($eventnames_and_year as $eventname_and_year)--}}
+                    {{--@if($eventname_and_year['year'] == $year)--}}
                 <ul class="dropdown-menu" id="dds">
+
                     <li><a tabindex="-1"  id="lis" href="#">تجمع إتكلمى الأول</a></li>
                     <li class="divider" style="width: 100%"></li>
                     <li><a id="lis"href="#">تجمع إتكلمى الثانى</a></li>
                     <li class="divider" style=" width:100% "></li>
                     <li><a id="lis"href="#">تجمع إتكلمى الشامل</a></li>
+
+                    @foreach($eventnames_and_year as $eventname_and_year)
+                        @if($eventname_and_year['year'] == $year)
+                    <li><a tabindex="-1"  id="lis" href="#">{{$eventname_and_year['name']}}</a></li>
+                    <li class="divider" style="width: 100%"></li>
+                        @endif
+                    @endforeach
+                    {{--<li><a id="lis"href="#">تجمع اتكلمى الثانى</a></li>--}}
+                    {{--<li class="divider" style=" width:100% "></li>--}}
+                    {{--<li><a id="lis"href="#">تجمع اتكلمى الشامل</a></li>--}}
                 </ul>
+                    {{--@endif--}}
+                    {{--@endforeach--}}
             </li>
-            <li><a href="#">2017</a></li>
-        </ul>
-    </div>
+            @endforeach
+
+
+</ul>
 </div>
 </div>
-    <div class="row" id="ro">
-        <div class="col-xs-7 col-sm-5 col-md-4 col-lg-3" id="tgm">تجمعات قادمة </div>
-        <hr  class="col-xs-5 col-sm-7 col-md-8 col-lg-9" id="hrt">
-    </div>
-    <div class="row"  id="sli">
-        <div id="the-slider" class="carousel slide" data-ride="carousel" style="margin: 50px 0!important;">
-
-            <div class="carousel-inner">
-                <div class="item active">
-                    <a href="http://facebook.com"><img src="images/pictures/s1.jpg" class="img-responsive" alt="..."></a>
-                    <div class="carousel-caption2">
-                        اعرفى اهم اللحظات فى أولى تجمعات اتكلمى فبراير 2016
-                    </div>
-                    </div>
-                      <!--item 1-->
-                <div class="item">
-                    <img src="images/pictures/s1.jpg" class="img-responsive" alt="...">
-                    <div class="carousel-caption2">
-                        اعرفى اهم اللحظات فى أولى تجمعات اتكلمى فبراير 2016
-                    </div>
-                </div> <!--item 1-->
-            </div> <!--carousel-inner-->
-
-            <!--controls-->
-            <a class="left carousel-control" href="#the-slider" role="button" data-slide="prev">
-                <span ><img id="imgslil" src="/images/pictures/left.png" /></span>
-
-            </a>
-            <a class="right carousel-control" href="#the-slider" role="button" data-slide="next">
-                <span><img id="imgslir" src="/images/pictures/right.png" /></span>
-            </a>
-
-        </div><!--the-slider-->
-    </div>
+    <!-- End the dropdown date of events -->
+</div>
 <div class="row" id="ro">
-    <div class="col-xs-7 col-sm-5 col-md-4 col-lg-3" id="tgm">تجمعات سابقة </div>
-    <hr  class="col-xs-5 col-sm-7 col-md-8 col-lg-9" id="hrt">
-</div>
-<div class="content row" id="cr">
-    <div class="row" style="margin-bottom: 28px!important;">
-    <div class="col-md-6"  id="pic1">
-        <div class="imgWrap img-responsive">
-            <img  class="imgWrap img-responsive" src="images/pictures/pic/1.jpg" alt="polaroid" />
-            <a href="/tagmoatna-event"><p class="imgDescription">
-            <span  id ="txtimg">   تجمع إتكلمى الأول  </span>
-            </p></a>
-        </div>
-    </div>
-    <div class="col-md-6 " id="pic" >
-        <div class="imgWrap img-responsive">
-           <img  class="imgWrap img-responsive" src="images/pictures/pic/2.jpg" alt="polaroid" />
-            <a href="#"><p class="imgDescription">
-                <span  id ="txtimg"> تجمع إتكلمى الثانى </span>
-            </p></a>
-        </div>
-    </div>
-    </div>
-    <div class="row" style="margin-bottom: 28px!important;">
-    <div class="col-md-6 " id="pic1">
-        <div class="imgWrap img-responsive">
-            <img  class="imgWrap img-responsive" src="images/pictures/pic/3.jpg" alt="polaroid" />
-            <a href="#"><p class="imgDescription">
-                <span  id ="txtimg"> تجمع إتكلمى الثالث </span>
-            </p></a>
-        </div>
-        </div>
-    <div class="col-md-6" id="pic">
-        <div class="imgWrap img-responsive">
-            <img  class="imgWrap img-responsive" src="images/pictures/pic/4.jpg" alt="polaroid" />
-            <a href="#"><p class="imgDescription">
-                <span  id ="txtimg"> تجمع إتكلمى الرابع </span>
-            </p></a>
-        </div>
-    </div>
+<div class="col-xs-7 col-sm-5 col-md-4 col-lg-3" id="tgm">تجمعات قادمة </div>
+<hr  class="col-xs-5 col-sm-7 col-md-8 col-lg-9" id="hrt">
 </div>
 
-</div>
+<div class="row"  id="sli">
+<div id="the-slider" class="carousel slide" data-ride="carousel" style="margin: 50px 0!important;">
+
+<div class="carousel-inner">
+    @foreach($future_events as $key=>$future_event)
+        @if($key == 0)
+<div class="item active">
+    <a href="http://facebook.com"><img src="uploadfiles/events/{{$future_event->name}}/{{$future_event->image}}" class="img-responsive" alt="..."></a>
+    <div class="carousel-caption2">
+       {{$future_event->description}}
     </div>
+    </div>
+        @else
+      <!--item 1-->
+<div class="item">
+    <img src="uploadfiles/events/{{$future_event->name}}/{{$future_event->image}}" class="img-responsive" alt="...">
+    <div class="carousel-caption2">
+        {{$future_event->description}}
+    </div>
+</div> <!--item 1-->
+        @endif
+        @endforeach
+</div> <!--carousel-inner-->
+
+<!--controls-->
+<a class="left carousel-control" href="#the-slider" role="button" data-slide="prev">
+<span ><img id="imgslil" src="/images/pictures/left.png" /></span>
+
+</a>
+<a class="right carousel-control" href="#the-slider" role="button" data-slide="next">
+<span><img id="imgslir" src="/images/pictures/right.png" /></span>
+</a>
+
+</div><!--the-slider-->
+</div>
+<div class="row" id="ro">
+<div class="col-xs-7 col-sm-5 col-md-4 col-lg-3" id="tgm">تجمعات سابقة </div>
+<hr  class="col-xs-5 col-sm-7 col-md-8 col-lg-9" id="hrt">
+</div>
+
+
+
+{{--<div class="col-md-6 " id="pic" >--}}
+{{--<div class="imgWrap img-responsive">--}}
+{{--<img  class="imgWrap img-responsive" src="images/pictures/pic/2.jpg" alt="polaroid" />--}}
+{{--<a href="#"><p class="imgDescription">--}}
+{{--<span  id ="txtimg"> تجمع اتكلمى الأول </span>--}}
+{{--</p></a>--}}
+{{--</div>--}}
+{{--</div>--}}
+
+
+{{--<div class="row" style="margin-bottom: 28px!important;">--}}
+{{--<div class="col-md-6" id="pic">--}}
+{{--<div class="imgWrap img-responsive">--}}
+{{--<img  class="imgWrap img-responsive" src="images/pictures/pic/3.jpg" alt="polaroid" />--}}
+{{--<a href="#"><p class="imgDescription">--}}
+{{--<span  id ="txtimg"> تجمع اتكلمى الرابع</span>--}}
+{{--</p></a>--}}
+{{--</div>--}}
+{{--</div>--}}
+{{--<div class="col-md-6" id="pic">--}}
+{{--<div class="imgWrap img-responsive">--}}
+{{--<img  class="imgWrap img-responsive" src="images/pictures/pic/4.jpg" alt="polaroid" />--}}
+{{--<a href="#"><p class="imgDescription">--}}
+{{--<span  id ="txtimg"> تجمع اتكلمى الثالث </span>--}}
+{{--</p></a>--}}
+{{--</div>--}}
+{{--</div>--}}
+{{--</div>--}}
+
+
+        <div class="content row" id="cr">
+            <div class="row" style="margin-bottom: 28px!important;">
+                @foreach($last_events as $last_event)
+                <div class="col-md-6"  id="pic1">
+                    <div class="imgWrap img-responsive">
+                        <img  class="imgWrap img-responsive" src="uploadfiles/events/{{$last_event->name}}/{{$last_event->image}}" alt="polaroid" />
+                        <a href="/tagmoatna-event"><p class="imgDescription">
+                                <span  id ="txtimg">   {{$last_event->name}}  </span>
+                            </p></a>
+                    </div>
+                </div>
+                @endforeach
+                </div>
+    </div>
+    </div>
+
 
 @stop

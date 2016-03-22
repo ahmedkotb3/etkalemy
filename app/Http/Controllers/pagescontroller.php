@@ -22,14 +22,27 @@ class pagescontroller extends Controller
 	public function tagmoatna()
 	{
 		$date = date("Y-m-d");
-		$events = Events::all();
+		 $year = strtok($date, '-');
+		 $events = Events::all();
+		$future_events = array();
+		$last_events = array();
+		$years = array();
+		$eventnames_and_year = array();
 		foreach($events as $event){
-
-
+			array_push($years,strtok($event->date, '-'));
+			$array = array(
+				'year'=>strtok($event->date, '-'),
+				'name'=>$event->name
+			);
+			array_push($eventnames_and_year,$array);
+			if($event->date >=$date){
+				array_push($future_events,$event);
+			}else{
+				array_push($last_events,$event);
+			}
 		}
-//		$future_event = Events::where('date', '>=',$date)->get()->toArray();
-//		$back_event = Events::where('date', '<',$date)->get()->toArray();
-		return view('pages/tagmoatna');
+
+		return view('pages/tagmoatna',array('years'=>array_unique($years),'eventnames_and_year'=>$eventnames_and_year,'future_events'=>$future_events,'last_events'=>$last_events));
 	}
 
 	public function joinus()
@@ -41,6 +54,7 @@ class pagescontroller extends Controller
 	{
 		return view('pages/tagmoatna-event');
 	}
+
 	public function tagmoatnavideos()
 	{
 		return view('pages/tagmoatna-videos');
@@ -57,6 +71,29 @@ class pagescontroller extends Controller
 	{
 		return view('pages/tagmoatna-donyana');
 	}
+
+
+	public function etkalemy(){
+		return view('pages/etkalemy');
+	}
+	public function contactus(){
+		return view('pages/contactus');
+	}
+	public function aboutus(){
+		return view('pages/aboutus');
+	}
+
+
+	public function login(){
+		return view('pages/login');
+	}
+	public function personalPage(){
+		return view('pages/personal_page');
+	}
+	public function EditPersonalPage(){
+		return view('pages/edit_personal_page');
+	}
+
 	public function showadmin()
 	{
 

@@ -31,7 +31,12 @@ Route::get('/tagmoatna-videoplay','pagescontroller@tagmoatnavideoplay');
 Route::get('/tagmoatna-pictures','pagescontroller@tagmoatnapictures');
 Route::get('/tagmoatna-donyana','pagescontroller@tagmoatnadonyana');
 Route::get('/AdminControl','pagescontroller@showadmin');
-
+Route::get('/etkalemy','pagescontroller@etkalemy');
+Route::get('/contactus','pagescontroller@contactus');
+Route::get('/aboutus','pagescontroller@aboutus');
+Route::get('/login','pagescontroller@login');
+Route::get('/personalPage','pagescontroller@personalPage');
+Route::get('/EditPersonalPage','pagescontroller@EditPersonalPage');
 /********* Slider Routes ************/
 
 Route::resource('/slider','SliderController');

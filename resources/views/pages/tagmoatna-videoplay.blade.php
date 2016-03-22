@@ -43,10 +43,15 @@
             </div>
             <iframe width="100%" height="400" src="https://www.youtube.com/embed/sLwrG2bwBDI" frameborder="0" allowfullscreen></iframe>
             <div  class="container-fluid" style=" padding: 0!important; margin-top:-5px;background-color: white">
-                <div class="row" style="float:right;padding: 20px;">
+                <div class="row" style="padding: 20px;">
+                    <div style="float:right;">
                     <span style=" padding-left:10px;float:right;font-family: ebold;font-size: 25px"> مشاركة علي</span>
                     <span> <a href=""><img src="images/pictures/tagmoevent/facebook.png" style="max-width: 45%;"></a>
-                        <a href=""><img src="images/pictures/tagmoevent/twitter.png" style="max-width: 45%;"></a></span>
+                        <a href=""><img src="images/pictures/tagmoevent/twitter.png" style="max-width: 45%;"></a></span></div>
+                    <div class="pull-left">
+                        <span class=""><img   src="/images/pictures/like.png"></span>
+                        <span class=""><img   src="/images/pictures/seen.png"></span>
+                    </div>
                 </div>
                 <hr style=" width: 100%!important;"/>
                 <div class=" row pull-right" style="font-size: 25px; font-family: ebold; padding: 20px;">سارة أحمد كيف تصبح ناجح فى خطوات</div>

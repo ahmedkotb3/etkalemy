@@ -12,6 +12,7 @@
     <link rel="stylesheet" type="text/css" href="/css/mycss.css">
     <link rel="stylesheet" type="text/css" href="/css/radio.css">
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="src/css/jquery.tosrus.all.css" />
     <!--[if lte IE 8]>
     <p style="font-size: 200px;">Notice: As you are using an old browser some features of this
         web app may not work for you. Please update.</p>
@@ -47,5 +48,18 @@
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script src="/js/app.js"></script>
 <script src="http://vjs.zencdn.net/5.8.0/video.js"></script>
+<script type="text/javascript" src="src/js/jquery.tosrus.min.all.js"></script>
+<!--<script>
+    $("#links a").tosrus({
+        buttons    : "inline",
+        pagination : {
+            add        : true,
+            type       : "thumbnails"
+        }
+    });
+</script>-->
+<script>
+    $("#links a").tosrus();
+</script>
 </body>
 </html>

@@ -9,8 +9,8 @@
         <div class="container-fluid" id="marginmobile">
             <div class="row" style=" margin-top:50px!important;padding:15px 20px;float:right;background-color: white;">
                 <span style=" padding-left:10px;float:right;padding-right:20px; font-family: ebold; ">العرض حسب </span>
-                <i class=" pull-right fa fa-bars fa-2x" style=" border-left:1px solid #9DA8AB;padding-left: 5px; color: #64A58F;"></i>
-                <img src="/images/pictures/55.png"/>
+                <img style="float: right;" src="/images/pictures/button2.png"/>
+                <img style="float: right;" src="/images/pictures/button1.png"/>
             </div>
     </div>
     </div>
