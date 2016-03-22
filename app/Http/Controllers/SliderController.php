@@ -5,16 +5,19 @@ use App\Http\Controllers\Controller;
 
 use App\Slider;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 
 class SliderController extends Controller {
 
-	public function __construct()
-	{
-
-		$this->middleware('auth');
-
-	}
+//	public function __construct()
+//	{
+//
+//		$this->middleware('auth');
+//
+//
+//
+//	}
 
 	/**
 	 * Display a listing of the resource.

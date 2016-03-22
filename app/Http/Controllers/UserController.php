@@ -12,7 +12,8 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
 use Symfony\Component\HttpFoundation\Session\Session;
 
-class UserController extends Controller {
+class UserController extends Controller
+{
 
 	/**
 	 * Display a listing of the resource.
@@ -31,7 +32,7 @@ class UserController extends Controller {
 	 */
 	public function create()
 	{
-		return view('register');
+//		return view('register');
 	}
 
 	/**
@@ -40,7 +41,8 @@ class UserController extends Controller {
 	 * @return Response
 	 */
 
-	public function validate_inputs($inputs){
+	public function validate_inputs($inputs)
+	{
 		$validator = Validator::make(
 				$inputs,
 				[
@@ -51,11 +53,11 @@ class UserController extends Controller {
 		);
 
 
-		if($validator->fails()){
+		if ($validator->fails()) {
 
 			return "false";
 
-		}else{
+		} else {
 
 			return "true";
 		}
@@ -66,12 +68,12 @@ class UserController extends Controller {
 		$inputs = Input::all();
 		$password = Input::get('password');
 		$re_password = Input::get('re_password');
-		$encrypt_password =Hash::make(Input::get('password'));
+		$encrypt_password = Hash::make(Input::get('password'));
 
-		if($this->validate_inputs($inputs)){
-			if($password === $re_password){
-				User::save_user(Input::get('arabic_name'),Input::get('english_name'),Input::get('email'),$encrypt_password,"",Input::get('country'),Input::get('work'),
-						Input::get('date'),"user",Input::get('_token'));
+		if ($this->validate_inputs($inputs)) {
+			if ($password === $re_password) {
+				User::save_user(Input::get('arabic_name'), Input::get('english_name'), Input::get('email'), $encrypt_password, "", Input::get('country'), Input::get('work'),
+						Input::get('date'), "user", Input::get('_token'));
 			}
 		}
 	}
@@ -79,7 +81,7 @@ class UserController extends Controller {
 	/**
 	 * Display the specified resource.
 	 *
-	 * @param  int  $id
+	 * @param  int $id
 	 * @return Response
 	 */
 	public function show($id)
@@ -90,7 +92,7 @@ class UserController extends Controller {
 	/**
 	 * Show the form for editing the specified resource.
 	 *
-	 * @param  int  $id
+	 * @param  int $id
 	 * @return Response
 	 */
 	public function edit($id)
@@ -101,7 +103,7 @@ class UserController extends Controller {
 	/**
 	 * Update the specified resource in storage.
 	 *
-	 * @param  int  $id
+	 * @param  int $id
 	 * @return Response
 	 */
 	public function update($id)
@@ -112,7 +114,7 @@ class UserController extends Controller {
 	/**
 	 * Remove the specified resource from storage.
 	 *
-	 * @param  int  $id
+	 * @param  int $id
 	 * @return Response
 	 */
 	public function destroy($id)
@@ -120,40 +122,115 @@ class UserController extends Controller {
 		//
 	}
 
+	public function login()
+	{
 
-	public function create_login(){
-		return view('login');
-	}
+		$email = Input::get('email');
+		$password = Input::get('password');
 
-
-
-	public function login(){
-
-		 $email = Input::get('email');
-		 $password = Input::get('password');
-
-		  $user = User::where('email','=',$email)->get()->first();
-		if($user->role == "admin"){
-			if (Auth::attempt(array('email' =>$email, 'password' => $password))) {
+		$user = User::where('email', '=', $email)->get()->first();
+		if ($user->role == "admin") {
+			if (Auth::attempt(array('email' => $email, 'password' => $password))) {
 				return redirect('/slider');
-			}else{
+			} else {
 				return view('login');
 			}
 
-		}else{
-			if (Auth::attempt(array('email' =>$email, 'password' => $password))) {
-				return redirect('/portfile');
-			}else{
-				return view('login');
+		} else {
+			if (Auth::attempt(array('email' => $email, 'password' => $password))) {
+				return redirect('/personalPage');
+			} else {
+				return redirect('/login');
 			}
 
 		}
 
 	}
-	public function portfile(){
-
-		return view('portfile');
-	}
-
-
 }
+
+//	public function edit_profile_pic($id){
+//
+//		$image = Input::file('image');
+//
+//
+//		$destinationPath = "/uploadfiles/user_photo/" . $id;
+//
+//		if (!file_exists($destinationPath)) {
+//			mkdir($destinationPath);
+//		}
+//		if(empty(Auth::user()->$image)){
+//
+//			if (!empty($image)) {
+//
+//				$image_name = $image->getClientOriginalName();
+//
+//				if ($image->move($destinationPath, $image_name)) {
+//					$user_pic = User::find($id);
+//					$user_pic->image = $image_name;
+//					$user_pic->save();
+//				}
+//
+//			}
+//
+//		}else{
+//			unlink($destinationPath . Auth::user()->$image);
+//			if (!empty($image)) {
+//
+//				$image_name = $image->getClientOriginalName();
+//
+//				if ($image->move($destinationPath, $image_name)) {
+//					$user_pic = User::find($id);
+//					$user_pic->image = $image_name;
+//					$user_pic->save();
+//				}
+//
+//			}
+//		}
+//
+//
+//	}
+
+//	public function changePassword($id)
+//	{
+//		$password =  Auth::user()->password;
+//		$oldpassword = Input::get('old_password');
+//		$newpassword = Input::get('new_password');
+//		if(Hash::check($oldpassword,$password)){
+//			$user = User::find($id);
+//			$user->password=$newpassword;
+//			$user->save;
+//
+//
+//	}
+
+
+//	public function change_user_data($id){
+//		$token = csrf_token();
+//		$english_name="hanodaa";
+//		$email="hanodaa@gmail.com";
+//		$phone="123456789";
+//		$work="marketing";
+//		$country="cairo";
+//
+//	}
+}
+//}
+
+//	public function portfile(){
+//
+//		return "
+//	}
+
+//	public function update_user($id){
+//
+//		return User::find($id);
+//		$english_name="hanodaa";
+//		$email="hanodaa@gmail.com";
+//		$phone="123456789";
+//		$work="marketing";
+//		$country="cairo";
+//
+//		User::update_user($id,$english_name,$email,$phone,$country,$work);
+//
+//	}
+//}

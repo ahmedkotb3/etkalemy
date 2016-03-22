@@ -46,5 +46,29 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     public function articles(){
         return $this->hasMany("App\Article","user_id");
     }
+	public static function save_user($arabic_name,$english_name,$email,$password,$phone,$country,$work,$birth_date,$role,$remember_token){
+		$user = new User;
+		$user->arabic_name = $arabic_name;
+		$user->english_name = $english_name;
+		$user->email = $email;
+		$user->password = $password;
+		$user->phone = $phone;
+		$user->country = $country;
+		$user->work = $work;
+		$user->birth_date = $birth_date;
+		$user->role = $role;
+		$user->remember_token = $remember_token;
+		$user->save();
+	}
+	public static function update_user($id,$english_name,$email,$phone,$country,$work){
+		$user =  User::find($id);
+
+		$user->english_name = $english_name;
+		$user->email = $email;
+		$user->phone = $phone;
+		$user->country = $country;
+		$user->work = $work;
+		$user->save();
+	}
 
 }
