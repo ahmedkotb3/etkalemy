@@ -1371,10 +1371,12 @@ margin-bottom: 10px;}
     #jous{padding: 20px;}
 }
 
-
-
-
-
+/*etkalemy*/
+@media (min-width: 767px) {
+#txtetkalemy{
+    padding-right: 80px;
+}
+}
 
 
 

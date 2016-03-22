@@ -1,4 +1,29 @@
 {{--This appear only when large or mideum screen--}}
+<style>
+    .addtriangle:after {
+        content: "";
+        position: absolute;
+        left: 5%;
+        bottom: 100%;
+        border-bottom: 11px solid #D5E4E8; /* default color */
+        border-right: 10px solid transparent;
+        border-left: 6px solid transparent;
+        height: 0;
+        width: 0;
+    }
+    .content {
+        background-color: #D5E4E8;
+        z-index: 1200;
+        position: absolute;
+        width:40%;
+        /*margin: 0 auto;*/
+        left:109px;
+
+        background-color: rgba(255,255,255,0.1);
+        top:60px;
+
+    }
+</style>
 <div class="row hidden-sm hidden-xs" id="header">
     <div class="col-xs-10" style="padding-left: 0;">
         <div class="row">
@@ -7,10 +32,41 @@
                 <a href=""> <img src="/images/youtube.png"></a>
                 <a href=""><img src="/images/facebook.png"></a>
                 <a href=""><img src="/images/twitter.png"></a>
-                <a href="" class="button" style=" border-right:1px solid black !important; padding-right:5px;font-family: my; ">Log
-                    in </a>
-                <a href="" class="button" style="font-family: my; "> Join us </a>
 
+
+                @if(Auth::check())
+                    <?php $arr = explode(' ',trim(Auth::user()->english_name)); ?>
+                    <a href=""><img src="/images/twitter.png"></a><span style="color: #376773;text-transform: capitalize;">Hello,{{$arr[0]}}</span>
+                    <div class="content addtriangle row">
+                        <div class="row" style="background-color: #D5E4E8;">
+                        <div class="col-md-3" style="padding: 10px">
+                            @if(empty(Auth::user()->profile_image))
+                                <img src="/uploadfiles/user_photo/e.png" class="img-responsive ">
+                            @else
+                                <img src="/uploadfiles/user_photo/{{Auth::user()->english_name}}}}/{{Auth::user()->profile_image}}" class="img-responsive ">
+                            @endif
+                        </div>
+                        <div class="col-md-6" style="padding: 10px">
+                            <span style="text-transform: capitalize;">{{Auth::user()->english_name}}</span>
+                            <br><span>{{Auth::user()->email}}</span>
+                        </div>
+                        </div>
+                        <div class="row" style="background-color: #E7F8FC;padding-bottom: 10px;padding-top: 10px;">
+                            <div class="col-lg-6">
+                                <button type="submit" class="btn btn-default" style="width: 100%;background: #78C8AB;color: #fff;border: 0px;"><a style="color: #fff;" href="">My Account</a></button>
+                            </div>
+                            <div class="col-lg-6" >
+                                <button type="submit" class="btn btn-default" style="width: 100%;background: #78C8AB;border: 0px;"><a style="color: #fff;" href="/auth/logout">Sign Out</a> </button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                @else
+                    <a href="" class="button" style=" border-right:1px solid black !important; padding-right:5px;font-family: my; ">Log
+                        in </a>
+                    <a href="" class="button" style="font-family: my; "> Join us </a>
+                @endif
                 <form class="navbar-form" role="search">
                     <div class="input-group">
                         <div class="input-group-btn">

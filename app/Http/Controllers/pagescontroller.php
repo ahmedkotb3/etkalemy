@@ -88,22 +88,32 @@ class pagescontroller extends Controller
 		return view('pages/login');
 	}
 	public function personalPage(){
-		return view('pages/personal_page');
-	}
+
+			return view('pages/personal_page');
+
+
+		}
+
+
 	public function EditPersonalPage(){
-		return view('pages/edit_personal_page');
+
+			return view('pages/edit_personal_page');
+
+
+
 	}
 
 	public function showadmin()
 	{
 
-		if (Auth::user()) {
-
-			return redirect('/slider');
+		if (Auth::check()) {
+			if(Auth::user()->role == "admin"){
+				return redirect('/slider');
+			}
 
 		} else {
 
-			return view('auth.login');
+			return view('admin.login');
 		}
 
 

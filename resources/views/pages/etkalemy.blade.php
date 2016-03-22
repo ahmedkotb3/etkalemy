@@ -11,7 +11,7 @@
 
         <div class="container-fluid" id="row1170" style="margin-top:30px !important;" >
             <div class="row img-thumbnail" style="direction: rtl;color: #376773;font-size: 20px;font-family: ebold;font-weight: bold;">
-                <div class=" col-xs-10 col-xs-offset-1 " id=""style="padding-right: 80px">
+                <div class=" col-xs-10 col-xs-offset-1 " id="txtetkalemy">
                     <p style="font-size:18px; font-family:ebold;"> إرسلي لنا بمشاركتك مكتوبة ، مسجلة أو مصورة . لكل المشاركات الهادفة مكان في “إتكلمي ” طالما تلتزم بمبادئ الموقع . إعرفيها من
                        <a  style="text-decoration:underline!important;"href="#"> هنا</a></p>
                     </div>
