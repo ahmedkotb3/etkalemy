@@ -1,5 +1,6 @@
 @extends('pages.templet')
 @section('content')
+
     <div class="row" id="rtagmoevent">
         @foreach($event_data as $data)
         <!-- Start the Event Name -->
@@ -49,9 +50,34 @@
                 <img class="img-responsive" style="height: 395px;width: 100%;" src="/uploadfiles/events/{{$data->name}}/{{$data->image}}"/>
 
                 <div>
-                    <div id="captionevent1"> تجمع إتكلمى الأول</div>
-                    <div id="captionevent2">
-                        <p style=" text-align:center;margin:0;padding:0">القاهرة يوم السبت 20 فبراير </p>
+                    <div id="captionevent1"> {{$data->name}}</div>
+                          <div id="captionevent2">
+                        {{--<p style=" text-align:center;margin:0;padding:0">القاهرة يوم السبت 20 فبراير </p>--}}
+                        <?php
+
+                        $months = array(
+                                "Jan" => "يناير",
+                                "Feb" => "فبراير",
+                                "Mar" => "مارس",
+                                "Apr" => "أبريل",
+                                "May" => "مايو",
+                                "Jun" => "يونيو",
+                                "Jul" => "يوليو",
+                                "Aug" => "أغسطس",
+                                "Sep" => "سبتمبر",
+                                "Oct" => "أكتوبر",
+                                "Nov" => "نوفمبر",
+                                "Dec" => "ديسمبر"
+                        );
+
+                        $your_date = $data->date; // for example
+
+                        $en_month = date("M", strtotime($your_date));
+
+                         $ar_month = $months[$en_month];
+                        $day = date('N',strtotime($your_date) );
+                        ?>
+                        <p style=" text-align:center;margin:0;padding:0"><span>{{$data->place}}</span><span>يوم</span><span>{{$data->day}}</span><span>{{$day}}</span><span>{{$ar_month}}</span></p>
                     </div>
                 </div>
             </div>
@@ -264,45 +290,121 @@
                 <hr class="col-xs-5 col-sm-7 col-md-8 col-lg-9" id="hrte">
             </div>
             <div id="container" class="container-fluid" style="height:780px;background-color: white; padding: 10px;">
-                <div style="background-color:#EEF4F5; padding:20px;height:200px; margin:25px;">
-                    <div class="row">
-                        <div class="col-lg-1" style="padding-right: 85px;">
-                        <img src="/images/pictures/comment/1.png"></div>
-                        <div class="col-lg-10">
-                            <p style="font-family:Calibri;font-size: 23px; margin: 0;"> Amira ahmed</p>
-                            <p style="font-family:Calibri;font-size: 16px;"> 20 mintues</p>
+                @foreach($comments as $comment)
+                    <div style="background-color:#EEF4F5; padding:20px;height:200px; margin:25px;">
+                        <div class="row " >
+                            <div class="col-lg-1 " style="padding-right: 85px;">
+                                @if(empty($comment->user_image))
+                                    <img src="/uploadfiles/user_photo/e.png" width="60px">
+                                @else
+                                    <img src=/uploadfiles/user_photo/{{$comment->user_name}}/{{$comment->user_image}}" width="60px">
+                                @endif
                             </div>
-                      </div>
-                    <div class="row pull-right" style="font-family: ebold; font-size:18px; ">
-                        ممكن تفاصيل أكتر عن الإيفنت؟
+
+                            <div class="col-lg-10">
+                                <p style="font-family:Calibri;font-size: 23px; margin: 0;" class=""> {{$comment->user_name}}</p>
+                                {{--<p style="font-family:Calibri;font-size: 16px;"> 20 mintues</p>--}}
+                            </div>
+                        </div>
+                        <div class="row pull-right " style="font-family: ebold; font-size:18px; ">
+                            {{$comment->text}}
+                        </div>
+                        <div class="row" style="margin-top: 15px!important;">
+                            <hr/>
+                            <div class="pull-right" style="font-family: ebold;font-size: 18px;color: #8A9596;">
+                                <button>
+                                    إضافة رد
+                                </button></div>
+                        </div>
+                    </div>
+                @endforeach
+                <div style="background-color:#EEF4F5; padding:20px;height:200px; margin:25px;" class="ajax_comment">
+                    <div class="row cont" >
+                        <div class="col-lg-1 user_pic" style="padding-right: 85px;">
+
+                        </div>
+
+                        <div class="col-lg-10">
+                            <p style="font-family:Calibri;font-size: 23px; margin: 0;" class="user_name"></p>
+                            {{--<p style="font-family:Calibri;font-size: 16px;"> 20 mintues</p>--}}
+                        </div>
+                    </div>
+                    <div class="row pull-right commentbox" style="font-family: ebold; font-size:18px; ">
+
                     </div>
                     <div class="row" style="margin-top: 15px!important;">
                         <hr/>
                         <div class="pull-right" style="font-family: ebold;font-size: 18px;color: #8A9596;">
                             <button>
-                            إضافة رد
+                                إضافة رد
                             </button></div>
                     </div>
-                    </div>
+                </div>
             </div>
 
+            {{--<div id="container" class="container-fluid commentbox" style="height:780px;background-color: white; padding: 10px;"></div>--}}
+
+@if(Auth::check())
             <form class="form-inline" role="form" style="text-align:right; padding-top: 2%; padding-bottom: 2%;">
+                <input type="hidden" name="_token" value="{{csrf_token()}}">
+                <input type="hidden" name="event_id" value="{{$data->id}}">
+                <input type="hidden" name="user_name" class="user_name" value="{{Auth::user()->name}}">
+                <input type="hidden" name="user_image" class="user_pic" value="{{Auth::user()->profile_image}}">
                 <div class="form-group" style=" height:50px; width: 100%;">
                     <div class=" col-xs-4 col-sm-4 col-md-3 col-lg-2 pull-right"
                          style="padding-left:0;padding-right: 0;">
-                        <button class="btn btn-info" id="ersal">
-                            ارسال
-                        </button>
+                        <input id="ersal" name="submit" type="submit" value="ارسال" class="btn btn-info">
                     </div>
 
                     <div class=" col-xs-8 col-sm-8 col-md-9 col-lg-10 pull-left"
                          style=" padding-left:0;padding-right: 0;">
-                        <input type="text" class="form-control" id="email-term"
-                               style=" height:50px!important;background-color: white!important; border-radius: 0!important;">
+                        <input type="text" class="form-control comment" id="email-term" style=" height:50px!important;background-color: white!important; border-radius: 0!important;" name="comment">
                     </div>
                 </div>
             </form>
+            @endif
         </div>
     </div>
 
+
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+     <script>
+     $(document).ready(function(){
+         $(".ajax_comment").hide();
+        $("form").submit(function(event){
+             event.preventDefault();
+            var comment=$('.comment').val();
+            var user_name=$('.user_name').val();
+            var user_pic=$('.user_pic').val();
+
+                 $.ajax( {
+                 url: '/event_comment',
+                 type: 'POST',
+                 data: new FormData( this ),
+                 processData: false,
+                 contentType: false,
+                     success: function(data) {
+                         $(".ajax_comment").show();
+                        var t1 = $('.commentbox').append("</br>"+comment); // list of comments. its inserting your last comment at the end of line.
+                         var t2 = $('.user_name').append("</br>"+user_name); // list of comments. its inserting your last comment at the end of line.
+                         if(user_pic == ''){
+                             var t3 = $('.user_pic').append('<img src="/uploadfiles/user_photo/e.png" width="60px">');
+                         }else{
+                             var t3 =  $('.user_pic').append('<img src="/uploadfiles/user_photo/'+user_name+'/'+user_pic+'" width="60px">');
+                         }
+//                         $('.user_pic').append("</br>"+user_pic); // list of comments. its inserting your last comment at the end of line.
+                         $('.cont').append(t1,t2,t3);
+
+                     }});
+        });
+         $(document).ajaxComplete(function() {
+             $('form').each(function () {
+                 this.reset();
+             });
+         });
+     });
+
+
+
+    </script>
 @stop
