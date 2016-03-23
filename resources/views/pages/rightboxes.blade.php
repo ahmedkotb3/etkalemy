@@ -42,12 +42,12 @@
                 </div>
 
                 <div class="col-md-12 col-sm-4 col-xs-12" id="middleleft">
-                    <div class="thumbnail" id="left">
+                    <div class="thumbnail" id="left" style="height: 323px;">
                         <p style=" padding-right:10px;!important; background-color: #376773;color: white;font-size:26px; font-family:cent; ">
                             Tags                         <img src="/images/pictures/p.png" ></p>
 
                         <p class="text" style="max-height:239px;">اتكلمى دنيانا افينتات
-                        aaaaaaaaaaaaaaaaaaaaaaa
+
 
 
                         </p>

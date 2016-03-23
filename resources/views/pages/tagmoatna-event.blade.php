@@ -6,7 +6,7 @@
         <div class=" col-xs-6 col-sm-8 col-md-9 col-lg-10 top pull-right" id="tagmo">
             <img src="/images/pictures/m1.jpg" class="imgstyle">
             <span id="ta">  تجمعاتنا     </span>
-            <span class="glyphicon glyphicon-menu-left" aria-hidden="true" style="position: relative; top: 5px;"></span>
+            <span class="glyphicon glyphicon-menu-left" aria-hidden="true" id="ta"></span>
             <span id="ta">{{$data->name}}</span>
         </div>
 
@@ -45,7 +45,16 @@
 
     <div class="container-fluid" style=" padding: 0; background-color: #D5E4E8; color: #376773">
         <div class="container-fluid" id="marginmobile">
-            <div class="row" id="picslider"><img class="img-responsive" style="height: 395px; width:100%" src="/uploadfiles/events/{{$data->name}}/{{$data->image}}"/></div>
+            <div class="row" id="picslider">
+                <img class="img-responsive" style="height: 395px;width: 100%;" src="/uploadfiles/events/{{$data->name}}/{{$data->image}}"/>
+
+                <div>
+                    <div id="captionevent1"> تجمع إتكلمى الأول</div>
+                    <div id="captionevent2">
+                        <p style=" text-align:center;margin:0;padding:0">القاهرة يوم السبت 20 فبراير </p>
+                    </div>
+                </div>
+            </div>
             <div class="row" id="ronew">
                 <div class="col-xs-7 col-sm-5 col-md-4 col-lg-3" id="tgm"> عن الإيفينت</div>
                 <hr class="col-xs-5 col-sm-7 col-md-8 col-lg-9" id="hrt">
@@ -254,7 +263,28 @@
                 <div class="col-xs-7 col-sm-5 col-md-4 col-lg-3" id="tgm"> التعليقات</div>
                 <hr class="col-xs-5 col-sm-7 col-md-8 col-lg-9" id="hrte">
             </div>
-            <div id="container" class="container-fluid" style="height:780px;background-color: white; padding: 10px;"></div>
+            <div id="container" class="container-fluid" style="height:780px;background-color: white; padding: 10px;">
+                <div style="background-color:#EEF4F5; padding:20px;height:200px; margin:25px;">
+                    <div class="row">
+                        <div class="col-lg-1" style="padding-right: 85px;">
+                        <img src="/images/pictures/comment/1.png"></div>
+                        <div class="col-lg-10">
+                            <p style="font-family:Calibri;font-size: 23px; margin: 0;"> Amira ahmed</p>
+                            <p style="font-family:Calibri;font-size: 16px;"> 20 mintues</p>
+                            </div>
+                      </div>
+                    <div class="row pull-right" style="font-family: ebold; font-size:18px; ">
+                        ممكن تفاصيل أكتر عن الإيفنت؟
+                    </div>
+                    <div class="row" style="margin-top: 15px!important;">
+                        <hr/>
+                        <div class="pull-right" style="font-family: ebold;font-size: 18px;color: #8A9596;">
+                            <button>
+                            إضافة رد
+                            </button></div>
+                    </div>
+                    </div>
+            </div>
 
             <form class="form-inline" role="form" style="text-align:right; padding-top: 2%; padding-bottom: 2%;">
                 <div class="form-group" style=" height:50px; width: 100%;">
