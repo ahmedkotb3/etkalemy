@@ -18,6 +18,8 @@ class CreateEventsCommentsTable extends Migration {
             $table->string('text');
             $table->integer('event_id')->unsigned()->index();
             $table->integer('user_id')->unsigned()->index();
+            $table->string('user_name');
+            $table->string('user_image');
             $table->timestamps();
         });
 
