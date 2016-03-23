@@ -1,12 +1,19 @@
 @extends('pages.templet')
 @section('content')
     <div class="row" id="rtagmoevent">
+        @foreach($event_data as $data)
+        <!-- Start the Event Name -->
         <div class=" col-xs-6 col-sm-8 col-md-9 col-lg-10 top pull-right" id="tagmo">
             <img src="/images/pictures/m1.jpg" class="imgstyle">
             <span id="ta">  تجمعاتنا     </span>
             <span class="glyphicon glyphicon-menu-left" aria-hidden="true" style="position: relative; top: 5px;"></span>
-            <span id="ta">  تجمع اتكلمى الاول     </span>
+            <span id="ta">{{$data->name}}</span>
         </div>
+
+        <!-- End the Event Name -->
+
+        <!-- Start the dropdown date of events -->
+
         <div class=" col-xs-6  col-sm-4 col-md-3  col-lg-2 pull-left" id="dtyr">
             <div class="row dropdown">
                 <a id="dLabel" role="button" data-toggle="dropdown" class="btn drop" data-target="#" href="#" style="outline: 0!important;">
@@ -16,67 +23,64 @@
                 </a>
 
                 <ul class="dropdown-menu multi-level" id="dxs" role="menu" aria-labelledby="dropdownMenu">
-                    <li><a href="#">2015</a></li>
-                    <li class="dropdown-submenu">
-                        <a tabindex="-1" href="#">2016</a>
-                        <ul class="dropdown-menu" id="dds">
-                            <li><a tabindex="-1"  id="lis" href="#">تجمع إتكلمى الأول</a></li>
-                            <li class="divider" style="width: 100%"></li>
-                            <li><a id="lis"href="#">تجمع إتكلمى الثانى</a></li>
-                            <li class="divider" style=" width:100% "></li>
-                            <li><a id="lis"href="#">تجمع إتكلمى الشامل</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">2017</a></li>
+
+                    @foreach($years as $year)
+                        <li class="dropdown-submenu">
+                            <a tabindex="-1" href="#">{{$year}}</a>
+                            <ul class="dropdown-menu" id="dds">
+                                @foreach($eventnames_and_year as $eventname_and_year)
+                                    @if($eventname_and_year['year'] == $year)
+                                        <li><a tabindex="-1"  id="lis" href="/tagmoatna-event/{{$eventname_and_year['id']}}">{{$eventname_and_year['name']}}</a></li>
+                                        <li class="divider" style="width: 100%"></li>
+                                    @endif
+                                @endforeach
+                            </ul>
+                        </li>
+                    @endforeach
                 </ul>
             </div>
         </div>
+        <!-- End the dropdown date of events -->
     </div>
+
     <div class="container-fluid" style=" padding: 0; background-color: #D5E4E8; color: #376773">
         <div class="container-fluid" id="marginmobile">
-            <div class="row" id="picslider"><img class="img-responsive" src="images/pictures/tagmoevent/1.jpg"/></div>
+            <div class="row" id="picslider"><img class="img-responsive" style="height: 395px; width:100%" src="/uploadfiles/events/{{$data->name}}/{{$data->image}}"/></div>
             <div class="row" id="ronew">
                 <div class="col-xs-7 col-sm-5 col-md-4 col-lg-3" id="tgm"> عن الإيفينت</div>
                 <hr class="col-xs-5 col-sm-7 col-md-8 col-lg-9" id="hrt">
             </div>
-            <div class="row"
-                 style=" direction: rtl;  padding:25px; background-color:white; margin-bottom: 20px!important;">
-                <div id="txtaboutevent">
-                    لاقى الملتقى الأول لاتكلمى نجاحا عظيما و مجموعة كبيرة من المتكلمات اللاتى قمن بحكى قصص نجاحهن
-                    و ما قمن بمواجهته من مشاكل و صعاب كما حضر الايفنت مجموعه من ضيوف الشرف فى مجالات مختلفة
-                </div>
+            <div class="row" style=" direction: rtl;  padding:25px; background-color:white; margin-bottom: 20px!important;">
+                <div id="txtaboutevent">{{$data->description}}</div>
+                <div class="row"><hr/></div>
                 <div class="row">
-                    <hr/>
-                </div>
-                <div class="row">
-                    <div class=" col-xs-6 col-sm-6 col-md-6 col-lg-6 pull-right"
-                         id="socialmedia">
-                        <a href=""><img src="images/pictures/tagmoevent/facebook.png" style="max-width: 45%;"></a>
-                        <a href=""><img src="images/pictures/tagmoevent/twitter.png" style="max-width: 45%;"></a></div>
+                    <div class=" col-xs-6 col-sm-6 col-md-6 col-lg-6 pull-right" id="socialmedia">
+                        <a href="{{$data->facebook_link}}"><img src="/images/pictures/tagmoevent/facebook.png" style="max-width: 45%;"></a>
+                        <a href="{{$data->twitter_link}}"><img src="/images/pictures/tagmoevent/twitter.png" style="max-width: 45%;"></a>
+                    </div>
                     <div class=" col-xs-6 col-sm-6 col-md-6 col-lg-6 pull-left" id="pdfpic" >
-                        <a href="#"><img  src="images/pictures/tagmoevent/pdf.png"style="max-width: 65%;"></a></div>
-
+                        <a href="#"><img  src="/images/pictures/tagmoevent/pdf.png"style="max-width: 65%;"></a>
+                    </div>
                 </div>
                 <div class="row">
                     <div class=" col-xs-6 col-sm-6 col-md-6 col-lg-6 pull-right">
                         <span class="pull-left" id="followevent" >  لمتابعة الايفينت </span>
                     </div>
                     <div class=" col-xs-6 col-sm-6 col-md-6 col-lg-6 pull-right" id="pdftxt">
-                        <span style="font-size: 15px; font-family:ebold;"> برنامج اليوم  </span></div>
-
+                        <span style="font-size: 15px; font-family:ebold;"> برنامج اليوم  </span>
+                    </div>
                 </div>
             </div>
         </div>
+
         <div class="row">
             <div class="imgWrap img-responsive" style=" height:595px!important;width: 100%!important;">
-                <img class="imgWrap img-responsive" src="images/pictures/tagmoevent/2.jpg" alt="polaroid"
-                     style=" height:595px!important;width: 100%!important;"/>
-                <a href="#">
-                    <button id="sharewithus" class="btn btn-primary"> و شاركى معانا الان
-                    </button>
-                </a>
+                <img class="imgWrap img-responsive" src="/images/pictures/tagmoevent/2.jpg" alt="polaroid" style=" height:595px!important;width: 100%!important;"/>
+                <a href="/etkalemy"><button id="sharewithus" class="btn btn-primary"> و شاركى معانا الان</button></a>
             </div>
         </div>
+
+        <!-- start the vedios of event -->
         <div class="container-fluid" id="marginmobile">
             <div class="row" id="ronew">
                 <div class="col-xs-7 col-sm-5 col-md-4 col-lg-3" id="tgm"> فيديوهات</div>
@@ -84,49 +88,76 @@
             </div>
 
             <div class="container-fluid" style="background-color: white; padding: 10px;">
-                <div class=" video-thumb  pull-right">
-        <span class=" yt-thumb-simple">
-            <div class="imgWrape img-responsivee">
-                <img class="imgWrape img-responsivee" src="http://img.youtube.com/vi/sLwrG2bwBDI/0.jpg " alt="polaroid"/>
-                <a href="#"><p class="imgDescriptione">
-                        <span id="txtimge1"> سارة احمد </span>
-                        <span id="txtimge2"> كيف تصل الى هدفك بالطريقة الصحيحة </span>
-                        <span id="txtimge3"><img src="images/pictures/tagmoevent/4.png"/> </span>
-                    </p></a>
+
+                    @if($number_of_vedios <= 3)
+                    @foreach($vedioes as $vedio)
+                        <div class=" video-thumb  pull-right">
+                            <span class=" yt-thumb-simple">
+                                <div class="imgWrape img-responsivee">
+                                    <?php $vedio_name = substr($vedio->youtube_url,strrpos($vedio->youtube_url,'/')+1);?>
+                                    <img class="imgWrape img-responsivee" src="http://img.youtube.com/vi/{{$vedio_name}}/{{$vedio->image}} " alt="polaroid"/>
+                                    <a href="#"><p class="imgDescriptione">
+                                            <span id="txtimge1"> {{$vedio->title}}</span>
+                                            {{--<span id="txtimge2"> كيف تصل الى هدفك بالطريقة الصحيحة </span>--}}
+                                            <span id="txtimge3"><img src="/images/pictures/tagmoevent/4.png"/> </span>
+                                        </p>
+                                    </a>
+                                </div>
+                            </span>
+                        </div>
+                    @endforeach
+                    @else
+                            @foreach($vedioes as $key=>$vedio)
+                        @if($key < 3)
+                        <div class=" video-thumb  pull-right">
+                            <span class=" yt-thumb-simple">
+                                <div class="imgWrape img-responsivee">
+                                    <?php $vedio_name = substr($vedio->youtube_url,strrpos($vedio->youtube_url,'/')+1);?>
+                                    <img class="imgWrape img-responsivee" src="http://img.youtube.com/vi/{{$vedio_name}}/{{$vedio->image}} " alt="polaroid"/>
+                                    <a href="#"><p class="imgDescriptione">
+                                            <span id="txtimge1"> {{$vedio->title}}</span>
+                                            {{--<span id="txtimge2"> كيف تصل الى هدفك بالطريقة الصحيحة </span>--}}
+                                            <span id="txtimge3"><img src="/images/pictures/tagmoevent/4.png"/> </span>
+                                        </p>
+                                    </a>
+                                </div>
+                            </span>
+                        </div>
+                        @endif
+                            @endforeach
+                        <a href="/tagmoatna-videos/{{$data->id}}"> <img src="/images/pictures/tagmoevent/3.png" id="moreimg"/></a>
+                    @endif
+
             </div>
-        </span></div>
-                <div class=" video-thumb pull-right">
-        <span class="yt-thumb-simple">
-         <div class="imgWrape img-responsivee">
-             <img class="imgWrape img-responsivee" src="http://img.youtube.com/vi/sLwrG2bwBDI/0.jpg " alt="polaroid"/>
-             <a href="#"><p class="imgDescriptione">
-                     <span id="txtimge"> تجمع اتكلمى الرابع </span>
-                 </p></a>
-         </div>
-        </span></div>
-                <div class=" video-thumb pull-right">
-        <span class="yt-thumb-simple">
-            <div class="imgWrape img-responsivee">
-                <img class="imgWrape img-responsivee" src="http://img.youtube.com/vi/sLwrG2bwBDI/0.jpg " alt="polaroid"/>
-                <a href="#"><p class="imgDescriptione">
-                        <span id="txtimge"> تجمع اتكلمى الرابع </span>
-                    </p></a>
-            </div>
-        </span></div>
-                <a href="/tagmoatna-videos"> <img src="images/pictures/tagmoevent/3.png" id="moreimg"/></a>
-            </div>
+
         </div>
+        <!-- End the vedios of Event -->
+
+
         <div class="container-fluid" id="marginmobile">
+
+            <!-- start the pics of event -->
             <div class="row" id="ronew">
                 <div class="col-xs-4 col-sm-5 col-md-4 col-lg-3" id="tgm"> صور</div>
                 <hr class="col-xs-8 col-sm-7 col-md-8 col-lg-9" id="hrt">
             </div>
             <div class="container-fluid" style="background-color: white; padding: 10px;">
-                <img id="imgdiv" class="img-responsive pull-right" src="images/pictures/tagmoevent/5.jpg"/>
-                <img id="imgdiv" class="img-responsive pull-right" src="images/pictures/tagmoevent/6.jpg"/>
-                <img id="imgdiv" class="img-responsive pull-right" src="images/pictures/tagmoevent/5.jpg"/>
-                <a href="/tagmoatna-pictures"> <img src="images/pictures/tagmoevent/3.png" id="moreimg"/></a>
+                @if($number_of_pictures <= 3)
+                    @foreach($pictures as $picture)
+                        <img id="imgdiv" class="img-responsive pull-right" src="/uploadfiles/events/{{$data->name}}/{{$picture->pic}}"/>
+                    @endforeach
+                @else
+                    @foreach($pictures as $key=>$picture)
+                        @if($key < 3)
+                        <img id="imgdiv" class="img-responsive pull-right" src="/uploadfiles/events/{{$data->name}}/{{$picture->pic}}"/>
+                        @endif
+                    @endforeach
+
+                    <a href="/tagmoatna-pictures/{{$data->id}}"> <img src="/images/pictures/tagmoevent/3.png" id="moreimg"/></a>
+                @endif
             </div>
+            <!-- End the pics of event -->
+            @endforeach
             <div class="row" id="ronew">
                 <div class="col-xs-7 col-sm-5 col-md-4 col-lg-3" id="tgm"> لتسجيل الحضور</div>
                 <hr class="col-xs-5 col-sm-7 col-md-8 col-lg-9" id="hrt" style="margin-top:25px!important; ">

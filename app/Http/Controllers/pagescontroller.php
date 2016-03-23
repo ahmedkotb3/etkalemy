@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Event_Speeches;
 use App\Events;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -32,7 +33,8 @@ class pagescontroller extends Controller
 			array_push($years,strtok($event->date, '-'));
 			$array = array(
 				'year'=>strtok($event->date, '-'),
-				'name'=>$event->name
+				'name'=>$event->name,
+				'id'=>$event->id
 			);
 			array_push($eventnames_and_year,$array);
 			if($event->date >=$date){
@@ -50,22 +52,104 @@ class pagescontroller extends Controller
 		return view('pages/joinus');
 	}
 
-	public function tagmoatnaevent()
+	public function tagmoatnaevent($id)
 	{
-		return view('pages/tagmoatna-event');
+
+		$date = date("Y-m-d");
+
+		$events = Events::all();
+
+		$years = array();
+
+		$eventnames_and_year = array();
+
+		$event_data = array();
+		foreach($events as $event){
+			if($event->id == $id){
+				array_push($event_data,$event);
+			}
+			array_push($years,strtok($event->date, '-'));
+			$array = array(
+					'year'=>strtok($event->date, '-'),
+					'name'=>$event->name,
+					'id'=>$event->id
+			);
+			array_push($eventnames_and_year,$array);
+		}
+		 $vedioes = Events::find($id)->speeches;
+		$pictures = Events::find($id)->pictures;
+		$number_of_vedios = count($vedioes);
+		$number_of_pictures = count($pictures);
+		return view('pages/tagmoatna-event',array('event_data'=>$event_data,'years'=>array_unique($years),'eventnames_and_year'=>$eventnames_and_year,'vedioes'=>$vedioes,
+				'number_of_vedios'=>$number_of_vedios,'pictures'=>$pictures,'number_of_pictures'=>$number_of_pictures));
 	}
 
-	public function tagmoatnavideos()
+	public function tagmoatnavideos($id)
 	{
-		return view('pages/tagmoatna-videos');
+		$events = Events::all();
+		$years = array();
+		$event_data = array();
+		$eventnames_and_year = array();
+		foreach($events as $event){
+			if($event->id == $id){
+				array_push($event_data,$event);
+			}
+			array_push($years,strtok($event->date, '-'));
+			$array = array(
+					'year'=>strtok($event->date, '-'),
+					'name'=>$event->name,
+					'id'=>$event->id
+			);
+			array_push($eventnames_and_year,$array);
+		}
+		$vedioes = Events::find($id)->speeches;
+		return view('pages/tagmoatna-videos',array('years'=>array_unique($years),'eventnames_and_year'=>$eventnames_and_year,'event_data'=>$event_data,'vedioes'=>$vedioes));
 	}
-	public function tagmoatnavideoplay()
+	public function tagmoatnavideoplay($id)
 	{
-		return view('pages/tagmoatna-videoplay');
+		 $vedio = Event_Speeches::where('id','=',$id)->get()->first();
+		 $event_of_vedio = Events::where('id','=',$vedio->event_id)->get()->first();
+		$events = Events::all();
+		$years = array();
+		$event_data = array();
+		$eventnames_and_year = array();
+		foreach($events as $event){
+
+			array_push($years,strtok($event->date, '-'));
+			$array = array(
+					'year'=>strtok($event->date, '-'),
+					'name'=>$event->name,
+					'id'=>$event->id
+			);
+			array_push($eventnames_and_year,$array);
+		}
+		return view('pages/tagmoatna-videoplay',array('years'=>array_unique($years),'eventnames_and_year'=>$eventnames_and_year,'event_of_vedio'=>$event_of_vedio,'vedio'=>$vedio));
 	}
-	public function tagmoatnapictures()
+	public function tagmoatnapictures($id)
 	{
-		return view('pages/tagmoatna-pictures');
+		$events = Events::all();
+
+		$years = array();
+		$event_data = array();
+		$eventnames_and_year = array();
+
+		foreach($events as $event){
+			if($event->id == $id){
+				array_push($event_data,$event);
+			}
+			array_push($years,strtok($event->date, '-'));
+			$array = array(
+					'year'=>strtok($event->date, '-'),
+					'name'=>$event->name,
+					'id'=>$event->id
+			);
+			array_push($eventnames_and_year,$array);
+		}
+
+		$event = Events::find($id);
+		  $pictures = $event->pictures;
+
+		return view('pages/tagmoatna-pictures',array('pictures'=>$pictures,'event'=>$event,'years'=>array_unique($years),'eventnames_and_year'=>$eventnames_and_year));
 	}
 	public function tagmoatnadonyana()
 	{

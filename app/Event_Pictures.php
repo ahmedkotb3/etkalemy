@@ -22,5 +22,11 @@ class Event_Pictures extends Model {
         $event_pictures->save();
     }
 
+    public static function edit_event_pics($id,$event_id,$pic){
 
+        $event_pictures = Event_Pictures::find($id);
+        $event_pictures->event_id=$event_id;
+        $event_pictures->pic=$pic;
+        $event_pictures->save();
+    }
 }

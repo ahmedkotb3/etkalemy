@@ -11,7 +11,7 @@
         height: 0;
         width: 0;
     }
-    .content {
+    .content1 {
         background-color: #D5E4E8;
         z-index: 1200;
         position: absolute;
@@ -37,7 +37,7 @@
                 @if(Auth::check())
                     <?php $arr = explode(' ',trim(Auth::user()->english_name)); ?>
                     <a href=""><img src="/images/twitter.png"></a><span style="color: #376773;text-transform: capitalize;">Hello,{{$arr[0]}}</span>
-                    <div class="content addtriangle row">
+                    <div class="content1 addtriangle row">
                         <div class="row" style="background-color: #D5E4E8;">
                         <div class="col-md-3" style="padding: 10px">
                             @if(empty(Auth::user()->profile_image))

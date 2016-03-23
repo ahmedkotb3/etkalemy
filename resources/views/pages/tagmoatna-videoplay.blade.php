@@ -1,14 +1,21 @@
 @extends('pages.templet')
 @section('content')
+
     <div class="row" id="rtagmoevent">
         <div class=" col-xs-6 col-sm-8 col-md-9 col-lg-10 top pull-right" id="tagmo">
             <img src="/images/pictures/m1.jpg" class="imgstyle">
             <span id="ta">  تجمعاتنا     </span>
             <span class="glyphicon glyphicon-menu-left" aria-hidden="true" style="position: relative; top: 5px;"></span>
-            <span id="ta">  تجمع اتكلمى الاول     </span>
+
+            <span id="ta"> {{$event_of_vedio->name}}  </span>
+
             <span class="glyphicon glyphicon-menu-left" aria-hidden="true" style="position: relative; top: 5px;"></span>
             <span id="ta">  فيديوهات     </span>
         </div>
+
+        <!-- Start the dropdown date of events -->
+
+
         <div class=" col-xs-6  col-sm-4 col-md-3  col-lg-2 pull-left" id="dtyr">
             <div class="row dropdown">
                 <a id="dLabel" role="button" data-toggle="dropdown" class="btn drop" data-target="#" href="#" style="outline: 0!important;">
@@ -18,45 +25,55 @@
                 </a>
 
                 <ul class="dropdown-menu multi-level" id="dxs" role="menu" aria-labelledby="dropdownMenu">
-                    <li><a href="#">2015</a></li>
-                    <li class="dropdown-submenu">
-                        <a tabindex="-1" href="#">2016</a>
-                        <ul class="dropdown-menu" id="dds">
-                            <li><a tabindex="-1"  id="lis" href="#">تجمع إتكلمى الأول</a></li>
-                            <li class="divider" style="width: 100%"></li>
-                            <li><a id="lis"href="#">تجمع إتكلمى الثانى</a></li>
-                            <li class="divider" style=" width:100% "></li>
-                            <li><a id="lis"href="#">تجمع إتكلمى الشامل</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">2017</a></li>
+
+                    @foreach($years as $year)
+                        <li class="dropdown-submenu">
+                            <a tabindex="-1" href="#">{{$year}}</a>
+                            <ul class="dropdown-menu" id="dds">
+                                @foreach($eventnames_and_year as $eventname_and_year)
+                                    @if($eventname_and_year['year'] == $year)
+                                        <li><a tabindex="-1"  id="lis" href="/tagmoatna-event/{{$eventname_and_year['id']}}">{{$eventname_and_year['name']}}</a></li>
+                                        <li class="divider" style="width: 100%"></li>
+                                    @endif
+                                @endforeach
+                            </ul>
+                        </li>
+                    @endforeach
                 </ul>
             </div>
         </div>
+        <!-- End the dropdown date of events -->
     </div>
     <div class="container-fluid" style=" padding: 0; background-color: #D5E4E8; color: #376773">
         <div class="container-fluid" id="marginmobile">
-            <div class="row" id="picslider"><img class="img-responsive" src="images/pictures/tagmoevent/1.jpg"/></div>
+            <div class="row" id="picslider"><img class="img-responsive" style="height: 395px; width:100%" src="/uploadfiles/events/{{$event_of_vedio->name}}/{{$event_of_vedio->image}}"/></div>
+
             <div class="row" id="ronew">
                 <div class="col-xs-7 col-sm-5 col-md-4 col-lg-3" id="tgm"> فيديوهات</div>
                 <hr class="col-xs-5 col-sm-7 col-md-8 col-lg-9" id="hrt">
             </div>
-            <iframe width="100%" height="400" src="https://www.youtube.com/embed/sLwrG2bwBDI" frameborder="0" allowfullscreen></iframe>
+            <iframe width="100%" height="400" src="{{$vedio->youtube_url}}" frameborder="0" allowfullscreen></iframe>
             <div  class="container-fluid" style=" padding: 0!important; margin-top:-5px;background-color: white">
                 <div class="row" style="padding: 20px;">
                     <div style="float:right;">
                     <span style=" padding-left:10px;float:right;font-family: ebold;font-size: 25px"> مشاركة علي</span>
-                    <span> <a href=""><img src="images/pictures/tagmoevent/facebook.png" style="max-width: 45%;"></a>
-                        <a href=""><img src="images/pictures/tagmoevent/twitter.png" style="max-width: 45%;"></a></span></div>
+
+
+                    <span>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u={{$vedio->youtube_url}}"><img src="/images/pictures/tagmoevent/facebook.png" style="max-width: 45%;"></a>
+                        {{--<a href=""><img src="/images/pictures/tagmoevent/facebook.png" style="max-width: 45%;"></a>--}}
+
+                        <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text={{$vedio->youtube_url}}"><img src="/images/pictures/tagmoevent/twitter.png" style="max-width: 45%;"></a>
+                    </span>
+                    </div>
                     <div class="pull-left">
                         <span class=""><img   src="/images/pictures/like.png"></span>
                         <span class=""><img   src="/images/pictures/seen.png"></span>
                     </div>
                 </div>
                 <hr style=" width: 100%!important;"/>
-                <div class=" row pull-right" style="font-size: 25px; font-family: ebold; padding: 20px;">سارة أحمد كيف تصبح ناجح فى خطوات</div>
-                <div class="row pull-right" style=" text-align:right;font-size: 15px; font-family: ebold;padding-bottom: 30px; padding-right: 20px;">سارة أحمد طالبة جامعية استطاعت في ظروق ضيقة ان تجمع بين  الدراســـــــة والـعمل وتحقيق جزء من طموحتها كأخصائية نفسية مع انجاز عدد من الدبلومات والدراسات المـــــــختـلــــفـــة. سارة أحـــمد طالبة جامعية استطاعت في ظروق ضيقة ان تجمع بين  الدراسة والعمل وتحقيق جزء من طموحتها كأخصائية نفسية مع انجاز عدد من الدبلومات والدراسات المختلفة</div>
-            </div>
+                <div class=" row pull-right" style="font-size: 25px; font-family: ebold; padding: 20px;">{{$vedio->title}}</div>
+                <div class="row pull-right" style=" text-align:right;font-size: 15px; font-family: ebold;padding-bottom: 30px; padding-right: 20px;">{{$vedio->desc}}</div>
             <div class="row" id="ronew">
                 <div class="col-xs-7 col-sm-5 col-md-4 col-lg-3" id="tgm"> التعليقات</div>
                 <hr class="col-xs-5 col-sm-7 col-md-8 col-lg-9" id="hrte">
@@ -81,5 +98,6 @@
             </form>
             </div>
         </div>
+    </div>
 
     @stop
