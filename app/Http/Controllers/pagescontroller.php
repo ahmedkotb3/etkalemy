@@ -20,7 +20,8 @@ class pagescontroller extends Controller
 	{
 
 		$sliders = Slider::all();
-		return view('pages/home',array('sliders'=>$sliders));
+//		return view('pages/home',array('sliders'=>$sliders));
+		return view('pages/hend');
 	}
 
 	public function tagmoatna()

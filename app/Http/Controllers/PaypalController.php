@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Redirect;
 
 use PayPal\Rest\ApiContext;
 use PayPal\Auth\OAuthTokenCredential;
@@ -33,34 +36,115 @@ class PaypalController extends Controller
         $this->_api_context->setConfig($paypal_conf['settings']);
     }
 
-    public function pay()
-    {
-        dd( "true");
+
+    public function pay(){
+
 
         $payer = new Payer();
         $payer->setPaymentMethod('paypal');
 
-        /***8
-         * $course_name = Input::get("course_name");
-         * $course_price = Input::get("course_price");
-         * $course_desc = Input::get("course_name");
-         ****/
 
+        $email = Input::get('email2');
+        $event_name = Input::get('event_name');
+        $event_price = Input::get('price');
 
         $item_1 = new Item();
-        $item_1->setName('Item 1(eventname)')// item name
+        $item_1->setName($event_name) // item name
         ->setCurrency('USD')
             ->setQuantity(1)
-            ->setPrice('150'); // unit price
+            ->setPrice($event_price); // unit price
 
 
-// add item to list
+        // add item to list
         $item_list = new ItemList();
         $item_list->setItems(array($item_1));
 
-$amount = new Amount();
-$amount->setCurrency('USD')
-    ->setTotal(580);
 
-}
+
+        $amount = new Amount();
+        $amount->setCurrency('USD')
+                ->setTotal($event_price);
+
+
+
+        $transaction = new Transaction();
+        $transaction->setAmount($amount)
+        ->setItemList($item_list)
+        ->setDescription('Your transaction description');
+
+        $redirect_urls = new RedirectUrls();
+        $redirect_urls->setReturnUrl(URL::route("payment.status")) // Specify return URL
+                        ->setCancelUrl(URL::route("payment.status"));
+
+
+
+        $payment = new Payment();
+        $payment->setIntent('Sale')
+            ->setPayer($payer)
+            ->setRedirectUrls($redirect_urls)
+            ->setTransactions(array($transaction));
+
+        try {
+            $payment->create($this->_api_context);
+        } catch (\PayPal\Exception\PPConnectionException $ex) {
+            if (\Config::get('app.debug')) {
+                echo "Exception: " . $ex->getMessage() . PHP_EOL;
+                $err_data = json_decode($ex->getData(), true);
+                exit;
+            } else {
+                die('Some error occur, sorry for inconvenient');
+            }
+        }
+        foreach($payment->getLinks() as $link) {
+            if($link->getRel() == 'approval_url') {
+                $redirect_url = $link->getHref();
+                break;
+            }
+        }
+        // add payment ID to session
+        Session::put('paypal_payment_id', $payment->getId());
+
+
+        if(isset($redirect_url)) {
+        // redirect to paypal
+            return Redirect::away($redirect_url);
+        }
+        return Redirect::route('original.route')
+            ->with('error', 'Unknown error occurred');
+        }
+
+    public function getPaymentStatus()
+    {
+
+        $payment_id = Session::get('paypal_payment_id');
+
+
+        Session::forget('paypal_payment_id');
+
+
+        if (empty(Input::get('PayerID')) || empty(Input::get('token'))) {
+            return ('Payment failed');
+        }
+
+
+        $payment = Payment::get($payment_id, $this->_api_context);
+
+
+        $execution = new PaymentExecution();
+        $execution->setPayerId(Input::get('PayerID'));
+
+        //Execute the payment
+        $result = $payment->execute($execution, $this->_api_context);
+
+
+        if ($result->getState() == 'approved') { // payment made
+            return ('Payment success');
+        } else {
+            return ('Payment failed');
+        }
+
+    }
+
+
+
 }

@@ -17,6 +17,7 @@ Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);*/
+
 Route::controllers([
     'auth' => 'Auth\AuthController',
     'password' => 'Auth\PasswordController',
@@ -139,5 +140,9 @@ Route::get('/lang/{id}','LanguageController@getlang');
 
 
 Route::post('/pay','PaypalController@pay');
-Route::get('/pay/status','PaypalController@getPaymentStatus');
+//Route::get('/payment/status','PaypalController@getPaymentStatus');
 
+Route::get('payment/status', array(
+    'as' => 'payment.status',
+    'uses' => 'PaypalController@getPaymentStatus',
+));
