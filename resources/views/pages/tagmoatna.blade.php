@@ -49,14 +49,14 @@
                      @foreach($future_events as $key=>$future_event)
                         @if($key == 0)
                             <div class="item active">
-                                <img src="uploadfiles/events/{{$future_event->name}}/{{$future_event->image}}" class="img-responsive" alt="...">
+                                <img src="/uploadfiles/events/{{$future_event->name}}/{{$future_event->image}}" class="img-responsive" alt="...">
                                 <div class="carousel-caption2">
                                     <a style="color: #fff" href="/tagmoatna-event/{{$future_event->id}}"> {{$future_event->description}}</a>
                                 </div>
                             </div>
                          @else
                             <div class="item">
-                                <img src="uploadfiles/events/{{$future_event->name}}/{{$future_event->image}}" class="img-responsive" alt="...">
+                                <img src="/uploadfiles/events/{{$future_event->name}}/{{$future_event->image}}" class="img-responsive" alt="...">
                                 <div class="carousel-caption2">
                                     <a  style="color: #fff" href="/tagmoatna-event/{{$future_event->id}}">{{$future_event->description}}</a>
                                 </div>
@@ -81,7 +81,7 @@
                 @foreach($last_events as $last_event)
                     <div class="col-md-6"  id="pic1" style="margin-bottom: 20px">
                         <div class="imgWrap img-responsive">
-                            <img  class="imgWrap img-responsive" src="uploadfiles/events/{{$last_event->name}}/{{$last_event->image}}" alt="polaroid" />
+                            <img  class="imgWrap img-responsive" src="/uploadfiles/events/{{$last_event->name}}/{{$last_event->image}}" alt="polaroid" />
                             <a href="/tagmoatna-event/{{$last_event->id}}"><p class="imgDescription"><span  id ="txtimg">{{$last_event->name}}</span></p></a>
                         </div>
                     </div>
@@ -90,6 +90,5 @@
         </div>
         <!-- End the slider of Last event -->
     </div>
-
 
 @stop

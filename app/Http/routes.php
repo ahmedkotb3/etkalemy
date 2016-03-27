@@ -138,6 +138,6 @@ Route::get('/lang/{id}','LanguageController@getlang');
 
 
 
-
-
+Route::post('/pay','PaypalController@pay');
+Route::get('/pay/status','PaypalController@getPaymentStatus');
 

@@ -7,14 +7,14 @@
                 <img src="/images/pictures/fo.png"/>
                 <hr style=" height:2px; margin-right:0px;color: white; pull:right; "/>
             </div>
-            <div style=" font-family: elight; font-size:15px; color: white;">
-                Inas: # join_us Follow us and wait for the Inas: # join_us Follow us and <br/>
-                    big event منذ 4 ايام  <br/>
-                    Inas: # join_us Follow us and wait for the Inas: # join_us Follow us and <br/>
-                    big event منذ 5 ايام
+            <div style=" font-family: elight; font-size:17px; color: white;">
+                Inas: # join_us Follow us and wait for the Inas: # join_us Follow us and
+                    big event منذ 4 ايام
+                    Inas: # join_us Follow us and wait for the Inas: # join_us Follow us and
+
             </div>
             <button  type="button" class="btn btn-info" style=" background-color:#60CAEF; font-family:cent; height: 40px; font-size:20px; width: 210px;
-    margin-top: 10px; border:none; border-radius:3px;"> Follow us on <i class="fa fa-twitter fa-lg"></i>
+    margin-top: 13px; border:none; border-radius:3px;"> Follow us on <i class="fa fa-twitter fa-lg"></i>
             </button>
         </div>
         <div class="col-xs-12 hidden-sm  hidden-md hidden-lg pull-right" style="max-width: 495px; padding:30px 10px ">
@@ -25,14 +25,14 @@
                 <hr style=" height:2px; margin-right:0px;color: white; pull:right; "/>
             </div>
             <div style=" font-family: elight; font-size:15px; color: white;">
-                Inas: # join_us Follow us and wait for the Inas: # join_us Follow us and <br/>
-                    big event منذ 4 ايام  <br/>
-                    Inas: # join_us Follow us and wait for the Inas: # join_us Follow us and <br/>
+                Inas: # join_us Follow us and wait for the Inas: # join_us Follow us and
+                    big event منذ 4 ايام
+                    Inas: # join_us Follow us and wait for the Inas: # join_us Follow us and
                     big event منذ 5 ايام
                 
             </div>
             <button  type="button" class="btn btn-info" style=" background-color:#60CAEF; font-family:cent; height: 40px; font-size:20px; width: 210px;
-    margin-top: 10px; border:none; border-radius:3px;"> Follow us on <i class="fa fa-twitter fa-lg"></i>
+    margin-top: 13px; border:none; border-radius:3px;"> Follow us on <i class="fa fa-twitter fa-lg"></i>
             </button>
         </div>
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 pull-right"  id="fr" style=" max-width:495px;">
@@ -49,7 +49,7 @@
                     .... مناالمزيد
             </div>
 
-            <form class="form-inline" role="form" style="text-align:right; padding-top: 2%;">
+            <form class="form-inline" role="form" style="text-align:right; padding-top: 3%;">
                 <div class="form-group" style="width: 100%;">
                     <div class=" col-xs-5 col-sm-4 col-md-3 col-lg-3" style="padding-right: 0;">
                         <button class="btn btn-info"
