@@ -1,3 +1,4 @@
+
 @extends('pages.templet')
 @section('content')
     <div class="row" id="rtagmoevent">
@@ -406,4 +407,6 @@
 
 
     </script>
+
+
 @stop
