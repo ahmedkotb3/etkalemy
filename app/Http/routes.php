@@ -146,3 +146,6 @@ Route::get('payment/status', array(
     'as' => 'payment.status',
     'uses' => 'PaypalController@getPaymentStatus',
 ));
+
+
+Route::get('/youtube', 'YoutubeController@index');

@@ -145,6 +145,7 @@ return [
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
 //		'Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider'
+		'Madcoda\Youtube\YoutubeServiceProviderLaravel5'
 
 	],
 
@@ -193,6 +194,7 @@ return [
 		'URL'       => 'Illuminate\Support\Facades\URL',
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
+		'Youtube'   => 'Madcoda\Youtube\Facades\Youtube',
 //		'LaravelLocalization' => 'Mcamara\LaravelLocalization\Facades\LaravelLocalization'
 
 
