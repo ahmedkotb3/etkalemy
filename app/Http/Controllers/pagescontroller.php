@@ -22,8 +22,7 @@ class pagescontroller extends Controller
 	{
 
 		$sliders = Slider::all();
-//		return view('pages/home',array('sliders'=>$sliders));
-		return view('pages/hend');
+		return view('pages/home',array('sliders'=>$sliders));
 	}
 
 	public function tagmoatna()
@@ -243,30 +242,33 @@ class pagescontroller extends Controller
 	}
 
 	public function event_comment(){
+		if(Auth::check()) {
+			$comment = Input::get('comment');
+			$event_comment = new Events_Comments;
+			$event_comment->text = $comment;
+			$event_comment->event_id = Input::get('event_id');
+			$event_comment->user_id = Auth::user()->id;
 
-		$comment = Input::get('comment');
-		$event_comment = new Events_Comments;
-		 $event_comment->text=$comment;
-		$event_comment->event_id=Input::get('event_id');
-		 $event_comment->user_id=Auth::user()->id;
-
-		$event_comment->user_name=Auth::user()->english_name;
-		$event_comment->user_image=Auth::user()->profile_image;
-		$event_comment->save();
+			$event_comment->user_name = Auth::user()->english_name;
+			$event_comment->user_image = Auth::user()->profile_image;
+			$event_comment->save();
+		}
 
 
 	}
 	public function vedio_comment(){
+		if(Auth::check()){
+			$comment = Input::get('comment');
+			$vedio_comment = new Speech_Comments;
+			$vedio_comment->text=$comment;
+			$vedio_comment->speech_id=Input::get('vedio_id');
+			$vedio_comment->user_id=Auth::user()->id;
 
-		$comment = Input::get('comment');
-		$vedio_comment = new Speech_Comments;
-		$vedio_comment->text=$comment;
-		$vedio_comment->speech_id=Input::get('vedio_id');
-		$vedio_comment->user_id=Auth::user()->id;
+			$vedio_comment->user_name=Auth::user()->english_name;
+			$vedio_comment->user_image=Auth::user()->profile_image;
+			$vedio_comment->save();
+		}
 
-		$vedio_comment->user_name=Auth::user()->english_name;
-		$vedio_comment->user_image=Auth::user()->profile_image;
-		$vedio_comment->save();
 
 
 	}

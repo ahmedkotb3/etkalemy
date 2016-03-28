@@ -223,27 +223,22 @@
             <div class="row">
                 <!-- registration for members-->
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 pull-right" id="rightdiv">
-                    <form>
+                    <form  role="form">
+                        <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <div class="row" style=" background-color: white;text-align: center;padding: 38px 0!important;">
                             <span style=" font-family: ebold; font-size: 35px;">لتسجيل الأعضاء </span>
                         </div>
                         <div class="row" id="rmember">
                             <div class="form-group1 ">
-                                <label class="control-label col-sm-3 pull-right" for="email"
-                                       style=" color: #376773; font-family: ebold; font-size: 23px;  text-align: right;">الإيميل </label>
-
+                                <label class="control-label col-sm-3 pull-right" for="email" style=" color: #376773; font-family: ebold; font-size: 23px;  text-align: right;">الإيميل </label>
                                 <div class="col-sm-9 pull-left" style=" height: 23px">
-                                    <input type="email" class="form-control" id="email"
-                                           style="background-color: #D5E4E8;">
+                                    <input type="email" class="form-control" id="email" style="background-color: #D5E4E8;">
                                 </div>
                             </div>
                             <div class="form-group1">
-                                <label class="control-label col-sm-3 pull-right" for="password"
-                                       style=" color: #376773; font-family:ebold;  font-size: 23px;  text-align: right;">الباسورد </label>
-
+                                <label class="control-label col-sm-3 pull-right" for="password" style=" color: #376773; font-family:ebold;  font-size: 23px;  text-align: right;">الباسورد </label>
                                 <div class="col-sm-9 pull-left" style=" height: 23px">
-                                    <input type="password" class="form-control" id="password"
-                                           style="background-color: #D5E4E8;">
+                                    <input type="password" class="form-control" id="password" style="background-color: #D5E4E8;">
                                 </div>
                             </div>
 
@@ -251,9 +246,9 @@
                         <div class="row" style="padding-bottom: 124px;background-color: white; padding-left:95px;">
                             <button type="button" class="btn btn-info" style=" font-family:Cent; font-size: 22px; height: 40px;
                                                                           background-color:#78c8ab;
-                        border-color:#78c8ab; border-radius:3px;" data-toggle="modal" data-target="#myModal"> Submit
-                            </button>
+                        border-color:#78c8ab; border-radius:3px;" data-toggle="modal" data-target="#myModal" id="submit"> Submit</button>
                         </div>
+                    </form>
                         <!-- Modal -->
                         <div class="modal fade" id="myModal" role="dialog">
                             <div class="modal-dialog">
@@ -268,17 +263,21 @@
                                                 class="modal-title">اختر طريقة للدفع</h4>
                                         </div>
                                         <div class="modal-body" style="height: 110px;">
-                                            <form>
-                                                <img class="  col-xs-6 col-lg-6 img-responsive pull-right"
-                                                     style="border-left: 1px solid"
-                                                     src="/images/pictures/donyana/paypal.png">
-                                                <img class=" col-xs-6  col-lg-6 img-responsive pull-left"
-                                                     src="/images/pictures/donyana/even.png">
-                                            </form>
+                                                <form  method="post" action="/pay" enctype="multipart/form-data" class="form_style">
+                                                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                                    <input type="hidden" name="email2" id="email2" >
+                                                    <input type="hidden" name="event_name" id="event_name" value="{{$data->name}}" >
+                                                    <input type="hidden" name="price" id="price" value="{{$data->price}}" >
+                                                    <button type="submit" class="btn btn-default center-block" >pay
+                                                        <img class="  col-xs-6 col-lg-6 img-responsive pull-right" style="border-left: 1px solid" src="/images/pictures/donyana/paypal.png">
+                                                    </button>
+                                                    <button type="submit" class="btn btn-default center-block" >
+                                                        <img class=" col-xs-6  col-lg-6 img-responsive pull-left" src="/images/pictures/donyana/even.png">
+                                                    </button>
+                                                </form>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close
-                                            </button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                         </div>
                                     </div>
                                 </div>
@@ -287,48 +286,36 @@
                         </div>
 
 
-                    </form>
+
                 </div>
                 <!-- registration for non members-->
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 pull-left" id="leftdiv">
-                    <form>
-                        <div class="row"
-                             style="background-color: white;text-align: center;padding: 38px 0!important;"><span
-                                    style=" font-family: ebold; font-size: 35px;">لغير الأعضاء </span></div>
+                    <form  role="form">
+                        <input type="hidden" name="_token" value="{{csrf_token()}}">
+                        <div class="row" style="background-color: white;text-align: center;padding: 38px 0!important;"><span style=" font-family: ebold; font-size: 35px;">لغير الأعضاء </span></div>
                         <div class="row" style=" background-color: white; padding-left:40px;">
                             <div class="form-group1">
-                                <label class="control-label col-sm-5 pull-right" for="email"
-                                       style=" color: #376773; font-family:ebold; font-size: 23px;  text-align: right;">الأسم </label>
+                                <label class="control-label col-sm-5 pull-right" for="email" style=" color: #376773; font-family:ebold; font-size: 23px;  text-align: right;">الأسم </label>
 
                                 <div class="col-sm-7 pull-left" style=" height: 23px">
-                                    <input type="text" class="form-control" id="email"
-                                           style="background-color: #D5E4E8;">
+                                    <input type="text" class="form-control" style="background-color: #D5E4E8;">
                                 </div>
                             </div>
                             <div class="form-group1">
-                                <label class="control-label col-sm-5 pull-right" for="password"
-                                       style=" color: #376773; font-family:ebold; font-size: 23px;  text-align: right;">البريد
-                                    الإلكترونى </label>
+                                <label class="control-label col-sm-5 pull-right" for="password" style=" color: #376773; font-family:ebold; font-size: 23px;  text-align: right;">البريدالإلكترونى </label>
 
                                 <div class="col-sm-7 pull-left" style=" height: 23px">
-                                    <input type="email" class="form-control" id="password"
-                                           style="background-color: #D5E4E8;">
+                                    <input type="email" class="form-control" id="password" id="email" style="background-color: #D5E4E8;">
                                 </div>
                             </div>
 
                         </div>
                         <div class="row" style=" padding-bottom: 40px;background-color: white; padding-left:55px;">
                             <div class="hidden-xs hidden-sm hidden-md">
-                                <button class="btn btn-info" data-toggle="modal" data-target="#myModal"
-                                        style=" font-family:Cent; font-size: 22px; height: 40px; background-color:#78c8ab;border-color:#78c8ab; border-radius:3px;">
-                                    Submit
-                                </button>
+                                <button class="btn btn-info" data-toggle="modal" data-target="#myModal" id="submit" style=" font-family:Cent; font-size: 22px; height: 40px; background-color:#78c8ab;border-color:#78c8ab; border-radius:3px;">Submit</button>
                             </div>
                             <div class="hidden-lg">
-                                <button class="btn btn-info" data-toggle="modal" data-target="#myModal"
-                                        style=" font-family:Cent; font-size: 22px; height: 40px; background-color:#78c8ab;border-color:#78c8ab; border-radius:3px;">
-                                    Submit
-                                </button>
+                                <button class="btn btn-info" data-toggle="modal" data-target="#myModal" id="submit" style=" font-family:Cent; font-size: 22px; height: 40px; background-color:#78c8ab;border-color:#78c8ab; border-radius:3px;">Submit</button>
 
                                 <div id="light1" class="white_content1">
                                     <a href="javascript:void(0)"
@@ -448,6 +435,12 @@
     <script>
 
         $(document).ready(function () {
+            var email;
+            $("#email").change(function(){
+                email = $("#email").val();
+                $('#email2').val(email);
+
+            });
 
             $(".ajax_comment").hide();
             $("form").submit(function (event) {
