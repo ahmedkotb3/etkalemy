@@ -204,7 +204,8 @@
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 pull-right" id="rightdiv">
                     <form>
                     <div class="row" style=" background-color: white;text-align: center;padding: 38px 0!important;">
-                        <span style=" font-family: ebold; font-size: 35px;">لتسجيل الأعضاء </span></div>
+                        <span style=" font-family: ebold; font-size: 35px;">لتسجيل الأعضاء </span>
+                    </div>
                     <div class="row" id="rmember">
                         <div class="form-group1 ">
                             <label class="control-label col-sm-3 pull-right" for="email"
@@ -227,7 +228,8 @@
                     </div>
                     <div class="row" style="padding-bottom: 124px;background-color: white; padding-left:95px;">
                         <button type="button" class="btn btn-info" style=" font-family:Cent; font-size: 22px; height: 40px; background-color:#78c8ab;
-                        border-color:#78c8ab; border-radius:3px;" data-toggle="modal" data-target="#myModal"> Submit</button>
+                        border-color:#78c8ab; border-radius:3px;" data-toggle="modal" data-target="#myModal" id="submit"> Submit</button>
+                        </div>
 
                         <!-- Modal -->
                         <div class="modal fade" id="myModal" role="dialog">
@@ -254,7 +256,7 @@
                         </div>
 
 
-                    </div>
+
                     </form> </div>
 <!-- registration for non members-->
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 pull-left" id="leftdiv">
