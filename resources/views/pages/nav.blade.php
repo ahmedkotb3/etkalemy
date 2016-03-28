@@ -142,7 +142,7 @@
     <a href="#"  style=" padding-left:3px;font-family:elight; font-size: 12pt;"> عربي </a>
 </div>
         <div class="col-xs-4 col-sm-4 text-center">
-            <img src="images/pictures/lo.png"/>
+            <img src="/images/pictures/lo.png"/>
 
         </div>
     </div>

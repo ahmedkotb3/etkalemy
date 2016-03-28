@@ -808,7 +808,7 @@ background-color: #C4E9F2; font-family: ebold; font-size: 15px; width: 171px; di
     z-index: 10;
     top: 415px;
     right: 50%;
-    left: 15%;
+    left: 27%;
     bottom: 115%;
     padding-top: 10px;
     padding-bottom: 70px;
@@ -821,7 +821,7 @@ background-color: #C4E9F2; font-family: ebold; font-size: 15px; width: 171px; di
     background-color: rgba(120, 200, 171, 0.6);
 }
 #captionevent2{
-    font-size:30px;font-family: ebold;text-align:center;position: absolute; z-index: 10; top:495px;right: 55%;left: 20%;bottom: 115%;
+    font-size:30px;font-family: ebold;text-align:center;position: absolute; z-index: 10; top:495px;right: 44%;left: 22%;
     padding-bottom: 80px;padding-right: 20px;color: white;text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
     background-color: rgba(120, 200, 171, 0.6);
 }
@@ -1281,7 +1281,7 @@ border-color: #C3D1D5;
         background-color: #78C8AB;
         border-color: #78C8AB;
         position: relative;
-        bottom: 170px;
+        bottom: 132px;
         left: 8%;
     }
 }
@@ -1293,7 +1293,7 @@ border-color: #C3D1D5;
         background-color: #78C8AB;
         border-color: #78C8AB;
         position: relative;
-        bottom: 170px;
+        bottom: 130px;
         left: 8%;
     }
 }
@@ -1305,7 +1305,7 @@ border-color: #C3D1D5;
         background-color: #78C8AB;
         border-color: #78C8AB;
         position: relative;
-        bottom: 170px;
+        bottom: 130px;
         left: 5%;
     }
 }
@@ -1708,6 +1708,8 @@ margin-bottom: 10px;}
 }
 }
 
-
+@media (min-width: 1200px) {
+    #picevent{height:595px!important;width: 100%!important;}
+}
 
 

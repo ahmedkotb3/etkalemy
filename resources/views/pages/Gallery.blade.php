@@ -1,11 +1,13 @@
 @extends('pages.templet')
 @section('content')
 
-<div  class="top" id="marginmobile1"style=" margin-bottom: 20px!important;">
-    <img src="/images/pictures/m1.jpg" class="imgstyle">
-    <span id="topjoinus">   الجاليري </span>
+    <div class="container-fluid" id="row1170" style="margin-top: 20px !important">
+        <div class="top" style=" margin-bottom: 20px!important;">
+            <img src="/images/pictures/m1.jpg" class="imgstyle">
+            <span id="topjoinus">   الجاليري </span>
 
-</div>
+        </div>
+    </div>
 <div class="container-fluid" style=" padding: 0; background-color: #D5E4E8; color: #376773">
     <div class="container-fluid" id="marginmobile">
         <div class="row" style="  margin-top:20px!important;margin-bottom:50px!important;width: 100%;">

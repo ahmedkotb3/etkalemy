@@ -62,16 +62,18 @@
                             </div>
                             <hr style="margin-top: 10px!important;"/>
 
-
                         </div>
                         <img style="position: relative;top: -14px;right: 150px;" src="/images/pictures/donyana/1.png ">
                     </div></div>
+
+
                 <div class="menu-category list-group ">
                     <div class=" col-xs-12 col-sm-6 col-md-4 col-lg-3" style="width:100%;padding: 0!important;">
                         <div style="padding: 10px;  border-radius:5px;background-color:white;margin-left: 15px!important;">
                             <!--img style="margin-left: auto; margin-right: auto; display: block; vertical-align: middle;" class="img-responsive" src="/images/pictures/e.png"/-->
                             <div class="imgWrapedonaya img-responsiveedonyana">
-                                <img class="imgWrapedonaya img-responsiveedonyana" src="http://img.youtube.com/vi/sLwrG2bwBDI/1.jpg" alt="polaroid"/>
+                                <img class="imgWrapedonaya img-responsiveedonyana"
+                                     src="http://img.youtube.com/vi/sLwrG2bwBDI/1.jpg" alt="polaroid"/>
                                 <a href="#"><p class="imgDescriptione">
                                         <span id="videoimg"><img src="/images/pictures//donyana/video.png"/></span>
                                         <span id="txtdonyanavideo">كيف تصل الى هدفك بالطريقة الصحيحة </span>
@@ -80,21 +82,52 @@
                                     </p>
                                 </a>
                             </div>
-                            <div style=" padding-top:5px;text-align:right;font-family: ebold;font-size: 14px;">
-                                تعرفي علي أسباب ارتفاع نسب  الانفصال في المجتمع المصري مع احصائيات تؤكد ذلك
-                            </div>
-                            <hr style="margin-top: 10px!important;"/>
 
+                            <a onclick="onClickseen()">
+                                <div style=" padding-top:5px;text-align:right;font-family: ebold;font-size: 14px;">
+                                    تعرفي علي أسباب ارتفاع نسب الانفصال في المجتمع المصري مع احصائيات تؤكد ذلك
+                                </div>
+                            </a>
+                            <hr style="margin-top: 10px!important;"/>
+                            <div style="height:30px;">
+                                <span class="pull-left">
+                                <button class="pull-left" type="button" onClick="onClicklike()">
+                                    <img src="/images/pictures/donyana/like1.png"/></button>
+                                <span class="pull-right" style=" padding-top:5px;padding-left: 7px;">
+                                    <a id="clicks2">0</a></span></span>
+                                <script type="text/javascript">
+                                    var clickslike = 0;
+                                    function onClicklike() {
+                                        clickslike += 1;
+                                        document.getElementById("clicks2").innerHTML = clickslike;
+                                    }
+                                    ;
+                                </script>
+                                <span class="pull-right" style="padding-top: 7px;">
+                            <img class="pull-left" src="/images/pictures/donyana/seen.png"/>
+                                <span class="pull-right" style="margin-top: -3px;padding-left: 7px;"><a id="clicks3">0</a></span>
+                            </span>
+                                <script type="text/javascript">
+                                    var clicksseen = 0;
+                                    function onClickseen() {
+                                        clicksseen += 1;
+                                        document.getElementById("clicks3").innerHTML = clicksseen;
+                                    }
+                                    ;
+                                </script>
+                            </div>
 
                         </div>
                         <img style="position: relative;top: -14px;right: 150px;" src="/images/pictures/donyana/1.png ">
-                    </div></div>
+                    </div>
+                </div>
                 <div class="menu-category list-group ">
                     <div class=" col-xs-12 col-sm-6 col-md-4 col-lg-3" style="width:100%;padding: 0!important;">
                         <div style="padding: 20px;  border-radius:5px;background-color:white;margin-left: 15px!important; min-height: 155px">
                             <!--img style="margin-left: auto; margin-right: auto; display: block; vertical-align: middle;" class="img-responsive" src="/images/pictures/e.png"/-->
                             <div class="imgWrapedonaya img-responsiveedonyana">
-                                <img class="imgWrapedonaya img-responsiveedonyana" src="/images/pictures/e.png" alt="polaroid"/>
+                                <img class="imgWrapedonaya img-responsiveedonyana" src="/images/pictures/e.png"
+                                     alt="polaroid"/>
                                 <a href="#"><p class="imgDescriptione">
                                         <span id="articleimg"><img src="/images/pictures//donyana/txt.png"/></span>
                                         <span id="txtdonyanaarticle">كيف تصل الى هدفك بالطريقة الصحيحة </span>
@@ -104,14 +137,15 @@
                                 </a>
                             </div>
                             <div style=" padding-top:5px;text-align:right;font-family: ebold;font-size: 14px;">
-                                تعرفي علي أسباب ارتفاع نسب  الانفصال في المجتمع المصري مع احصائيات تؤكد ذلك
+                                تعرفي علي أسباب ارتفاع نسب الانفصال في المجتمع المصري مع احصائيات تؤكد ذلك
                             </div>
                             <hr style="margin-top: 10px!important;"/>
 
 
                         </div>
                         <img style="position: relative;top: -14px;right: 150px;" src="/images/pictures/donyana/1.png ">
-                    </div> </div>
+                    </div>
+                </div>
                 <div class="menu-category list-group ">
                     <div class=" col-xs-12 col-sm-6 col-md-4 col-lg-3" style="width:100%;padding: 0!important;">
                         <div style="padding: 10px;  border-radius:5px;background-color:white;margin-left: 15px!important;">

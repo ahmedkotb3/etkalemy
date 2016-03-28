@@ -26,6 +26,12 @@
             margin-left: 15px;
             width: 480%;
         }
+        @media (min-width:992px ) and (max-width: 1199px){
+        .fancy span:after {
+            left: 100%;
+            margin-left: 15px;
+            width: 380%;
+        }}
         .form-group.required .label:after {
             content:"*";
             color:red;
@@ -44,7 +50,7 @@
         <div class="container-fluid" id="row1170" style="margin-top: 20px !important">
             <div  class="top">
                 <img src="/images/pictures/m1.jpg" class="imgstyle">
-                <span>للاتصال بنا</span>
+                <span id="topjoinus">للاتصال بنا</span>
             </div>
         </div>
 
@@ -52,7 +58,7 @@
             <div style="color: #376773;font-size: 30px!important;font-family: ebold;" class="">
                 <div class="col-xs-12 img-thumbnail">
                     <div class="col-xs-8 col-xs-offset-1" style="margin-top: 20px">
-                        <p class="subtitle fancy" style="margin-top: 10px"><span>Contact Form</span></p>
+                        <p class="subtitle fancy" style="margin-top: 10px"><span style="font-family: Calibri;">Contact Form</span></p>
                     </div>
                     <form class="form-horizontal" role="form" style="margin-bottom: 80px !important;">
 
@@ -61,7 +67,7 @@
                             <div class="col-xs-6">
                                 <input type="text" class="form-control" id="namee" style="background-color: #D5E4E8;">
                             </div>
-                            <label class="control-label col-xs-3 pull-right" for="namee" style=" color: #376773; font-family:Calibri; font-weight: bold; font-size: 15px; text-align: right;"> الاسم بالانجليزي
+                            <label class="control-label col-xs-3 pull-right" for="namee" style=" color: #376773; font-family:ebold; font-weight: bold; font-size: 15px; text-align: right;"> الاسم بالانجليزي
                             </label>
                         </div>
 
@@ -70,7 +76,7 @@
                             <div class="col-xs-6">
                                 <input type="email" class="form-control" id="email" style="background-color: #D5E4E8;">
                             </div>
-                            <label class="control-label col-xs-3" for="email" style=" color: #376773; font-family: Calibri;font-weight: bold; font-size: 15px;  text-align: right;">البريد الالكتروني  </label>
+                            <label class="control-label col-xs-3" for="email" style=" color: #376773; font-family:ebold;font-weight: bold; font-size: 15px;  text-align: right;">البريد الالكتروني  </label>
                         </div>
 
                         <div class="form-group" style="margin-bottom: 25px !important;">
@@ -78,14 +84,14 @@
                             <div class="col-xs-6">
                                 <input type="number" class="form-control" id="number" style="background-color: #D5E4E8;">
                             </div>
-                            <label class="control-label col-xs-3" for="email" style=" color: #376773; font-family: Calibri;font-weight: bold; font-size: 15px;  text-align: right;">رقم الهاتف</label>
+                            <label class="control-label col-xs-3" for="email" style=" color: #376773; font-family:ebold;font-weight: bold; font-size: 15px;  text-align: right;">رقم الهاتف</label>
                         </div>
                         <div class="form-group" style="margin-bottom: 25px !important;">
                             <label class="control-label col-xs-3" for="namee" style=" color: #376773; font-family:Calibri; font-weight: bold; font-size: 15px; text-align: left;"> Subject</label>
                             <div class="col-xs-6">
                                 <input type="text" class="form-control" id="namee" style="background-color: #D5E4E8;">
                             </div>
-                            <label class="control-label col-xs-3" for="namee" style=" color: #376773; font-family:Calibri; font-weight: bold; font-size: 15px; text-align: right;">العنوان</label>
+                            <label class="control-label col-xs-3" for="namee" style=" color: #376773; font-family:ebold; font-weight: bold; font-size: 15px; text-align: right;">العنوان</label>
                         </div>
 
                         <div class="form-group required" style="margin-bottom: 5px !important;">
@@ -93,12 +99,12 @@
                             <div class="col-xs-6">
                                 <textarea name="" style="width: 100%;background: #D5E4E8;resize: vertical;"></textarea>
                             </div>
-                            <label class="control-label col-xs-3" for="namee" style=" color: #376773; font-family:Calibri; font-weight: bold; font-size: 15px; text-align: right;"> الرساله</label>
+                            <label class="control-label col-xs-3" for="namee" style=" color: #376773; font-family:ebold; font-weight: bold; font-size: 15px; text-align: right;"> الرساله</label>
                         </div>
 
                         <div class="form-group" style="margin-bottom: 25px !important;">
                             <div class=" col-xs-offset-3 col-sm-3 col-xs-5" >
-                                <input name="submit" type="submit" value="ارسال"  style="background-color: #78C8AB;color:#fff;border: 0px;border-radius: 5px;font-size: 20px;width:100%">
+                                <input name="submit" type="submit" value="إرسال"  style="background-color: #78C8AB;color:#fff;border: 0px;border-radius: 5px;font-size: 20px;width:100%">
                             </div>
                         </div>
                     </form>
