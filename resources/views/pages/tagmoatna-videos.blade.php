@@ -4,10 +4,8 @@
     <div class="row" id="rtagmoevent">
         <div class=" col-xs-6 col-sm-8 col-md-9 col-lg-10 top pull-right" id="tagmo">
             <img src="/images/pictures/m1.jpg" class="imgstyle">
-            <span id="ta">  تجمعاتنا     </span>
-            <span class="glyphicon glyphicon-menu-left" aria-hidden="true" id="ta"></span>
-            <span id="ta">  {{$data['name']}}  </span>
-            <span class="glyphicon glyphicon-menu-left" aria-hidden="true" id="ta"></span>
+            <span id="ta">  تجمعاتنا >    </span>
+            <span id="ta">  {{$data['name']}} > </span>
             <span id="ta">  فيديوهات     </span>
         </div>
         <!-- Start the dropdown date of events -->

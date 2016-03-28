@@ -5,8 +5,8 @@
                 <!-- Start the Event Name -->
         <div class=" col-xs-6 col-sm-8 col-md-9 col-lg-10 top pull-right" id="tagmo">
             <img src="/images/pictures/m1.jpg" class="imgstyle">
-            <span id="ta">  تجمعاتنا     </span>
-            <span class="glyphicon glyphicon-menu-left" aria-hidden="true" id="ta"></span>
+            <span id="ta">  تجمعاتنا >   </span>
+
             <span id="ta">{{$data->name}}</span>
         </div>
 
@@ -120,8 +120,7 @@
 
         <div class="row">
             <div class="imgWrap img-responsive" style=" height:595px!important;width: 100%!important;">
-                <img class="imgWrap img-responsive" src="/images/pictures/tagmoevent/2.jpg" alt="polaroid"
-                     style=" height:595px!important;width: 100%!important;"/>
+                <img class="imgWrap img-responsive" src="/images/pictures/tagmoevent/2.jpg" alt="polaroid" id="picevent"/>
                 <a href="/etkalemy">
                     <button id="sharewithus" class="btn btn-primary"> و شاركى معانا الان</button>
                 </a>
@@ -345,7 +344,7 @@
                 <hr class="col-xs-5 col-sm-7 col-md-8 col-lg-9" id="hrte">
             </div>
 
-            <div id="container" class="container-fluid" style="height:780px;background-color: white; padding: 10px;">
+            <div id="container" class="container-fluid" style=" overflow:auto;height:780px;background-color: white; padding: 10px;">
                 @foreach($comments as $comment)
                     <div style="background-color:#EEF4F5; padding:20px;height:200px; margin:25px;">
                         <div class="row ">
