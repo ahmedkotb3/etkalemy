@@ -357,8 +357,8 @@
 
                         </div>
 
-                        <div class="col-lg-10">
-                            <p style="font-family:Calibri;font-size: 23px; margin: 0;" class="user_name"></p>
+                        <div class="col-lg-10 user_name">
+
                             {{--<p style="font-family:Calibri;font-size: 16px;"> 20 mintues</p>--}}
                         </div>
                     </div>
@@ -383,7 +383,7 @@
                 <form class="form-inline" role="form" style="text-align:right; padding-top: 2%; padding-bottom: 2%;">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <input type="hidden" name="event_id" value="{{$data->id}}">
-                    <input type="hidden" name="user_name" class="user_name" value="{{Auth::user()->name}}">
+                    <input type="hidden" name="user_name" class="user_name" value="{{Auth::user()->english_name}}">
                     <input type="hidden" name="user_image" class="user_pic" value="{{Auth::user()->profile_image}}">
                     <div class="form-group" style=" height:50px; width: 100%;">
                         <div class=" col-xs-4 col-sm-4 col-md-3 col-lg-2 pull-right"
@@ -405,14 +405,15 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script>
         $(document).ready(function(){
+            var userIsLoggedIn = '{{ Auth::check() }}';
             $(".ajax_comment").hide();
             $("form").submit(function(event){
                 event.preventDefault();
                 var comment=$('.comment').val();
-                var user_name=$('.user_name').val();
-                var user_pic=$('.user_pic').val();
+                var user_name = $(this).parent().find('input[type="hidden"][name="user_name"]').val();
+                var user_pic = $(this).parent().find('input[type="hidden"][name="user_image"]').val();
 
-                $.ajax( {
+   $.ajax( {
                     url: '/event_comment',
                     type: 'POST',
                     data: new FormData( this ),
@@ -420,15 +421,15 @@
                     contentType: false,
                     success: function(data) {
                         $(".ajax_comment").show();
-                        var t1 = $('.commentbox').append("</br>"+comment); // list of comments. its inserting your last comment at the end of line.
-                        var t2 = $('.user_name').append("</br>"+user_name); // list of comments. its inserting your last comment at the end of line.
+                        var t1 = $('.commentbox').append(comment); // list of comments. its inserting your last comment at the end of line.
+                        var t2 = $('.user_name').append('<p style="font-family:Calibri;font-size: 23px; margin: 0;" >'+user_name+'</p>'); // list of comments. its inserting your last comment at the end of line.
                         if(user_pic == ''){
                             var t3 = $('.user_pic').append('<img src="/uploadfiles/user_photo/e.png" width="60px">');
                         }else{
-                            var t3 =  $('.user_pic').append('<img src="/uploadfiles/user_photo/'+user_name+'/'+user_pic+'" width="60px">');
+                          var t3 =  $('.user_pic').append('<img src="/uploadfiles/user_photo/'+user_name+'/'+user_pic+'" width="60px">');
                         }
 //                         $('.user_pic').append("</br>"+user_pic); // list of comments. its inserting your last comment at the end of line.
-                        $('.cont').append(t1,t2,t3);
+                        $('.cont').append(t3,t2,t1);
 
                     }});
             });

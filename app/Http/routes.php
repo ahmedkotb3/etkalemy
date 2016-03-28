@@ -37,6 +37,7 @@ Route::get('/tagmoatna-videos/{id}','pagescontroller@tagmoatnavideos');
 Route::get('/tagmoatna-videoplay/{id}','pagescontroller@tagmoatnavideoplay');
 
 Route::post('/event_comment','pagescontroller@event_comment');
+Route::post('/vedio_comment','pagescontroller@vedio_comment');
 
 Route::get('/get_event_comment/{id}','pagescontroller@get_event_comment');
 

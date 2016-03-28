@@ -7,10 +7,12 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Slider;
+use App\Speech_Comments;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
+use Madcoda\Youtube\Facades\Youtube;
 
 class pagescontroller extends Controller
 {
@@ -111,10 +113,37 @@ class pagescontroller extends Controller
 		$vedioes = Events::find($id)->speeches;
 		return view('pages/tagmoatna-videos',array('years'=>array_unique($years),'eventnames_and_year'=>$eventnames_and_year,'event_data'=>$event_data,'vedioes'=>$vedioes));
 	}
+	/********* here ***********/
 	public function tagmoatnavideoplay($id)
 	{
-		 $vedio = Event_Speeches::where('id','=',$id)->get()->first();
-		 $event_of_vedio = Events::where('id','=',$vedio->event_id)->get()->first();
+
+		$vedio = Event_Speeches::where('id','=',$id)->get()->first();
+		/***** comments from youtube ******/
+		 $vedio_id = substr($vedio->youtube_url,strrpos($vedio->youtube_url,'/')+1) ;
+		$youtube_comments_file = file_get_contents('https://www.googleapis.com/youtube/v3/commentThreads?key=AIzaSyAsaksixbvwTyTdXuYoyooitplftJnDBSs&textFormat=plainText&part=snippet&videoId='.$vedio_id.'&maxResults=50');
+		$result = json_decode($youtube_comments_file, true);
+
+		$comment_number = count($result['items']);
+		$youtube_comments = array();
+
+		for($i=0;$i<$comment_number;$i++){
+			$text = $result['items'][$i]['snippet']['topLevelComment']['snippet']['textDisplay'];
+			$user_name = $result['items'][$i]['snippet']['topLevelComment']['snippet']['authorDisplayName'];
+			$user_image = $result['items'][$i]['snippet']['topLevelComment']['snippet']['authorProfileImageUrl'];
+			$comment = array(
+					'user_name'=>$user_name,
+					'user_iamge'=>$user_image,
+					'text'=>$text,
+			);
+
+			array_push($youtube_comments,$comment);
+
+		}
+		$comments = $vedio->comments;
+
+		/***** comments from youtube ******/
+		    $event_of_vedio = Events::where('id','=',$vedio->event_id)->get()->first();
+
 		$events = Events::all();
 		$years = array();
 		$event_data = array();
@@ -129,7 +158,7 @@ class pagescontroller extends Controller
 			);
 			array_push($eventnames_and_year,$array);
 		}
-		return view('pages/tagmoatna-videoplay',array('years'=>array_unique($years),'eventnames_and_year'=>$eventnames_and_year,'event_of_vedio'=>$event_of_vedio,'vedio'=>$vedio));
+		return view('pages/tagmoatna-videoplay',array('years'=>array_unique($years),'eventnames_and_year'=>$eventnames_and_year,'event_of_vedio'=>$event_of_vedio,'vedio'=>$vedio,'youtube_comments'=>$youtube_comments,'comments'=>$comments));
 	}
 	public function tagmoatnapictures($id)
 	{
@@ -207,7 +236,20 @@ class pagescontroller extends Controller
 
 
 	}
+	public function vedio_comment(){
 
+		$comment = Input::get('comment');
+		$vedio_comment = new Speech_Comments;
+		$vedio_comment->text=$comment;
+		$vedio_comment->speech_id=Input::get('vedio_id');
+		$vedio_comment->user_id=Auth::user()->id;
+
+		$vedio_comment->user_name=Auth::user()->english_name;
+		$vedio_comment->user_image=Auth::user()->profile_image;
+		$vedio_comment->save();
+
+
+	}
 
 
 	public function showadmin()
