@@ -1,25 +1,4 @@
 
-
-
-
-
-        @else
-            <button class="pull-left" type="submit" disabled><img src="/images/pictures/donyana/like1.png"/></button>
-        @endif
-        <span class="pull-right" style=" padding-top:5px;padding-left: 7px;"><a id="clicks2">{{$count}}</a></span>
-                                        </span>
-
-                                        <span class="pull-right" style="padding-top: 7px;">
-                                            <img class="pull-left" src="/images/pictures/donyana/seen.png"/>
-                                            <span class="pull-right" style="margin-top: -3px;padding-left: 7px;"><a id="clicks3">0</a></span>
-                                        </span>
-
-</div>
-
-
-
-
-
 {{--<!DOCTYPE html>--}}
 {{--<html lang="en">--}}
 {{--<head>--}}
@@ -88,12 +67,12 @@
 
 <html>
 <body>
-{{--<a href="https://twitter.com/share?url=https%3A%2F%2Fwww.youtub" target="_blank">--}}
-    {{--<img src="https://simplesharebuttons.com/images/somacro/twitter.png" alt="Twitter" />--}}
-{{--</a>--}}
-{{--<a href="http://www.facebook.com/sharer.php…" target="_blank">--}}
-    {{--<img src="https://simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" />--}}
-{{--</a>--}}
+<a href="https://twitter.com/share?url=https%3A%2F%2Fwww.youtub" target="_blank">
+    <img src="https://simplesharebuttons.com/images/somacro/twitter.png" alt="Twitter" />
+</a>
+<a href="http://www.facebook.com/sharer.php…" target="_blank">
+    <img src="https://simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" />
+</a>
 <form>
     <input type="hidden" name="_token" value="{{csrf_token()}}">
     <input type="hidden" name="article_id" value="2">

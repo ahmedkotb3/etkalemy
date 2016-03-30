@@ -16,8 +16,15 @@
                     <div style="float:right;">
                         <span style=" padding-left:10px;float:right;font-family: ebold;font-size: 25px"> مشاركة علي</span>
                         <span>
-                            <a href=""><img src="/images/pictures/tagmoevent/facebook.png" style="max-width: 45%;"></a>
-                            <a href=""><img src="/images/pictures/tagmoevent/twitter.png" style="max-width: 45%;"></a>
+                            <?php  $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";?>
+                            <a href="https://twitter.com/share?url={{$actual_link}}" target="_blank">
+                                <img src="/images/pictures/tagmoevent/twitter.png" style="max-width: 45%;">
+                            </a>
+                            <a href="http://www.facebook.com/sharer.php?u={{$actual_link}}" target="_blank">
+                                <img src="/images/pictures/tagmoevent/facebook.png" style="max-width: 45%;">
+                            </a>
+                            {{--<a href=""><img src="/images/pictures/tagmoevent/facebook.png" style="max-width: 45%;"></a>--}}
+                            {{--<a href=""><img src="/images/pictures/tagmoevent/twitter.png" style="max-width: 45%;"></a>--}}
                         </span>
                     </div>
                     <div class="pull-left">
@@ -44,7 +51,7 @@
 
                         </span>
 
-                        </button><span class=""><button class="pull-left" type="submit" disabled><img   src="/images/pictures/seen.png"></span>
+                        <span class=""><button class="pull-left" type="submit" disabled><img   src="/images/pictures/seen.png"></button></span>
                     </div>
                 </div>
                 <hr style=" width: 100%!important;"/>
@@ -179,7 +186,7 @@
             });
         });
         $(document).ajaxComplete(function () {
-            $('form').each(function () {
+            $('.comment_form').each(function () {
                 this.reset();
             });
         });
@@ -190,7 +197,7 @@
             alert("kjkg");
             $('button').prop('disabled', true);
             $.ajax({
-                url: '/test_save',
+                url: '/article_like_save',
                 type: 'POST',
                 data: new FormData(this),
                 processData: false,

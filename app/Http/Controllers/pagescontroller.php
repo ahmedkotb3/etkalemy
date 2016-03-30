@@ -4,6 +4,7 @@ use App\Albums;
 use App\Article;
 use App\Article_Comments;
 use App\Article_Likes;
+use App\Article_Seen;
 use App\Event_Speeches;
 use App\Events;
 use App\Events_Comments;
@@ -213,9 +214,13 @@ class pagescontroller extends Controller
 
 		 $newest_to_oldest = Article::orderBy('created_at','desc')->get();
 		  $oldest_to_newwst = Article::orderBy('created_at','asc')->get();
-		 $likes = Article_Likes::where('user_id','=',Auth::user()->id)->get();
-		$likes_count = Article_Likes::all();
-		return view('pages/OurWorld',array('world'=>$world,'articles'=>$articles,'vedios'=>$vedios,'newest_to_oldest'=>$newest_to_oldest,'oldest_to_newwst'=>$oldest_to_newwst,'likes'=>$likes,'likes_count'=>$likes_count));
+//		if(Auth::check()){
+//			$likes = Article_Likes::where('user_id','=',Auth::user()->id)->get();
+//		}
+
+		 $likes_count = Article_Likes::all();
+		 $seens = Article_Seen::all();
+		return view('pages/OurWorld',array('world'=>$world,'articles'=>$articles,'vedios'=>$vedios,'newest_to_oldest'=>$newest_to_oldest,'oldest_to_newwst'=>$oldest_to_newwst,'likes_count'=>$likes_count,'seens'=>$seens));
 	}
 
 	public function OurWorldArticle($id)
@@ -229,6 +234,8 @@ class pagescontroller extends Controller
 	public function OurWorldvideo($id)
 	{
 		$vedio = Article::find($id);
+		$likes = $vedio->likes;
+		$likes_count = count($likes);
 		/***** comments from youtube ******/
 		 $vedio_id = substr($vedio->video_url,strrpos($vedio->video_url,'/')+1) ;
 		$youtube_comments_file = file_get_contents('https://www.googleapis.com/youtube/v3/commentThreads?key=AIzaSyAsaksixbvwTyTdXuYoyooitplftJnDBSs&textFormat=plainText&part=snippet&videoId='.$vedio_id.'&maxResults=50');
@@ -255,7 +262,7 @@ class pagescontroller extends Controller
 		/***** comments from youtube ******/
 		$vedio = Article::find($id);
 		$comments = $vedio->comments;
-		return view('pages/OurWorld-video',array('vedio'=>$vedio,'comments'=>$comments,'youtube_comments'=>$youtube_comments));
+		return view('pages/OurWorld-video',array('vedio'=>$vedio,'comments'=>$comments,'youtube_comments'=>$youtube_comments,'likes'=>$likes,'likes_count'=>$likes_count));
 	}
 	public function Gallery()
 	{
@@ -367,11 +374,19 @@ class pagescontroller extends Controller
 	public function test(){
 return view('pages/hend');
 	}
-	public function test_save(){
+	public function article_like_save(){
 		$article = new Article_Likes;
 		$article->article_id =Input::get('article_id');
 		$article->user_id = Input::get('user_id');
 		$article->like_status ="1" ;
+		$article->save();
+
+	}
+	public function test_save_seeen(){
+		$article = new Article_Seen();
+		$article->article_id =Input::get('article_id');
+		$article->user_id = Input::get('user_id');
+		$article->seen_status ="1" ;
 		$article->save();
 
 	}

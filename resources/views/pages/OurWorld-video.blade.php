@@ -13,12 +13,49 @@
                 <div class="row" style="padding: 20px;">
                     <div style="float:right;">
                         <span style=" padding-left:10px;float:right;font-family: ebold;font-size: 25px"> مشاركة علي</span>
-                    <span> <a href=""><img src="/images/pictures/tagmoevent/facebook.png" style="max-width: 45%;"></a>
-                        <a href=""><img src="/images/pictures/tagmoevent/twitter.png" style="max-width: 45%;"></a></span></div>
-                    <div class="pull-left">
-                        <span class=""><img   src="/images/pictures/like.png"></span>
-                        <span class=""><img   src="/images/pictures/seen.png"></span>
+
+                        <span>
+                            <?php  $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";?>
+                            <a href="https://twitter.com/share?url={{$actual_link}}" target="_blank">
+                                <img src="/images/pictures/tagmoevent/twitter.png" style="max-width: 45%;">
+                            </a>
+                            <a href="http://www.facebook.com/sharer.php?u={{$actual_link}}" target="_blank">
+                                <img src="/images/pictures/tagmoevent/facebook.png" style="max-width: 45%;">
+                            </a>
+                            {{--<a href=""><img src="/images/pictures/tagmoevent/facebook.png" style="max-width: 45%;"></a>--}}
+                            {{--<a href=""><img src="/images/pictures/tagmoevent/twitter.png" style="max-width: 45%;"></a>--}}
+                        </span>
                     </div>
+                    <div class="pull-left">
+                        <span>
+                        @if(Auth::check())
+                                @foreach($likes as $like)
+                                    @if($like->user_id == Auth::user()->id)
+                                        @if ($like->like_status == "1")
+                                            <button class="pull-left" type="submit" disabled><img   src="/images/pictures/like.png"></button><span class="">{{$likes_count}}</span>
+                                        @else
+                                            <form class="like">
+                                                <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                                <input type="hidden" name="article_id" value="{{$data->id}}">
+                                                <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                                                <button class="pull-left" type="submit"><img   src="/images/pictures/like.png"></button><span class="">{{$likes_count}}</span>
+                                            </form>
+                                        @endif
+                                    @endif
+                                @endforeach
+
+                            @else
+                                <button class="pull-left" type="submit" disabled><img   src="/images/pictures/like.png"></button><span class="">{{$likes_count}}</span>
+                            @endif
+
+                        </span>
+
+                        <span class=""><button class="pull-left" type="submit" disabled><img   src="/images/pictures/seen.png"></button></span>
+                    </div>
+                    {{--<div class="pull-left">--}}
+                        {{--<span class=""><img   src="/images/pictures/like.png"></span>--}}
+                        {{--<span class=""><img   src="/images/pictures/seen.png"></span>--}}
+                    {{--</div>--}}
                 </div>
                 <hr style=" width: 100%!important;"/>
                 <div class=" row pull-right" style="font-size: 25px; font-family: ebold; padding: 20px;">{{$vedio->title}}</div>
@@ -105,7 +142,7 @@
                 </div>
             </div>
             @if(Auth::check())
-                <form class="form-inline" role="form" style="text-align:right; padding-top: 2%; padding-bottom: 2%;">
+                <form class="form-inline comment_form" role="form" style="text-align:right; padding-top: 2%; padding-bottom: 2%;">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <input type="hidden" name="event_id" value="{{$vedio->id}}">
                     <input type="hidden" name="user_name" class="user_name" value="{{Auth::user()->english_name}}">
@@ -133,7 +170,7 @@
     <script>
         $(document).ready(function () {
             $(".ajax_comment").hide();
-            $("form").submit(function (event) {
+            $(".comment_form").submit(function (event) {
                 event.preventDefault();
 
                 var comment=$('.comment').val();
@@ -166,9 +203,22 @@
                 });
             });
             $(document).ajaxComplete(function () {
-                $('form').each(function () {
+                $('.comment_form').each(function () {
                     this.reset();
                 });
+            });
+        });
+        $(".like").submit(function (event) {
+            event.preventDefault();
+            alert("kjkg");
+            $('button').prop('disabled', true);
+            $.ajax({
+                url: '/article_like_save',
+                type: 'POST',
+                data: new FormData(this),
+                processData: false,
+                contentType: false
+
             });
         });
     </script>

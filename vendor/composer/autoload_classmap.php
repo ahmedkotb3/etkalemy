@@ -9,6 +9,7 @@ return array(
     'CreateAlbumsTable' => $baseDir . '/database/migrations/2015_12_14_105132_create_Albums_table.php',
     'CreateArticleCommentsTable' => $baseDir . '/database/migrations/2015_12_14_103105_create_Article_Comments_table.php',
     'CreateArticleLikesTable' => $baseDir . '/database/migrations/2016_03_30_090224_create_article__likes_table.php',
+    'CreateArticleSeensTable' => $baseDir . '/database/migrations/2016_03_30_141935_create_article__seens_table.php',
     'CreateArticlesTable' => $baseDir . '/database/migrations/2015_12_14_102240_create_Articles_table.php',
     'CreateEventAttendersTable' => $baseDir . '/database/migrations/2015_12_14_093349_create_Event_attenders_table.php',
     'CreateEventPicturesTable' => $baseDir . '/database/migrations/2015_12_14_090642_create_Event_Pictures_table.php',
