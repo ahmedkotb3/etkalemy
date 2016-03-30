@@ -65,7 +65,7 @@
                         <div class="form-group required" style="margin-bottom: 25px !important;margin-top: 85px !important">
                             <label class="control-label label col-xs-3" for="namee" style=" color: #376773; font-family:Calibri; font-weight: bold; font-size: 15px; text-align: left;"> Name in English</label>
                             <div class="col-xs-6">
-                                <input type="text" class="form-control" id="namee" style="background-color: #D5E4E8;">
+                                <input type="text" class="form-control" id="namee" style="background-color: #D5E4E8;" required>
                             </div>
                             <label class="control-label col-xs-3 pull-right" for="namee" style=" color: #376773; font-family:ebold; font-weight: bold; font-size: 15px; text-align: right;"> الاسم بالانجليزي
                             </label>

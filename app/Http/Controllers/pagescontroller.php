@@ -1,5 +1,9 @@
 <?php namespace App\Http\Controllers;
 
+use App\Albums;
+use App\Article;
+use App\Article_Comments;
+use App\Article_Likes;
 use App\Event_Speeches;
 use App\Events;
 use App\Events_Comments;
@@ -39,7 +43,8 @@ class pagescontroller extends Controller
 			$array = array(
 				'year'=>strtok($event->date, '-'),
 				'name'=>$event->name,
-				'id'=>$event->id
+				'id'=>$event->id,
+					'date'=>$event->date
 			);
 			array_push($eventnames_and_year,$array);
 			if($event->date >=$date){
@@ -52,14 +57,9 @@ class pagescontroller extends Controller
 		return view('pages/tagmoatna',array('years'=>array_unique($years),'eventnames_and_year'=>$eventnames_and_year,'future_events'=>$future_events,'last_events'=>$last_events));
 	}
 
-	public function joinus()
+	public function tagmoatnaevent($year)
 	{
-		return view('pages/joinus');
-	}
-
-	public function tagmoatnaevent($id)
-	{
-
+		$id = Events::where('date',"=",$year)->get()->first()->id;
 		$date = date("Y-m-d");
 
 		$events = Events::all();
@@ -77,23 +77,32 @@ class pagescontroller extends Controller
 			$array = array(
 					'year'=>strtok($event->date, '-'),
 					'name'=>$event->name,
-					'id'=>$event->id
+					'id'=>$event->id,
+					'date'=>$event->date
 			);
 			array_push($eventnames_and_year,$array);
 		}
-		 $vedioes = Events::find($id)->speeches;
+		$vedioes = Events::find($id)->speeches;
 		$pictures = Events::find($id)->pictures;
 		$number_of_vedios = count($vedioes);
 		$number_of_pictures = count($pictures);
 
-		 $comments =Events_Comments::where('event_id','=',$id)->get();
+		$comments =Events_Comments::where('event_id','=',$id)->get();
 
 		return view('pages/tagmoatna-event',array('event_data'=>$event_data,'years'=>array_unique($years),'eventnames_and_year'=>$eventnames_and_year,'vedioes'=>$vedioes,
 				'number_of_vedios'=>$number_of_vedios,'pictures'=>$pictures,'number_of_pictures'=>$number_of_pictures,'comments'=>$comments));
 	}
 
+
+	public function joinus()
+	{
+		return view('pages/joinus');
+	}
+
+
 	public function tagmoatnavideos($id)
 	{
+		//return $id=Events::where('data','=',$year)->get()->first()->id;
 		$events = Events::all();
 		$years = array();
 		$event_data = array();
@@ -190,24 +199,75 @@ class pagescontroller extends Controller
 
 	public function OurWorld()
 	{
-		return view('pages/OurWorld');
+		$world =Article::all();
+
+		$vedios=array();
+		$articles = array();
+		foreach($world as $data){
+			if($data->type == "1"){
+				array_push($vedios,$data);
+			}else{
+				array_push($articles,$data);
+			}
+		}
+
+		 $newest_to_oldest = Article::orderBy('created_at','desc')->get();
+		  $oldest_to_newwst = Article::orderBy('created_at','asc')->get();
+		 $likes = Article_Likes::where('user_id','=',Auth::user()->id)->get();
+		$likes_count = Article_Likes::all();
+		return view('pages/OurWorld',array('world'=>$world,'articles'=>$articles,'vedios'=>$vedios,'newest_to_oldest'=>$newest_to_oldest,'oldest_to_newwst'=>$oldest_to_newwst,'likes'=>$likes,'likes_count'=>$likes_count));
 	}
 
-	public function OurWorldArticle()
+	public function OurWorldArticle($id)
 	{
-		return view('pages/OurWorld-Article');
+		$article = Article::find($id);
+		 $comments = $article->comments;
+		  $likes = $article->likes;
+		 $likes_count = count($likes);
+		return view('pages/OurWorld-Article',array('article'=>$article,'comments'=>$comments,'likes'=>$likes,'likes_count'=>$likes_count));
 	}
-	public function OurWorldvideo()
+	public function OurWorldvideo($id)
 	{
-		return view('pages/OurWorld-video');
+		$vedio = Article::find($id);
+		/***** comments from youtube ******/
+		 $vedio_id = substr($vedio->video_url,strrpos($vedio->video_url,'/')+1) ;
+		$youtube_comments_file = file_get_contents('https://www.googleapis.com/youtube/v3/commentThreads?key=AIzaSyAsaksixbvwTyTdXuYoyooitplftJnDBSs&textFormat=plainText&part=snippet&videoId='.$vedio_id.'&maxResults=50');
+		$result = json_decode($youtube_comments_file, true);
+
+		$comment_number = count($result['items']);
+		$youtube_comments = array();
+
+		for($i=0;$i<$comment_number;$i++){
+			$text = $result['items'][$i]['snippet']['topLevelComment']['snippet']['textDisplay'];
+			$user_name = $result['items'][$i]['snippet']['topLevelComment']['snippet']['authorDisplayName'];
+			$user_image = $result['items'][$i]['snippet']['topLevelComment']['snippet']['authorProfileImageUrl'];
+			$comment = array(
+					'user_name'=>$user_name,
+					'user_iamge'=>$user_image,
+					'text'=>$text,
+			);
+
+			array_push($youtube_comments,$comment);
+
+		}
+
+
+		/***** comments from youtube ******/
+		$vedio = Article::find($id);
+		$comments = $vedio->comments;
+		return view('pages/OurWorld-video',array('vedio'=>$vedio,'comments'=>$comments,'youtube_comments'=>$youtube_comments));
 	}
 	public function Gallery()
 	{
-		return view('pages/Gallery');
+		$albums = Albums::all();
+		return view('pages/Gallery',array('albums'=>$albums));
 	}
-	public function Galleryevent()
+	public function Galleryevent($id)
 	{
-		return view('pages/Gallery-event');
+		$album = Albums::find($id);
+		 $album_name = $album->name;
+		$images_of_album = $album->pictures;
+		return view('pages/Gallery-event',array('images_of_album'=>$images_of_album,'album_name'=>$album_name));
 	}
 
 
@@ -236,8 +296,6 @@ class pagescontroller extends Controller
 	public function EditPersonalPage(){
 
 			return view('pages/edit_personal_page');
-
-
 
 	}
 
@@ -272,6 +330,19 @@ class pagescontroller extends Controller
 
 
 	}
+	public function article_comment(){
+		if(Auth::check()) {
+			 $comment = Input::get('comment');
+			$article_comment = new Article_Comments;
+			$article_comment->text=$comment;
+			$article_comment->article_id=Input::get('event_id');
+			$article_comment->user_id=Auth::user()->id;
+
+			$article_comment->user_name=Auth::user()->english_name;
+			$article_comment->user_image=Auth::user()->profile_image;
+			$article_comment-> save();
+		}
+	}
 
 
 	public function showadmin()
@@ -287,6 +358,21 @@ class pagescontroller extends Controller
 			return view('admin.login');
 		}
 
+
+	}
+
+
+
+
+	public function test(){
+return view('pages/hend');
+	}
+	public function test_save(){
+		$article = new Article_Likes;
+		$article->article_id =Input::get('article_id');
+		$article->user_id = Input::get('user_id');
+		$article->like_status ="1" ;
+		$article->save();
 
 	}
 }

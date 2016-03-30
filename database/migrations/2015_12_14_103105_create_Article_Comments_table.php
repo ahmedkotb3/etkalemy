@@ -18,6 +18,8 @@ class CreateArticleCommentsTable extends Migration {
             $table->integer('article_id')->unsigned()->index();
             $table->integer('user_id')->unsigned()->index();
             $table->string("text");
+            $table->string("user_name");
+            $table->string("user_image");
             $table->timestamps();
         });
 

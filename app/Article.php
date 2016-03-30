@@ -24,7 +24,9 @@ class Article extends Model {
         return $this->hasMany("App\Article_Comments","article_id");
     }
 
-
+    public function likes(){
+        return $this->hasMany("App\Article_Likes","article_id");
+    }
     /* add new article to database */
     public static function add_article($title,$subject,$video_url,$picture_url){
 
