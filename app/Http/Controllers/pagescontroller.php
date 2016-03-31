@@ -203,8 +203,35 @@ class pagescontroller extends Controller
 
 	public function OurWorld()
 	{
-		$world =Article::all();
+		 $world =Article::all();
+		$more_seen = array();
+		$seen_arr = array();
+		foreach($world as $data) {
+			 $seens = count(Article::find($data->id)->seens);
+			array_push($seen_arr,$seens);
+			$array = array(
+				'id'=>$data->id,
+				'title'=>$data->title,
+				'subject'=>$data->subject,
+				'picture_url'=>$data->picture_url,
+				'video_url'=>$data->video_url,
+				'type'=>$data->type,
+				'seen_num'=>$seens
+			);
+			array_push($more_seen,$array);
+		}
+		rsort($seen_arr);
+		$last = array();
+		for($i=0;$i<count($seen_arr);$i++){
+			foreach($more_seen as $seen_data){
+				if( $seen_data['seen_num'] == $seen_arr[$i]){
+					array_push($last,$seen_data);
 
+				}
+
+			}
+
+		}
 		$vedios=array();
 		$articles = array();
 		foreach($world as $data){
@@ -223,7 +250,8 @@ class pagescontroller extends Controller
 
 		 $likes_count = Article_Likes::all();
 		 $seens = Article_Seen::all();
-		return view('pages/OurWorld',array('world'=>$world,'articles'=>$articles,'vedios'=>$vedios,'newest_to_oldest'=>$newest_to_oldest,'oldest_to_newwst'=>$oldest_to_newwst,'likes_count'=>$likes_count,'seens'=>$seens));
+		return view('pages/OurWorld',array('world'=>$world,'articles'=>$articles,'vedios'=>$vedios,'newest_to_oldest'=>$newest_to_oldest,'oldest_to_newwst'=>$oldest_to_newwst,
+				'likes_count'=>$likes_count,'seens'=>$seens,'last'=>$last));
 	}
 
 	public function OurWorldArticle($id)

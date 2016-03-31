@@ -36,7 +36,7 @@
                 <img class="img-responsive article"style=" cursor: pointer; padding-right:10px;padding-left:10px;border-left:1px solid #9DA8AB ;float: right;" src="/images/pictures/donyana/button3.png"/>
                 <img class="img-responsive newest"style=" cursor: pointer; padding-right:10px;padding-left:10px;border-left:1px solid #9DA8AB;float: right;" src="/images/pictures/donyana/button4.png"/>
                 <img class="img-responsive oldest"style=" cursor: pointer; padding-right:10px;padding-left:10px;border-left:1px solid #9DA8AB;float: right;" src="/images/pictures/donyana/button5.png"/>
-                <img class="img-responsive"style=" cursor: pointer; padding-right:10px;padding-left:10px;float: right;" src="/images/pictures/donyana/button6.png"/>
+                <img class="img-responsive more_seen"style=" cursor: pointer; padding-right:10px;padding-left:10px;float: right;" src="/images/pictures/donyana/button6.png"/>
                 <input type="text"  style="background-color: #D5E4E8; font-family: elight;text-align: right; border: none;"
                        placeholder="إبحث هنا  "/>
                 <img  style=" cursor: pointer;" src="/images/pictures/donyana/search.png">
@@ -161,7 +161,7 @@
                                     <div class="imgWrapedonaya img-responsiveedonyana">
                                         <img class="imgWrapedonaya img-responsiveedonyana" src="http://img.youtube.com/vi/sLwrG2bwBDI/{{$data->picture_url}}" alt="polaroid"/>
                                         <a href="/OurWorld-video/{{$data->id}}">  <div class="imgDescriptione">
-                                                <span id="articleimg"><img src="/images/pictures//donyana/txt.png"/></span>
+                                                <span id="articleimg"><img src="/images/pictures//donyana/video.png"/></span>
                                                 @if(Auth::check())
                                                     @foreach($seens as $seen)
                                                         @if($seen->article_id == $data->id)
@@ -276,21 +276,21 @@
                                             <span id="articleimg"><img src="/images/pictures//donyana/txt.png"/></span>
                                             @if(Auth::check())
                                                 @foreach($seens as $seen)
-                                                    @if($seen->article_id == $data->id)
+                                                    @if($seen->article_id == $article->id)
                                                         @if($seen->user_id == Auth::user()->id && $seen->seen_status =="1")
-                                                            <button disabled><span id="txtdonyanaarticle">{{$data->title}}</span></button>
+                                                            <button disabled><span id="txtdonyanaarticle">{{$article->title}}</span></button>
                                                         @else
                                                             <form class="seen">
                                                                 <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                                                <input type="hidden" name="article_id" value="{{$data->id}}">
+                                                                <input type="hidden" name="article_id" value="{{$article->id}}">
                                                                 <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
-                                                                <button><span id="txtdonyanaarticle">{{$data->title}}</span></button>
+                                                                <button><span id="txtdonyanaarticle">{{$article->title}}</span></button>
                                                             </form>
                                                         @endif
                                                     @endif
                                                 @endforeach
                                             @else
-                                                <button disabled><span id="txtdonyanaarticle">{{$data->title}}</span></button>
+                                                <button disabled><span id="txtdonyanaarticle">{{$article->title}}</span></button>
                                             @endif
 
                                         </div>
@@ -306,7 +306,7 @@
                                             <?php
                                             $like_count = 0;
                                             foreach($likes_count as $like){
-                                                if(($like->article_id == $data->id)&& ($like->like_status == "1")){
+                                                if(($like->article_id == $article->id)&& ($like->like_status == "1")){
                                                     $like_count++;
                                                 }
                                             }
@@ -317,7 +317,7 @@
                                                 @if(Auth::check())
                                                     <form class="like" style="display: inline-block;">
                                                         <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                                        <input type="hidden" name="article_id" value="{{$data->id}}">
+                                                        <input type="hidden" name="article_id" value="{{$article->id}}">
                                                         <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                                                         <button class="pull-left like_click" type="submit" ><img src="/images/pictures/donyana/like1.png"/></button>
                                                     </form>
@@ -327,14 +327,14 @@
                                                     <!--  if text have  likes -->
                                                     @if(Auth::check())
                                                         @foreach($likes_count as $like)
-                                                            @if($like->article_id == $data->id)
+                                                            @if($like->article_id == $article->id)
                                                                 @if($like->user_id == Auth::user()->id)
                                                                     @if ($like->like_status == "1")
                                                                         <button class="pull-left" type="submit" disabled><img src="/images/pictures/donyana/like1.png"/></button>
                                                                     @else
                                                                         <form class="like" style="display: inline-block;">
                                                                             <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                                                            <input type="hidden" name="article_id" value="{{$data->id}}">
+                                                                            <input type="hidden" name="article_id" value="{{$article->id}}">
                                                                             <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                                                                             <button class="pull-left like_click" type="submit"><img src="/images/pictures/donyana/like1.png"/></button>
                                                                         </form>
@@ -354,7 +354,7 @@
                                             <?php
                                             $seen_count = 0;
                                             foreach($seens as $seen){
-                                                if(($seen->article_id == $data->id)&& ($seen->seen_status == "1")){
+                                                if(($seen->article_id == $article->id)&& ($seen->seen_status == "1")){
                                                     $seen_count++;
                                                 }
                                             }
@@ -383,16 +383,16 @@
                             <div class="imgWrapedonaya img-responsiveedonyana">
                                 <img class="imgWrapedonaya img-responsiveedonyana" src="http://img.youtube.com/vi/sLwrG2bwBDI/{{$vedio->picture_url}}" alt="polaroid"/>
                                 <a href="/OurWorld-video/{{$vedio->id}}">  <div class="imgDescriptione">
-                                        <span id="articleimg"><img src="/images/pictures//donyana/txt.png"/></span>
+                                        <span id="articleimg"><img src="/images/pictures//donyana/video.png"/></span>
                                         @if(Auth::check())
                                             @foreach($seens as $seen)
-                                                @if($seen->article_id == $data->id)
+                                                @if($seen->article_id == $vedio->id)
                                                     @if($seen->user_id == Auth::user()->id && $seen->seen_status =="1")
-                                                        <button disabled><span id="txtdonyanaarticle">{{$data->title}}</span></button>
+                                                        <button disabled><span id="txtdonyanaarticle">{{$vedio->title}}</span></button>
                                                     @else
                                                         <form class="seen">
                                                             <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                                            <input type="hidden" name="article_id" value="{{$data->id}}">
+                                                            <input type="hidden" name="article_id" value="{{$vedio->id}}">
                                                             <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                                                             <button><span id="txtdonyanaarticle">{{$data->title}}</span></button>
                                                         </form>
@@ -400,7 +400,7 @@
                                                 @endif
                                             @endforeach
                                         @else
-                                            <button disabled><span id="txtdonyanaarticle">{{$data->title}}</span></button>
+                                            <button disabled><span id="txtdonyanaarticle">{{$vedio->title}}</span></button>
                                         @endif
 
                                     </div>
@@ -416,7 +416,7 @@
                                             <?php
                                             $like_count = 0;
                                             foreach($likes_count as $like){
-                                                if(($like->article_id == $data->id)&& ($like->like_status == "1")){
+                                                if(($like->article_id == $vedio->id)&& ($like->like_status == "1")){
                                                     $like_count++;
                                                 }
                                             }
@@ -427,7 +427,7 @@
                                                 @if(Auth::check())
                                                     <form class="like" style="display: inline-block;">
                                                         <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                                        <input type="hidden" name="article_id" value="{{$data->id}}">
+                                                        <input type="hidden" name="article_id" value="{{$vedio->id}}">
                                                         <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                                                         <button class="pull-left like_click" type="submit" ><img src="/images/pictures/donyana/like1.png"/></button>
                                                     </form>
@@ -437,14 +437,14 @@
                                                     <!--  if text have  likes -->
                                                     @if(Auth::check())
                                                         @foreach($likes_count as $like)
-                                                            @if($like->article_id == $data->id)
+                                                            @if($like->article_id == $vedio->id)
                                                                 @if($like->user_id == Auth::user()->id)
                                                                     @if ($like->like_status == "1")
                                                                         <button class="pull-left" type="submit" disabled><img src="/images/pictures/donyana/like1.png"/></button>
                                                                     @else
                                                                         <form class="like" style="display: inline-block;">
                                                                             <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                                                            <input type="hidden" name="article_id" value="{{$data->id}}">
+                                                                            <input type="hidden" name="article_id" value="{{$vedio->id}}">
                                                                             <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                                                                             <button class="pull-left like_click" type="submit"><img src="/images/pictures/donyana/like1.png"/></button>
                                                                         </form>
@@ -464,7 +464,7 @@
                                             <?php
                                             $seen_count = 0;
                                             foreach($seens as $seen){
-                                                if(($seen->article_id == $data->id)&& ($seen->seen_status == "1")){
+                                                if(($seen->article_id == $vedio->id)&& ($seen->seen_status == "1")){
                                                     $seen_count++;
                                                 }
                                             }
@@ -499,21 +499,21 @@
                                                 <span id="articleimg"><img src="/images/pictures//donyana/txt.png"/></span>
                                                 @if(Auth::check())
                                                     @foreach($seens as $seen)
-                                                        @if($seen->article_id == $data->id)
+                                                        @if($seen->article_id == $oldest->id)
                                                             @if($seen->user_id == Auth::user()->id && $seen->seen_status =="1")
-                                                                <button disabled><span id="txtdonyanaarticle">{{$data->title}}</span></button>
+                                                                <button disabled><span id="txtdonyanaarticle">{{$oldest->title}}</span></button>
                                                             @else
                                                                 <form class="seen">
                                                                     <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                                                    <input type="hidden" name="article_id" value="{{$data->id}}">
+                                                                    <input type="hidden" name="article_id" value="{{$oldest->id}}">
                                                                     <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
-                                                                    <button><span id="txtdonyanaarticle">{{$data->title}}</span></button>
+                                                                    <button><span id="txtdonyanaarticle">{{$oldest->title}}</span></button>
                                                                 </form>
                                                             @endif
                                                         @endif
                                                     @endforeach
                                                 @else
-                                                    <button disabled><span id="txtdonyanaarticle">{{$data->title}}</span></button>
+                                                    <button disabled><span id="txtdonyanaarticle">{{$oldest->title}}</span></button>
                                                 @endif
 
                                             </div>
@@ -529,7 +529,7 @@
                                             <?php
                                             $like_count = 0;
                                             foreach($likes_count as $like){
-                                                if(($like->article_id == $data->id)&& ($like->like_status == "1")){
+                                                if(($like->article_id == $oldest->id)&& ($like->like_status == "1")){
                                                     $like_count++;
                                                 }
                                             }
@@ -540,7 +540,7 @@
                                                 @if(Auth::check())
                                                     <form class="like" style="display: inline-block;">
                                                         <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                                        <input type="hidden" name="article_id" value="{{$data->id}}">
+                                                        <input type="hidden" name="article_id" value="{{$oldest->id}}">
                                                         <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                                                         <button class="pull-left like_click" type="submit" ><img src="/images/pictures/donyana/like1.png"/></button>
                                                     </form>
@@ -550,14 +550,14 @@
                                                     <!--  if text have  likes -->
                                                     @if(Auth::check())
                                                         @foreach($likes_count as $like)
-                                                            @if($like->article_id == $data->id)
+                                                            @if($like->article_id == $oldest->id)
                                                                 @if($like->user_id == Auth::user()->id)
                                                                     @if ($like->like_status == "1")
                                                                         <button class="pull-left" type="submit" disabled><img src="/images/pictures/donyana/like1.png"/></button>
                                                                     @else
                                                                         <form class="like" style="display: inline-block;">
                                                                             <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                                                            <input type="hidden" name="article_id" value="{{$data->id}}">
+                                                                            <input type="hidden" name="article_id" value="{{$oldest->id}}">
                                                                             <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                                                                             <button class="pull-left like_click" type="submit"><img src="/images/pictures/donyana/like1.png"/></button>
                                                                         </form>
@@ -577,7 +577,7 @@
                                             <?php
                                             $seen_count = 0;
                                             foreach($seens as $seen){
-                                                if(($seen->article_id == $data->id)&& ($seen->seen_status == "1")){
+                                                if(($seen->article_id == $oldest->id)&& ($seen->seen_status == "1")){
                                                     $seen_count++;
                                                 }
                                             }
@@ -604,24 +604,24 @@
                                     <div class="imgWrapedonaya img-responsiveedonyana">
                                         <img class="imgWrapedonaya img-responsiveedonyana" src="http://img.youtube.com/vi/sLwrG2bwBDI/{{$data->picture_url}}" alt="polaroid"/>
                                         <a href="/OurWorld-video/{{$oldest->id}}">  <div class="imgDescriptione">
-                                                <span id="articleimg"><img src="/images/pictures//donyana/txt.png"/></span>
+                                                <span id="articleimg"><img src="/images/pictures//donyana/video.png"/></span>
                                                 @if(Auth::check())
                                                     @foreach($seens as $seen)
-                                                        @if($seen->article_id == $data->id)
+                                                        @if($seen->article_id == $oldest->id)
                                                             @if($seen->user_id == Auth::user()->id && $seen->seen_status =="1")
                                                                 <button disabled><span id="txtdonyanaarticle">{{$data->title}}</span></button>
                                                             @else
                                                                 <form class="seen">
                                                                     <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                                                    <input type="hidden" name="article_id" value="{{$data->id}}">
+                                                                    <input type="hidden" name="article_id" value="{{$oldest->id}}">
                                                                     <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
-                                                                    <button><span id="txtdonyanaarticle">{{$data->title}}</span></button>
+                                                                    <button><span id="txtdonyanaarticle">{{$oldest->title}}</span></button>
                                                                 </form>
                                                             @endif
                                                         @endif
                                                     @endforeach
                                                 @else
-                                                    <button disabled><span id="txtdonyanaarticle">{{$data->title}}</span></button>
+                                                    <button disabled><span id="txtdonyanaarticle">{{$oldest->title}}</span></button>
                                                 @endif
 
                                             </div>
@@ -637,7 +637,7 @@
                                             <?php
                                             $like_count = 0;
                                             foreach($likes_count as $like){
-                                                if(($like->article_id == $data->id)&& ($like->like_status == "1")){
+                                                if(($like->article_id == $oldest->id)&& ($like->like_status == "1")){
                                                     $like_count++;
                                                 }
                                             }
@@ -648,7 +648,7 @@
                                                 @if(Auth::check())
                                                     <form class="like" style="display: inline-block;">
                                                         <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                                        <input type="hidden" name="article_id" value="{{$data->id}}">
+                                                        <input type="hidden" name="article_id" value="{{$oldest->id}}">
                                                         <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                                                         <button class="pull-left like_click" type="submit" ><img src="/images/pictures/donyana/like1.png"/></button>
                                                     </form>
@@ -658,14 +658,14 @@
                                                     <!--  if text have  likes -->
                                                     @if(Auth::check())
                                                         @foreach($likes_count as $like)
-                                                            @if($like->article_id == $data->id)
+                                                            @if($like->article_id == $oldest->id)
                                                                 @if($like->user_id == Auth::user()->id)
                                                                     @if ($like->like_status == "1")
                                                                         <button class="pull-left" type="submit" disabled><img src="/images/pictures/donyana/like1.png"/></button>
                                                                     @else
                                                                         <form class="like" style="display: inline-block;">
                                                                             <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                                                            <input type="hidden" name="article_id" value="{{$data->id}}">
+                                                                            <input type="hidden" name="article_id" value="{{$oldest->id}}">
                                                                             <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                                                                             <button class="pull-left like_click" type="submit"><img src="/images/pictures/donyana/like1.png"/></button>
                                                                         </form>
@@ -685,7 +685,7 @@
                                             <?php
                                             $seen_count = 0;
                                             foreach($seens as $seen){
-                                                if(($seen->article_id == $data->id)&& ($seen->seen_status == "1")){
+                                                if(($seen->article_id == $oldest->id)&& ($seen->seen_status == "1")){
                                                     $seen_count++;
                                                 }
                                             }
@@ -720,21 +720,21 @@
                                                 <span id="articleimg"><img src="/images/pictures//donyana/txt.png"/></span>
                                                 @if(Auth::check())
                                                     @foreach($seens as $seen)
-                                                        @if($seen->article_id == $data->id)
+                                                        @if($seen->article_id == $newest->id)
                                                             @if($seen->user_id == Auth::user()->id && $seen->seen_status =="1")
-                                                                <button disabled><span id="txtdonyanaarticle">{{$data->title}}</span></button>
+                                                                <button disabled><span id="txtdonyanaarticle">{{$newest->title}}</span></button>
                                                             @else
                                                                 <form class="seen">
                                                                     <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                                                    <input type="hidden" name="article_id" value="{{$data->id}}">
+                                                                    <input type="hidden" name="article_id" value="{{$newest->id}}">
                                                                     <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
-                                                                    <button><span id="txtdonyanaarticle">{{$data->title}}</span></button>
+                                                                    <button><span id="txtdonyanaarticle">{{$newest->title}}</span></button>
                                                                 </form>
                                                             @endif
                                                         @endif
                                                     @endforeach
                                                 @else
-                                                    <button disabled><span id="txtdonyanaarticle">{{$data->title}}</span></button>
+                                                    <button disabled><span id="txtdonyanaarticle">{{$newest->title}}</span></button>
                                                 @endif
 
                                             </div>
@@ -750,7 +750,7 @@
                                             <?php
                                             $like_count = 0;
                                             foreach($likes_count as $like){
-                                                if(($like->article_id == $data->id)&& ($like->like_status == "1")){
+                                                if(($like->article_id == $newest->id)&& ($like->like_status == "1")){
                                                     $like_count++;
                                                 }
                                             }
@@ -761,7 +761,7 @@
                                                 @if(Auth::check())
                                                     <form class="like" style="display: inline-block;">
                                                         <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                                        <input type="hidden" name="article_id" value="{{$data->id}}">
+                                                        <input type="hidden" name="article_id" value="{{$newest->id}}">
                                                         <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                                                         <button class="pull-left like_click" type="submit" ><img src="/images/pictures/donyana/like1.png"/></button>
                                                     </form>
@@ -771,14 +771,14 @@
                                                     <!--  if text have  likes -->
                                                     @if(Auth::check())
                                                         @foreach($likes_count as $like)
-                                                            @if($like->article_id == $data->id)
+                                                            @if($like->article_id == $newest->id)
                                                                 @if($like->user_id == Auth::user()->id)
                                                                     @if ($like->like_status == "1")
                                                                         <button class="pull-left" type="submit" disabled><img src="/images/pictures/donyana/like1.png"/></button>
                                                                     @else
                                                                         <form class="like" style="display: inline-block;">
                                                                             <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                                                            <input type="hidden" name="article_id" value="{{$data->id}}">
+                                                                            <input type="hidden" name="article_id" value="{{$newest->id}}">
                                                                             <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                                                                             <button class="pull-left like_click" type="submit"><img src="/images/pictures/donyana/like1.png"/></button>
                                                                         </form>
@@ -798,7 +798,7 @@
                                             <?php
                                             $seen_count = 0;
                                             foreach($seens as $seen){
-                                                if(($seen->article_id == $data->id)&& ($seen->seen_status == "1")){
+                                                if(($seen->article_id == $newest->id)&& ($seen->seen_status == "1")){
                                                     $seen_count++;
                                                 }
                                             }
@@ -825,24 +825,24 @@
                                     <div class="imgWrapedonaya img-responsiveedonyana">
                                         <img class="imgWrapedonaya img-responsiveedonyana" src="http://img.youtube.com/vi/sLwrG2bwBDI/{{$newest->picture_url}}" alt="polaroid"/>
                                         <a href="/OurWorld-video/{{$newest->id}}">  <div class="imgDescriptione">
-                                                <span id="articleimg"><img src="/images/pictures//donyana/txt.png"/></span>
+                                                <span id="articleimg"><img src="/images/pictures//donyana/video.png"/></span>
                                                 @if(Auth::check())
                                                     @foreach($seens as $seen)
-                                                        @if($seen->article_id == $data->id)
+                                                        @if($seen->article_id == $newest->id)
                                                             @if($seen->user_id == Auth::user()->id && $seen->seen_status =="1")
-                                                                <button disabled><span id="txtdonyanaarticle">{{$data->title}}</span></button>
+                                                                <button disabled><span id="txtdonyanaarticle">{{$newest->title}}</span></button>
                                                             @else
                                                                 <form class="seen">
                                                                     <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                                                    <input type="hidden" name="article_id" value="{{$data->id}}">
+                                                                    <input type="hidden" name="article_id" value="{{$newest->id}}">
                                                                     <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
-                                                                    <button><span id="txtdonyanaarticle">{{$data->title}}</span></button>
+                                                                    <button><span id="txtdonyanaarticle">{{$newest->title}}</span></button>
                                                                 </form>
                                                             @endif
                                                         @endif
                                                     @endforeach
                                                 @else
-                                                    <button disabled><span id="txtdonyanaarticle">{{$data->title}}</span></button>
+                                                    <button disabled><span id="txtdonyanaarticle">{{$newest->title}}</span></button>
                                                 @endif
 
                                             </div>
@@ -858,7 +858,7 @@
                                             <?php
                                             $like_count = 0;
                                             foreach($likes_count as $like){
-                                                if(($like->article_id == $data->id)&& ($like->like_status == "1")){
+                                                if(($like->article_id == $newest->id)&& ($like->like_status == "1")){
                                                     $like_count++;
                                                 }
                                             }
@@ -869,7 +869,7 @@
                                                 @if(Auth::check())
                                                     <form class="like" style="display: inline-block;">
                                                         <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                                        <input type="hidden" name="article_id" value="{{$data->id}}">
+                                                        <input type="hidden" name="article_id" value="{{$newest->id}}">
                                                         <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                                                         <button class="pull-left like_click" type="submit" ><img src="/images/pictures/donyana/like1.png"/></button>
                                                     </form>
@@ -879,14 +879,14 @@
                                                     <!--  if text have  likes -->
                                                     @if(Auth::check())
                                                         @foreach($likes_count as $like)
-                                                            @if($like->article_id == $data->id)
+                                                            @if($like->article_id == $newest->id)
                                                                 @if($like->user_id == Auth::user()->id)
                                                                     @if ($like->like_status == "1")
                                                                         <button class="pull-left" type="submit" disabled><img src="/images/pictures/donyana/like1.png"/></button>
                                                                     @else
                                                                         <form class="like" style="display: inline-block;">
                                                                             <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                                                            <input type="hidden" name="article_id" value="{{$data->id}}">
+                                                                            <input type="hidden" name="article_id" value="{{$newest->id}}">
                                                                             <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                                                                             <button class="pull-left like_click" type="submit"><img src="/images/pictures/donyana/like1.png"/></button>
                                                                         </form>
@@ -906,7 +906,7 @@
                                             <?php
                                             $seen_count = 0;
                                             foreach($seens as $seen){
-                                                if(($seen->article_id == $data->id)&& ($seen->seen_status == "1")){
+                                                if(($seen->article_id == $newest->id)&& ($seen->seen_status == "1")){
                                                     $seen_count++;
                                                 }
                                             }
@@ -926,7 +926,224 @@
                     @endif
                 @endforeach
             </div>
-            <div class="row1" style=" direction:rtl;width: 100%;"></div>
+
+
+
+            <div class="row1 seens hidden_div" style=" direction:rtl;width: 100%;">
+                @foreach($last as $more_seen)
+                    @if($more_seen['type'] == "2")
+                    <div class="menu-category list-group ">
+                        <div class=" col-xs-12 col-sm-6 col-md-4 col-lg-3" style="width:100%;padding: 0!important;">
+                            <div style="padding: 20px;  border-radius:5px;background-color:white;margin-left: 15px!important; min-height: 155px">
+                                <!--img style="margin-left: auto; margin-right: auto; display: block; vertical-align: middle;" class="img-responsive" src="/images/pictures/e.png"/-->
+                                <div class="imgWrapedonaya img-responsiveedonyana">
+                                    <img class="imgWrapedonaya img-responsiveedonyana" src="/uploadfiles/articles/{{$more_seen['title']}}/{{$more_seen['picture_url']}}" alt="polaroid"/>
+                                    <a href="/OurWorld-Article/{{$more_seen['id']}}">
+                                        <div class="imgDescriptione">
+                                            <span id="articleimg"><img src="/images/pictures//donyana/txt.png"/></span>
+                                            @if(Auth::check())
+                                                @foreach($seens as $seen)
+                                                    @if($seen->article_id == $more_seen['id'])
+                                                        @if($seen->user_id == Auth::user()->id && $seen->seen_status =="1")
+                                                            <button disabled><span id="txtdonyanaarticle">{{$more_seen['title']}}</span></button>
+                                                        @else
+                                                            <form class="seen">
+                                                                <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                                                <input type="hidden" name="article_id" value="{{$more_seen['id']}}">
+                                                                <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                                                                <button><span id="txtdonyanaarticle">{{$more_seen['title']}}</span></button>
+                                                            </form>
+                                                        @endif
+                                                    @endif
+                                                @endforeach
+                                            @else
+                                                <button disabled><span id="txtdonyanaarticle">{{$more_seen['title']}}</span></button>
+                                            @endif
+
+                                        </div>
+                                    </a>
+                                </div>
+                                <div style=" padding-top:5px;text-align:right;font-family: ebold;font-size: 14px;">
+                                    <?php echo substr($article->subject,0,150); ?>
+                                </div>
+                                <!-- this code show like and seen with count -->
+                                <div style="height:30px;">
+                                        <span class="pull-left">
+                                            <!-- Start calculate count of like to the article -->
+                                            <?php
+                                            $like_count = 0;
+                                            foreach($likes_count as $like){
+                                                if(($like->article_id == $more_seen['id'])&& ($like->like_status == "1")){
+                                                    $like_count++;
+                                                }
+                                            }
+                                            ?>
+                                                    <!-- End calculate count of like to the article -->
+                                            <!--  if text have no likes -->
+                                            @if($like_count == "0")
+                                                @if(Auth::check())
+                                                    <form class="like" style="display: inline-block;">
+                                                        <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                                        <input type="hidden" name="article_id" value="{{$more_seen['id']}}">
+                                                        <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                                                        <button class="pull-left like_click" type="submit" ><img src="/images/pictures/donyana/like1.png"/></button>
+                                                    </form>
+                                                    @endif
+                                                    @endif
+                                                            <!-- End if --------------------->
+                                                    <!--  if text have  likes -->
+                                                    @if(Auth::check())
+                                                        @foreach($likes_count as $like)
+                                                            @if($like->article_id == $more_seen['id'])
+                                                                @if($like->user_id == Auth::user()->id)
+                                                                    @if ($like->like_status == "1")
+                                                                        <button class="pull-left" type="submit" disabled><img src="/images/pictures/donyana/like1.png"/></button>
+                                                                    @else
+                                                                        <form class="like" style="display: inline-block;">
+                                                                            <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                                                            <input type="hidden" name="article_id" value="{{$more_seen['id']}}">
+                                                                            <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                                                                            <button class="pull-left like_click" type="submit"><img src="/images/pictures/donyana/like1.png"/></button>
+                                                                        </form>
+                                                                    @endif
+                                                                @endif
+                                                            @endif
+                                                        @endforeach
+                                                    @else
+                                                        <button class="pull-left" type="submit" disabled><img src="/images/pictures/donyana/like1.png"/></button>
+                                                    @endif
+
+                                                    <span class="pull-right db_count" style=" padding-top:5px;padding-left: 7px;"><a id="clicks2">{{$like_count}}</a></span>
+                                                    <span class="pull-right jq_count" style=" padding-top:5px;padding-left: 7px;"></span>
+                                        </span>
+
+                                        <span class="pull-right" style="padding-top: 7px;">
+                                            <?php
+                                            $seen_count = 0;
+                                            foreach($seens as $seen){
+                                                if(($seen->article_id == $more_seen['id'])&& ($seen->seen_status == "1")){
+                                                    $seen_count++;
+                                                }
+                                            }
+                                            ?>
+                                            <img class="pull-left" src="/images/pictures/donyana/seen.png"/>
+                                            <span class="pull-right db_seen_count" style="margin-top: -3px;padding-left: 7px;"><a id="clicks3">{{$seen_count}}</a></span>
+                                            <span class="pull-right jq_seen_count" style="margin-top: -3px;padding-left: 7px;"></span>
+                                        </span>
+                                </div>
+                                <hr style="margin-top: 10px!important;"/>
+                            </div>
+                            <img style="position: relative;top: -14px;right: 150px;" src="/images/pictures/donyana/1.png ">
+                        </div>
+                    </div>
+                    @else
+                        <div class="menu-category list-group ">
+                            <div class=" col-xs-12 col-sm-6 col-md-4 col-lg-3" style="width:100%;padding: 0!important;min-height: 300px">
+                                <div style="padding: 10px;  border-radius:5px;background-color:white;margin-left: 15px!important;">
+                                    <!--img style="margin-left: auto; margin-right: auto; display: block; vertical-align: middle;" class="img-responsive" src="/images/pictures/e.png"/-->
+                                    <div class="imgWrapedonaya img-responsiveedonyana">
+                                        <img class="imgWrapedonaya img-responsiveedonyana" src="http://img.youtube.com/vi/sLwrG2bwBDI/{{$more_seen['picture_url']}}" alt="polaroid"/>
+                                        <a href="/OurWorld-video/{{$more_seen['id']}}">  <div class="imgDescriptione">
+                                                <span id="articleimg"><img src="/images/pictures//donyana/video.png"/></span>
+                                                @if(Auth::check())
+                                                    @foreach($seens as $seen)
+                                                        @if($seen->article_id == $more_seen['id'])
+                                                            @if($seen->user_id == Auth::user()->id && $seen->seen_status =="1")
+                                                                <button disabled><span id="txtdonyanaarticle">{{$more_seen['title']}}</span></button>
+                                                            @else
+                                                                <form class="seen">
+                                                                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                                                    <input type="hidden" name="article_id" value="{{$more_seen['id']}}">
+                                                                    <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                                                                    <button><span id="txtdonyanaarticle">{{$more_seen['title']}}</span></button>
+                                                                </form>
+                                                            @endif
+                                                        @endif
+                                                    @endforeach
+                                                @else
+                                                    <button disabled><span id="txtdonyanaarticle">{{$more_seen['title']}}</span></button>
+                                                @endif
+
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div style=" padding-top:5px;text-align:right;font-family: ebold;font-size: 14px;">
+                                        <?php echo substr($vedio->subject,0,150); ?>
+                                    </div>
+                                    <!-- this code show like and seen with count -->
+                                    <div style="height:30px;">
+                                        <span class="pull-left">
+                                            <!-- Start calculate count of like to the article -->
+                                            <?php
+                                            $like_count = 0;
+                                            foreach($likes_count as $like){
+                                                if(($like->article_id == $more_seen['id'])&& ($like->like_status == "1")){
+                                                    $like_count++;
+                                                }
+                                            }
+                                            ?>
+                                                    <!-- End calculate count of like to the article -->
+                                            <!--  if text have no likes -->
+                                            @if($like_count == "0")
+                                                @if(Auth::check())
+                                                    <form class="like" style="display: inline-block;">
+                                                        <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                                        <input type="hidden" name="article_id" value="{{$more_seen['id']}}">
+                                                        <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                                                        <button class="pull-left like_click" type="submit" ><img src="/images/pictures/donyana/like1.png"/></button>
+                                                    </form>
+                                                    @endif
+                                                    @endif
+                                                            <!-- End if --------------------->
+                                                    <!--  if text have  likes -->
+                                                    @if(Auth::check())
+                                                        @foreach($likes_count as $like)
+                                                            @if($like->article_id == $more_seen['id'])
+                                                                @if($like->user_id == Auth::user()->id)
+                                                                    @if ($like->like_status == "1")
+                                                                        <button class="pull-left" type="submit" disabled><img src="/images/pictures/donyana/like1.png"/></button>
+                                                                    @else
+                                                                        <form class="like" style="display: inline-block;">
+                                                                            <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                                                            <input type="hidden" name="article_id" value="{{$more_seen['id']}}">
+                                                                            <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                                                                            <button class="pull-left like_click" type="submit"><img src="/images/pictures/donyana/like1.png"/></button>
+                                                                        </form>
+                                                                    @endif
+                                                                @endif
+                                                            @endif
+                                                        @endforeach
+                                                    @else
+                                                        <button class="pull-left" type="submit" disabled><img src="/images/pictures/donyana/like1.png"/></button>
+                                                    @endif
+
+                                                    <span class="pull-right db_count" style=" padding-top:5px;padding-left: 7px;"><a id="clicks2">{{$like_count}}</a></span>
+                                                    <span class="pull-right jq_count" style=" padding-top:5px;padding-left: 7px;"></span>
+                                        </span>
+
+                                        <span class="pull-right" style="padding-top: 7px;">
+                                            <?php
+                                            $seen_count = 0;
+                                            foreach($seens as $seen){
+                                                if(($seen->article_id == $more_seen['id'])&& ($seen->seen_status == "1")){
+                                                    $seen_count++;
+                                                }
+                                            }
+                                            ?>
+                                            <img class="pull-left" src="/images/pictures/donyana/seen.png"/>
+                                            <span class="pull-right db_seen_count" style="margin-top: -3px;padding-left: 7px;"><a id="clicks3">{{$seen_count}}</a></span>
+                                            <span class="pull-right jq_seen_count" style="margin-top: -3px;padding-left: 7px;"></span>
+                                        </span>
+                                    </div>
+                                    <hr style="margin-top: 10px!important;"/>
+
+                                </div>
+                                <img style="position: relative;top: -14px;right: 150px;" src="/images/pictures/donyana/1.png ">
+                            </div>
+                        </div>
+                        @endif
+                @endforeach
+            </div>
 
         </div>
     </div>
@@ -935,23 +1152,27 @@
         $(document).ready(function() {
             $(".all").click(function () {
                 $(".world").removeClass("hidden_div");
-                $(".vedios,.articles,.oldtonew,.newtoold").addClass("hidden_div");
+                $(".vedios,.articles,.oldtonew,.newtoold,.seens").addClass("hidden_div");
             });
             $(".vedio").click(function () {
                 $(".vedios").removeClass("hidden_div");
-                $(".world,.articles,.oldtonew,.newtoold").addClass("hidden_div");
+                $(".world,.articles,.oldtonew,.newtoold,.seens").addClass("hidden_div");
             });
             $(".article").click(function () {
                 $(".articles").removeClass("hidden_div");
-                $(".world,.vedios,.oldtonew,.newtoold").addClass("hidden_div");
+                $(".world,.vedios,.oldtonew,.newtoold,.seens").addClass("hidden_div");
             });
             $(".oldest").click(function () {
                 $(".oldtonew").removeClass("hidden_div");
-                $(".world,.articles,.vedios,.newtoold").addClass("hidden_div");
+                $(".world,.articles,.vedios,.newtoold,.seens").addClass("hidden_div");
             });
             $(".newest").click(function () {
                 $(".newtoold").removeClass("hidden_div");
-                $(".world,.articles,.oldtonew,.vedios").addClass("hidden_div");
+                $(".world,.articles,.oldtonew,.vedios,.seens").addClass("hidden_div");
+            });
+            $(".more_seen").click(function () {
+                $(".seens").removeClass("hidden_div");
+                $(".world,.articles,.oldtonew,.vedios,.newtoold").addClass("hidden_div");
             });
         });
 
