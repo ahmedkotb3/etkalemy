@@ -24,6 +24,7 @@ Route::controllers([
 ]);
 
 Route::get('/','pagescontroller@index');
+Route::get('/get_like_count','pagescontroller@get_like_count');
 
 Route::get('/Events','pagescontroller@tagmoatna');
 

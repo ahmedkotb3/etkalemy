@@ -228,14 +228,18 @@ class pagescontroller extends Controller
 		$article = Article::find($id);
 		 $comments = $article->comments;
 		  $likes = $article->likes;
+		  $seens = $article->seens;
+		 $seens_count = count($seens);
 		 $likes_count = count($likes);
-		return view('pages/OurWorld-Article',array('article'=>$article,'comments'=>$comments,'likes'=>$likes,'likes_count'=>$likes_count));
+		return view('pages/OurWorld-Article',array('article'=>$article,'comments'=>$comments,'likes'=>$likes,'likes_count'=>$likes_count,'seens_count'=>$seens_count));
 	}
 	public function OurWorldvideo($id)
 	{
 		$vedio = Article::find($id);
 		$likes = $vedio->likes;
+		$seens = $vedio->seens;
 		$likes_count = count($likes);
+		$seens_count = count($seens);
 		/***** comments from youtube ******/
 		 $vedio_id = substr($vedio->video_url,strrpos($vedio->video_url,'/')+1) ;
 		$youtube_comments_file = file_get_contents('https://www.googleapis.com/youtube/v3/commentThreads?key=AIzaSyAsaksixbvwTyTdXuYoyooitplftJnDBSs&textFormat=plainText&part=snippet&videoId='.$vedio_id.'&maxResults=50');
@@ -262,7 +266,7 @@ class pagescontroller extends Controller
 		/***** comments from youtube ******/
 		$vedio = Article::find($id);
 		$comments = $vedio->comments;
-		return view('pages/OurWorld-video',array('vedio'=>$vedio,'comments'=>$comments,'youtube_comments'=>$youtube_comments,'likes'=>$likes,'likes_count'=>$likes_count));
+		return view('pages/OurWorld-video',array('vedio'=>$vedio,'comments'=>$comments,'youtube_comments'=>$youtube_comments,'likes'=>$likes,'likes_count'=>$likes_count,'seens_count'=>$seens_count));
 	}
 	public function Gallery()
 	{
@@ -381,6 +385,9 @@ return view('pages/hend');
 		$article->like_status ="1" ;
 		$article->save();
 
+	}
+	public function get_like_count(){
+		return $count = 3;
 	}
 	public function test_save_seeen(){
 		$article = new Article_Seen();

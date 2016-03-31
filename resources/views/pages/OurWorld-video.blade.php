@@ -29,16 +29,29 @@
                     <div class="pull-left">
                         <span>
                         @if(Auth::check())
+                                @if($likes_count == 0)
+                                    <form class="like">
+                                        <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                        <input type="hidden" name="article_id" value="{{$vedio->id}}">
+                                        <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                                        <button class="pull-left" type="submit"><img   src="/images/pictures/like.png"></button>
+                                        <span class="db_like_count">{{$likes_count}}</span>
+                                        <span class="jq_like_count"></span>
+                                    </form>
+                                @endif
                                 @foreach($likes as $like)
                                     @if($like->user_id == Auth::user()->id)
                                         @if ($like->like_status == "1")
-                                            <button class="pull-left" type="submit" disabled><img   src="/images/pictures/like.png"></button><span class="">{{$likes_count}}</span>
+                                            <button class="pull-left" type="submit" disabled><img   src="/images/pictures/like.png"></button>
+                                            <span class="">{{$likes_count}}</span>
                                         @else
                                             <form class="like">
                                                 <input type="hidden" name="_token" value="{{csrf_token()}}">
                                                 <input type="hidden" name="article_id" value="{{$data->id}}">
                                                 <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
-                                                <button class="pull-left" type="submit"><img   src="/images/pictures/like.png"></button><span class="">{{$likes_count}}</span>
+                                                <button class="pull-left" type="submit"><img   src="/images/pictures/like.png"></button>
+                                                <span class="db_like_count">{{$likes_count}}</span>
+                                                <span class="jq_like_count"></span>
                                             </form>
                                         @endif
                                     @endif
@@ -50,12 +63,8 @@
 
                         </span>
 
-                        <span class=""><button class="pull-left" type="submit" disabled><img   src="/images/pictures/seen.png"></button></span>
+                        <span class=""><button class="pull-left" type="submit" disabled><img   src="/images/pictures/seen.png">{{$seens_count}}</button> </span>
                     </div>
-                    {{--<div class="pull-left">--}}
-                        {{--<span class=""><img   src="/images/pictures/like.png"></span>--}}
-                        {{--<span class=""><img   src="/images/pictures/seen.png"></span>--}}
-                    {{--</div>--}}
                 </div>
                 <hr style=" width: 100%!important;"/>
                 <div class=" row pull-right" style="font-size: 25px; font-family: ebold; padding: 20px;">{{$vedio->title}}</div>
@@ -207,20 +216,29 @@
                     this.reset();
                 });
             });
-        });
-        $(".like").submit(function (event) {
-            event.preventDefault();
-            alert("kjkg");
-            $('button').prop('disabled', true);
-            $.ajax({
-                url: '/article_like_save',
-                type: 'POST',
-                data: new FormData(this),
-                processData: false,
-                contentType: false
+
+            $(".like").submit(function (event) {
+                var like_num = parseInt($(".db_like_count").text());
+                var num = 1;
+                var count = like_num + num;
+                event.preventDefault();
+                $('button').prop('disabled', true);
+                $.ajax({
+                    url: '/article_like_save',
+                    type: 'POST',
+                    data: new FormData(this),
+                    processData: false,
+                    contentType: false,
+                    success: function (data) {
+
+                    }
+                });
+                $(".db_like_count").css("display", "none");
+                $(".jq_like_count").append(count);
 
             });
         });
+
     </script>
 
 
