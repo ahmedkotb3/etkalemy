@@ -4,7 +4,7 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Etkalemy</title>
+    <title>Etkallemi</title>
     <link rel="shortcut icon" href="/images/pictures/fa/f2.ico" />
 
 

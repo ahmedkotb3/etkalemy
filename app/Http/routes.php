@@ -47,7 +47,7 @@ Route::get('/get_event_comment/{id}','pagescontroller@get_event_comment');
 
 
 
-Route::get('/joinus','pagescontroller@joinus');
+Route::get('/JoinUs','pagescontroller@joinus');
 
 Route::get('/OurWorld','pagescontroller@OurWorld');
 Route::get('/OurWorld-Article/{id}','pagescontroller@OurWorldArticle');
@@ -58,9 +58,9 @@ Route::get('/twitter', 'pagescontroller@twitter');
 
 
 Route::get('/AdminControl','pagescontroller@showadmin');
-Route::get('/etkalemy','pagescontroller@etkalemy');
-Route::get('/contactus','pagescontroller@contactus');
-Route::get('/aboutus','pagescontroller@aboutus');
+Route::get('/Speak','pagescontroller@etkalemy');
+Route::get('/ContactUs','pagescontroller@contactus');
+Route::get('/About','pagescontroller@aboutus');
 Route::get('/login','pagescontroller@login');
 Route::get('/personalPage','pagescontroller@personalPage');
 Route::get('/EditPersonalPage','pagescontroller@EditPersonalPage');
