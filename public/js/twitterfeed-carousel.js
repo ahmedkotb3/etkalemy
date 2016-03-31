@@ -15,7 +15,7 @@ $(document).ready(function(){
 	
 	// ------------ Twitter Carousel Variables	------------
 	var feedheight = 180;
-	var pausetime = 5000;
+	var pausetime = 9500;
 	var slidetime = 2000;	
 	var tweetshift = 2
 	var slideinitial = true;

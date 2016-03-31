@@ -64,6 +64,11 @@
             content:"*";
             color:red;
         }
+        .form-group.required .labeled1:after {
+            float:left;
+            content:"*";
+            color:red;
+        }
         .social_icon{
             font-size: 80px;
         }
@@ -95,7 +100,7 @@
                             <div class="col-xs-6">
                                 <input type="text" class="form-control required" id="namee" style="background-color: #D5E4E8;">
                             </div>
-                            <label class="control-label col-xs-3 pull-right" for="namee" id="arabictxt" > الاسم بالانجليزي
+                            <label class="control-label  labeled1 col-xs-3 pull-right" for="namee" id="arabictxt" > الاسم بالانجليزي
                             </label>
                         </div>
 
@@ -104,7 +109,7 @@
                             <div class="col-xs-6">
                                 <input type="email" class="form-control required" id="email" style="background-color: #D5E4E8;">
                             </div>
-                            <label class="control-label col-xs-3" for="email" id="arabictxt" >البريد الالكتروني  </label>
+                            <label class="control-label labeled1 col-xs-3"  for="email" id="arabictxt" >البريد الالكتروني  </label>
                         </div>
 
                         <div class="form-group" style="margin-bottom: 25px !important;">
@@ -127,7 +132,7 @@
                             <div class="col-xs-6">
                                 <textarea  class="required" name="" style="font-size: 15px;height: 160px;width: 100%;background: #D5E4E8;resize: vertical;"></textarea>
                             </div>
-                            <label class="control-label col-xs-3" for="namee" id="arabictxt" > الرساله</label>
+                            <label class="control-label labeled1 col-xs-3" for="namee" id="arabictxt" > الرساله</label>
                         </div>
 
                         <div class="form-group" style="margin-bottom: 25px !important;">

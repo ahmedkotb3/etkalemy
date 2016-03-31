@@ -8,19 +8,19 @@
 
                     <div class="col-sm-3 col-md-3 col-lg-3"
                          style=" height:450px;background-color:#E8FCFF; padding-right: 0px; padding-left: 0px; float: right;" >
-                        <a href="/tagmoatna" > <img class="img-responsive" style="height: 450px" id="slide1" src="/images/pictures/slide/60.png" ></a>
+                        <a href="/Events" > <img class="img-responsive" style="height: 450px" id="slide1" src="/images/pictures/slide/60.png" ></a>
                     </div>
                         <div class="col-sm-3 col-md-3 col-lg-3"
                              style=" height:450px;background-color:#D4F4FA; padding-right: 0px; padding-left: 0px; float: right;  ">
-                            <a href="#"><img class="img-responsive" style="height: 450px"id="slide2" src="/images/pictures/slide/70.png"/></a>
+                            <a href="/OurWorld"><img class="img-responsive" style="height: 450px"id="slide2" src="/images/pictures/slide/70.png"/></a>
                         </div>
                         <div class="col-sm-3 col-md-3 col-lg-3"
                              style=" height:450px;background-color:#C0E6ED; padding-right: 0px; padding-left: 0px; float:right;">
-                            <a href="#"><img class="img-responsive"style="height: 450px"id="slide3" src="/images/pictures/slide/80.png"/></a>
+                            <a href="/JoinUs"><img class="img-responsive"style="height: 450px"id="slide3" src="/images/pictures/slide/80.png"/></a>
                         </div>
                         <div class="col-sm-3 col-md-3 col-lg-3"
                              style=" height:450px;background-color:#B0D2D9; padding-right: 0px; float: right; padding-left: 0px; border-radius:5px 0px 0px 5px ;">
-                            <a href="#"><img class="img-responsive" style="height: 450px" id="slide4"src="/images/pictures/slide/90.png"/></a>
+                            <a href="/Speak"><img class="img-responsive" style="height: 450px" id="slide4"src="/images/pictures/slide/90.png"/></a>
                         </div>
                     </div>
                 <!-- Start the Slider -->

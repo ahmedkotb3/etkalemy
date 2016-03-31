@@ -64,7 +64,7 @@
 
                 @else
                     <a href="/login" class="button" style=" border-right:1px solid black !important; padding-right:5px;font-family: my; ">Login </a>
-                    <a href="" class="button" style="font-family: my; "> Join us </a>
+                    <a href="/JoinUs" class="button" style="font-family: my; "> Join Us </a>
                 @endif
                 <form class="navbar-form" role="search">
                     <div class="input-group">
@@ -108,11 +108,11 @@
         <li><a href="/"> الرئيسية </a></li>
         <li><a href="/Events"> تجمعاتنا </a></li>
         <li><a href="/OurWorld"> دنيانا </a></li>
-        <li><a href="/joinus"> انضمي لنا </a></li>
-        <li><a href="/etkalemy"> إتكلمى </a></li>
+        <li><a href="/JoinUs"> انضمي لنا </a></li>
+        <li><a href="/Speak"> إتكلمي </a></li>
         <li><a href="/Gallery"> جاليري </a></li>
-        <li><a href="/contactus"> للاتصال بنا </a></li>
-        <li><a href="/aboutus"> عن إتكلمى </a></li>
+        <li><a href="/ContactUs"> للإتصال بنا </a></li>
+        <li><a href="/About"> عن إتكلمي </a></li>
         <div style=" padding-top: 5px; background-color: white;">
             <a href="https://www.youtube.com/" style=" padding:0 7%;"><i class="fa fa-youtube-square fa-3x" style="background:white; color: red; border: 0;"></i></a>
             <a href="" style="padding:0 5%;"><i class="fa fa-facebook-official fa-3x" style=" background: white; color:#032C7C;"></i></a>
@@ -162,11 +162,11 @@
     <div class="collapse navbar-collapse" id="navHeaderCollapse">
         <ul class="nav navbar-nav navbar-right"
             style="text-align:center; width:100%; margin-right:15px!important;font-family: ebold!important; font-size: 18px; ">
-            <li><a href="/aboutus"> عن إتكلمى </a></li>
-            <li><a href="/contactus"> للاتصال بنا </a></li>
+            <li><a href="/Aboutus"> عن إتكلمي </a></li>
+            <li><a href="/ContactUs"> للإتصال بنا </a></li>
             <li><a href="/Gallery"> جاليري </a></li>
-            <li><a href="/etkalemy"> إتكلمى </a></li>
-            <li><a href="/joinus"> انضمي لنا </a></li>
+            <li><a href="/Speak"> إتكلمي </a></li>
+            <li><a href="/JoinUs"> انضمي لنا </a></li>
             <li><a href="/OurWorld"> دنيانا </a></li>
             <li><a href="/Events"> تجمعاتنا </a></li>
             <li><a href="/"> الرئيسية </a></li>
