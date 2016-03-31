@@ -1,6 +1,5 @@
 @extends('pages.templet')
 @section('content')
-
     <div  class="top" id="marginmobile1"style=" margin-bottom: 20px!important;">
         <img src="/images/pictures/m1.jpg" class="imgstyle">
         <span id="topjoinus">     دنيانا </span>
@@ -8,9 +7,7 @@
 
     <div class="container-fluid" style=" padding: 0; background-color: #D5E4E8; color: #376773">
         <div class="container-fluid" id="marginmobile">
-
             <img   class="img-responsive"  style=" width:100%;height: 350px;" src="/uploadfiles/articles/{{$article->title}}/{{$article->picture_url}}" alt="polaroid"/>
-
             <div  class="container-fluid" style=" padding: 0!important; margin-top:-5px;background-color: white">
                 <div class="row" style="padding: 20px;">
                     <div style="float:right;">
@@ -27,19 +24,33 @@
                             {{--<a href=""><img src="/images/pictures/tagmoevent/twitter.png" style="max-width: 45%;"></a>--}}
                         </span>
                     </div>
+
                     <div class="pull-left">
                         <span>
                         @if(Auth::check())
+                            @if($likes_count == 0)
+                                    <form class="like">
+                                        <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                        <input type="hidden" name="article_id" value="{{$article->id}}">
+                                        <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                                        <button class="pull-left" type="submit"><img   src="/images/pictures/like.png"></button>
+                                        <span class="db_like_count">{{$likes_count}}</span>
+                                        <span class="jq_like_count"></span>
+                                    </form>
+                            @endif
                             @foreach($likes as $like)
                                 @if($like->user_id == Auth::user()->id)
                                     @if ($like->like_status == "1")
-                                        <button class="pull-left" type="submit" disabled><img   src="/images/pictures/like.png"></button><span class="">{{$likes_count}}</span>
+                                        <button class="pull-left" type="submit" disabled><img   src="/images/pictures/like.png"></button>
+                                        <span class="">{{$likes_count}}</span>
                                     @else
                                         <form class="like">
                                             <input type="hidden" name="_token" value="{{csrf_token()}}">
                                             <input type="hidden" name="article_id" value="{{$data->id}}">
                                             <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
-                                            <button class="pull-left" type="submit"><img   src="/images/pictures/like.png"></button><span class="">{{$likes_count}}</span>
+                                            <button class="pull-left" type="submit"><img   src="/images/pictures/like.png"></button>
+                                            <span class="db_like_count">{{$likes_count}}</span>
+                                            <span class="jq_like_count"></span>
                                         </form>
                                     @endif
                                 @endif
@@ -51,7 +62,7 @@
 
                         </span>
 
-                        <span class=""><button class="pull-left" type="submit" disabled><img   src="/images/pictures/seen.png"></button></span>
+                        <span class=""><button class="pull-left" type="submit" disabled><img   src="/images/pictures/seen.png"></button>{{$seens_count}}</span>
                     </div>
                 </div>
                 <hr style=" width: 100%!important;"/>
@@ -152,59 +163,68 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script>
         $(document).ready(function () {
-        $(".ajax_comment").hide();
-        $(".comment_form").submit(function (event) {
-            event.preventDefault();
+            $(".ajax_comment").hide();
+            $(".comment_form").submit(function (event) {
+                event.preventDefault();
 
-            var comment=$('.comment').val();
-            var user_name = $(this).parent().find('input[type="hidden"][name="user_name"]').val();
-            var user_pic = $(this).parent().find('input[type="hidden"][name="user_image"]').val();
+                var comment = $('.comment').val();
+                var user_name = $(this).parent().find('input[type="hidden"][name="user_name"]').val();
+                var user_pic = $(this).parent().find('input[type="hidden"][name="user_image"]').val();
 
-            $.ajax( {
+                $.ajax({
 
 
-                url: '/article_comment',
-                type: 'POST',
-                data: new FormData(this),
-                processData: false,
-                contentType: false,
-                success: function (data) {
-                    $(".ajax_comment").show();
+                    url: '/article_comment',
+                    type: 'POST',
+                    data: new FormData(this),
+                    processData: false,
+                    contentType: false,
+                    success: function (data) {
+                        $(".ajax_comment").show();
 
-                    var t1 = $('.commentbox').append(comment); // list of comments. its inserting your last comment at the end of line.
-                    var t2 = $('.user_name').append('<p style="font-family:Calibri;font-size: 23px; margin: 0;" >'+user_name+'</p>'); // list of comments. its inserting your last comment at the end of line.
-                    if(user_pic == ''){
-                        var t3 = $('.user_pic').append('<img src="/uploadfiles/user_photo/e.png" width="60px">');
-                    }else{
-                        var t3 =  $('.user_pic').append('<img src="/uploadfiles/user_photo/'+user_name+'/'+user_pic+'" width="60px">');
-                    }
+                        var t1 = $('.commentbox').append(comment); // list of comments. its inserting your last comment at the end of line.
+                        var t2 = $('.user_name').append('<p style="font-family:Calibri;font-size: 23px; margin: 0;" >' + user_name + '</p>'); // list of comments. its inserting your last comment at the end of line.
+                        if (user_pic == '') {
+                            var t3 = $('.user_pic').append('<img src="/uploadfiles/user_photo/e.png" width="60px">');
+                        } else {
+                            var t3 = $('.user_pic').append('<img src="/uploadfiles/user_photo/' + user_name + '/' + user_pic + '" width="60px">');
+                        }
 //                         $('.user_pic').append("</br>"+user_pic); // list of comments. its inserting your last comment at the end of line.
-                    $('.cont').append(t3,t2,t1);
+                        $('.cont').append(t3, t2, t1);
 
 
-                }
+                    }
+                });
+            });
+            $(document).ajaxComplete(function () {
+                $('.comment_form').each(function () {
+                    this.reset();
+                });
+            });
+
+
+            $(".like").submit(function (event) {
+                var like_num = parseInt($(".db_like_count").text());
+                var num = 1;
+                var count = like_num + num;
+                event.preventDefault();
+                $('button').prop('disabled', true);
+                $.ajax({
+                    url: '/article_like_save',
+                    type: 'POST',
+                    data: new FormData(this),
+                    processData: false,
+                    contentType: false,
+                    success: function (data) {
+
+                    }
+                });
+                $(".db_like_count").css("display", "none");
+                $(".jq_like_count").append(count);
+
             });
         });
-        $(document).ajaxComplete(function () {
-            $('.comment_form').each(function () {
-                this.reset();
-            });
-        });
-        });
 
-        $(".like").submit(function (event) {
-            event.preventDefault();
-            alert("kjkg");
-            $('button').prop('disabled', true);
-            $.ajax({
-                url: '/article_like_save',
-                type: 'POST',
-                data: new FormData(this),
-                processData: false,
-                contentType: false
-
-            });
-        });
     </script>
 
 
