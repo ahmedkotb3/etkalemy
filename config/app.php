@@ -145,7 +145,8 @@ return [
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
 //		'Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider'
-		'Madcoda\Youtube\YoutubeServiceProviderLaravel5'
+		'Madcoda\Youtube\YoutubeServiceProviderLaravel5',
+		'Thujohn\Twitter\TwitterServiceProvider',
 
 	],
 
@@ -195,6 +196,7 @@ return [
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
 		'Youtube'   => 'Madcoda\Youtube\Facades\Youtube',
+		'Twitter' => 'Thujohn\Twitter\Facades\Twitter',
 //		'LaravelLocalization' => 'Mcamara\LaravelLocalization\Facades\LaravelLocalization'
 
 

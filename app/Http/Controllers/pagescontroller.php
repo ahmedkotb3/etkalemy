@@ -11,6 +11,7 @@ use App\Events_Comments;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+
 use App\Slider;
 use App\Speech_Comments;
 use App\User;
@@ -18,6 +19,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Madcoda\Youtube\Facades\Youtube;
+use Thujohn\Twitter\Facades\Twitter;
 
 class pagescontroller extends Controller
 {
@@ -279,6 +281,11 @@ class pagescontroller extends Controller
 		 $album_name = $album->name;
 		$images_of_album = $album->pictures;
 		return view('pages/Gallery-event',array('images_of_album'=>$images_of_album,'album_name'=>$album_name));
+	}
+
+	public function twitter()
+	{
+		return Twitter::getUserTimeline(['screen_name' => '@etkallemi', 'count' => 20, 'format' => 'json']);
 	}
 
 
