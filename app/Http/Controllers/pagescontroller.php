@@ -5,6 +5,7 @@ use App\Article;
 use App\Article_Comments;
 use App\Article_Likes;
 use App\Article_Seen;
+use App\ArticleCommentReplays;
 use App\Event_Speeches;
 use App\Events;
 use App\Events_Comments;
@@ -231,9 +232,11 @@ class pagescontroller extends Controller
 		 $comments = $article->comments;
 		  $likes = $article->likes;
 		  $seens = $article->seens;
+		 $replays = $article->replays;
 		 $seens_count = count($seens);
 		 $likes_count = count($likes);
-		return view('pages/OurWorld-Article',array('article'=>$article,'comments'=>$comments,'likes'=>$likes,'likes_count'=>$likes_count,'seens_count'=>$seens_count));
+
+		return view('pages/OurWorld-Article',array('article'=>$article,'comments'=>$comments,'likes'=>$likes,'likes_count'=>$likes_count,'seens_count'=>$seens_count,'replays'=>$replays));
 	}
 	public function OurWorldvideo($id)
 	{
@@ -381,10 +384,6 @@ class pagescontroller extends Controller
 
 
 
-
-	public function test(){
-return view('pages/hend');
-	}
 	public function article_like_save(){
 		$article = new Article_Likes;
 		$article->article_id =Input::get('article_id');
@@ -402,6 +401,18 @@ return view('pages/hend');
 		$article->user_id = Input::get('user_id');
 		$article->seen_status ="1" ;
 		$article->save();
+
+	}
+	public function article_comment_replay(){
+
+		$replay = new ArticleCommentReplays;
+		$replay->article_id=Input::get('article_id');
+		$replay->user_id=Input::get('user_id');
+		$replay->comment_id= Input::get('comment_id');
+		$replay->text=Input::get('replay');
+		$replay->user_name=Input::get('user_name');
+		$replay->user_image=Input::get('user_image');
+		$replay->save();
 
 	}
 }

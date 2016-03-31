@@ -24,6 +24,9 @@ class Article extends Model {
         return $this->hasMany("App\Article_Comments","article_id");
     }
 
+    public function replays(){
+        return $this->hasMany("App\ArticleCommentReplays","article_id");
+    }
     public function likes(){
         return $this->hasMany("App\Article_Likes","article_id");
     }

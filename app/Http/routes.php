@@ -24,7 +24,6 @@ Route::controllers([
 ]);
 
 Route::get('/','pagescontroller@index');
-Route::get('/get_like_count','pagescontroller@get_like_count');
 
 Route::get('/Events','pagescontroller@tagmoatna');
 
@@ -41,6 +40,7 @@ Route::get('/tagmoatna-videoplay/{id}','pagescontroller@tagmoatnavideoplay');
 Route::post('/event_comment','pagescontroller@event_comment');
 Route::post('/vedio_comment','pagescontroller@vedio_comment');
 Route::post('/article_comment','pagescontroller@article_comment');
+Route::post('/article_comment_replay','pagescontroller@article_comment_replay');
 
 Route::get('/get_event_comment/{id}','pagescontroller@get_event_comment');
 
@@ -155,6 +155,5 @@ Route::get('payment/status', array(
     'uses' => 'PaypalController@getPaymentStatus',
 ));
 
-Route::get('/test','pagescontroller@test');
 Route::post('/article_like_save','pagescontroller@article_like_save');
 Route::post('/test_save_seeen','pagescontroller@test_save_seeen');
