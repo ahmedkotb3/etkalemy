@@ -54,6 +54,7 @@ Route::get('/OurWorld-Article/{id}','pagescontroller@OurWorldArticle');
 Route::get('/OurWorld-video/{id}','pagescontroller@OurWorldvideo');
 Route::get('/Gallery','pagescontroller@Gallery');
 Route::get('/Gallery-event/{id}','pagescontroller@Galleryevent');
+Route::get('/twitter', 'pagescontroller@twitter');
 
 
 Route::get('/AdminControl','pagescontroller@showadmin');
