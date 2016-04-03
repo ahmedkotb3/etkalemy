@@ -29,7 +29,7 @@ $(document).ready(function(){
 	
 	$('#twitter-feed').html(headerHTML + loadingHTML);
 	 
-    $.getJSON('http://localhost:8000/twitter',
+    $.getJSON('/twitter',
         function(feeds) {   
 		   //alert(feeds);
             var feedHTML = '';

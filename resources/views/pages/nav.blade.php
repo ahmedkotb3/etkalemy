@@ -162,7 +162,7 @@
     <div class="collapse navbar-collapse" id="navHeaderCollapse">
         <ul class="nav navbar-nav navbar-right"
             style="text-align:center; width:100%; margin-right:15px!important;font-family: ebold!important; font-size: 18px; ">
-            <li><a href="/Aboutus"> عن إتكلمي </a></li>
+            <li><a href="/About"> عن إتكلمي </a></li>
             <li><a href="/ContactUs"> للإتصال بنا </a></li>
             <li><a href="/Gallery"> جاليري </a></li>
             <li><a href="/Speak"> إتكلمي </a></li>

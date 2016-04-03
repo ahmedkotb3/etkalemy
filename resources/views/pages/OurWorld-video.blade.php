@@ -77,7 +77,7 @@
 
             <div id="container" class="container-fluid" style="height:780px;background-color: white; padding: 10px;">
                 @foreach($youtube_comments as $youtube_comment)
-                    <div style="background-color:#EEF4F5; padding:20px;height:200px; margin:25px;">
+                    <div style="background-color:#EEF4F5; padding:20px; margin:25px;">
                         <div class="row ">
                             <div class="col-lg-1 " style="padding-right: 85px;">
                                 <img src="{{$youtube_comment['user_iamge']}}" width="60px">

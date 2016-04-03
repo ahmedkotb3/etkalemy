@@ -57,12 +57,12 @@
                             @endforeach
 
                         @else
-                            <button class="pull-left" type="submit" disabled><img   src="/images/pictures/like.png"></button><span class="">{{$likes_count}}</span>
+                            <button class="pull-left" type="submit" disabled><img   src="/images/pictures/like.png"></button><span class="pull-left">{{$likes_count}}</span>
                         @endif
 
                         </span>
 
-                        <span class=""><button class="pull-left" type="submit" disabled><img   src="/images/pictures/seen.png"></button>{{$seens_count}}</span>
+                        <span class=" pull-right"><button class="pull-left" type="submit" disabled><img   src="/images/pictures/seen.png"></button>{{$seens_count}}</span>
                     </div>
                 </div>
                 <hr style=" width: 100%!important;"/>
@@ -80,9 +80,9 @@
 
             <div id="container" class="container-fluid" style="height:780px;background-color: white; padding: 10px;">
                 @foreach($comments as $comment)
-                    <div style="background-color:#EEF4F5; padding:20px;height:200px; margin:25px;">
+                    <div style="background-color:#EEF4F5; padding:20px; margin:25px;">
                         <div class="row ">
-                            <div class="col-lg-1 " style="padding-right: 85px;">
+                            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" style="padding-right: 85px;">
                                 @if(empty($comment->user_image))
                                     <img src="/uploadfiles/user_photo/e.png" width="60px">
                                 @else
@@ -91,49 +91,55 @@
                                 @endif
                             </div>
 
-                            <div class="col-lg-10">
-                                <p style="font-family:Calibri;font-size: 23px; margin: 0;"
-                                   class=""> {{$comment->user_name}}</p>
+                            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                                <p style="font-family:Calibri;font-size: 23px; margin: 0;" class=""> {{$comment->user_name}}</p>
                                 {{--<p style="font-family:Calibri;font-size: 16px;"> 20 mintues</p>--}}
                             </div>
                         </div>
-                        <div class="row pull-right " style="font-family: ebold; font-size:18px; ">
+                        <div class="row pull-right " style="margin-bottom: 20px!important;font-family: ebold; font-size:18px; ">
                             {{$comment->text}}
+
+                        </div>
+                        <div class="row" style="margin-top: 20px!important;">
                             <!-- Start Show replay of comments -->
                             @foreach($replays as $replay)
                                 @if($replay->comment_id == $comment->id )
                                     <div>
                                         @if(empty($replay->user_image))
-                                            <img src="/uploadfiles/user_photo/e.jpg">
+                                            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" style="padding-right: 85px;">
+                                                <img style="width: 60px;" src="/uploadfiles/user_photo/e.jpg"></div>
                                         @else
-                                            <img src="/uploadfiles/user_photo/{{$replay->user_image}}">
+                                            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" style="padding-right: 85px;">
+                                            <img style="width: 60px;"src="/uploadfiles/user_photo/{{$replay->user_image}}"></div>
                                         @endif
-                                         <span>{{$replay->user_name}}</span>
-                                        <p>{{$replay->text}}</p>
+                                            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10" style="padding-right: 85px;"><span>{{$replay->user_name}}</span></div>
+                                        <div class="row pull-right" > <p>{{$replay->text}}</p></div>
                                     </div>
-                            <!-- End Show replay of comments -->
-                                @endif
-                                @endforeach
-                            <!-- show reply after writing -->
-                            <div style="background-color:#EEF4F5; padding:20px;height:200px; margin:25px;" class="ajax_replay">
-                                <div class="row cont">
-                                    <div class="col-lg-1 user_pic" style="padding-right: 85px;">
+                                    <!-- End Show replay of comments -->
+                                    @endif
+                                    @endforeach
+                                            <!-- show reply after writing -->
+                                    <div style="background-color:#EEF4F5; padding:20px; margin:25px;" class="ajax_replay">
+                                        <div class="row cont">
+                                            <div class="col-lg-1 user_pic" style="padding-right: 85px;">
 
+                                            </div>
+
+                                            <div class="col-lg-10 user_name">
+
+                                                {{--<p style="font-family:Calibri;font-size: 16px;"> 20 mintues</p>--}}
+                                            </div>
+                                        </div>
+                                        <div class="row pull-right commentbox" style="font-family: ebold; font-size:18px; ">
+
+                                        </div>
                                     </div>
-
-                                    <div class="col-lg-10 user_name">
-
-                                        {{--<p style="font-family:Calibri;font-size: 16px;"> 20 mintues</p>--}}
-                                    </div>
-                                </div>
-                                <div class="row pull-right commentbox" style="font-family: ebold; font-size:18px; ">
-
-                                </div>
-                            </div>
-                           <!-- show reply after writing -->
+                                    <!-- show reply after writing -->
                         </div>
+
                         <!-- Start insert replays of comment -->
                         <div class="row" style="margin-top: 15px!important;">
+                            @if (Auth::check())
                             <form class="form-inline replay_form" role="form" style="text-align:right; padding-top: 2%; padding-bottom: 2%;">
                                 <input type="hidden" name="_token" value="{{csrf_token()}}">
                                 <input type="hidden" name="article_id" value="{{$article->id}}">
@@ -156,9 +162,10 @@
                                     </div>
                                 </div>
                             </form>
+                            @endif
                             {{--<hr/>--}}
                             {{--<div class="pull-right" style="font-family: ebold;font-size: 18px;color: #8A9596;">--}}
-                                {{----}}
+                            {{----}}
                             {{--</div>--}}
                         </div>
                         <!-- End replays of comment -->
