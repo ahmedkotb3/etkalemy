@@ -70,7 +70,6 @@
                 <div class="row pull-right" style=" text-align:right;font-size: 15px; font-family: ebold;padding-bottom: 30px; padding-right: 20px;">{{$article->subject}}</div>
             </div>
 
-
             <div class="row" id="ronew">
                 <div class="col-xs-7 col-sm-5 col-md-4 col-lg-3" id="tgm"> التعليقات</div>
                 <hr class="col-xs-5 col-sm-7 col-md-8 col-lg-9" id="hrte">
@@ -134,6 +133,7 @@
                         </div>
                         <!-- Start insert replays of comment -->
                         <div class="row" style="margin-top: 15px!important;">
+                            @if(Auth::check())
                             <form class="form-inline replay_form" role="form" style="text-align:right; padding-top: 2%; padding-bottom: 2%;">
                                 <input type="hidden" name="_token" value="{{csrf_token()}}">
                                 <input type="hidden" name="article_id" value="{{$article->id}}">
@@ -156,6 +156,8 @@
                                     </div>
                                 </div>
                             </form>
+                            @endif
+
                             {{--<hr/>--}}
                             {{--<div class="pull-right" style="font-family: ebold;font-size: 18px;color: #8A9596;">--}}
                                 {{----}}

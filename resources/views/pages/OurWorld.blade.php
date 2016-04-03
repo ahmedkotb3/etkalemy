@@ -37,8 +37,7 @@
                 <img class="img-responsive newest"style=" cursor: pointer; padding-right:10px;padding-left:10px;border-left:1px solid #9DA8AB;float: right;" src="/images/pictures/donyana/button4.png"/>
                 <img class="img-responsive oldest"style=" cursor: pointer; padding-right:10px;padding-left:10px;border-left:1px solid #9DA8AB;float: right;" src="/images/pictures/donyana/button5.png"/>
                 <img class="img-responsive more_seen"style=" cursor: pointer; padding-right:10px;padding-left:10px;float: right;" src="/images/pictures/donyana/button6.png"/>
-                <input type="text"  style="background-color: #D5E4E8; font-family: elight;text-align: right; border: none;"
-                       placeholder="إبحث هنا  "/>
+                <input type="text"  style="background-color: #D5E4E8; font-family: elight;text-align: right; border: none;" placeholder="إبحث هنا  " id="search"/>
                 <img  style=" cursor: pointer;" src="/images/pictures/donyana/search.png">
             </div>
         </div>
@@ -47,7 +46,7 @@
     <div class="container-fluid" style=" padding: 0; background-color: #D5E4E8; color: #376773">
         <div class="container-fluid" id="marginmobile">
             <!-- Start the All Articles -->
-            <div class="row1 world" style=" direction:rtl;width: 100%;">
+            <div class="row1 world" style=" direction:rtl;width: 100%;" id>
                 @foreach($world as $data)
                     @if($data->type == "2")
                         <div class="menu-category list-group ">
@@ -1214,7 +1213,27 @@
             $(".jq_seen_count").append('<a id="clicks3">'+count+'</a>');
         });
     </script>
+<script>
+    $( document ).ready(function() {
+        $("#search").keyup(function() {
+            var keyword = $("#search").val();
+                $.get( "/article_search/"+keyword)
+                        .done(function( data ) {
+                           $(".world,.articles,.oldtonew,.vedios,.seens,.newtoold").children().hide() ;
+                            for(var i=0;i<data.length;i++){
+                                if(data[0]["type"] == "1"){
 
+                                    $(".row1").append('<div class="menu-category list-group "><div class=" col-xs-12 col-sm-6 col-md-4 col-lg-3" style="width:100%;padding: 0!important;min-height: 300px"><div style="padding: 10px;  border-radius:5px;background-color:white;margin-left: 15px!important;"><div class="imgWrapedonaya img-responsiveedonyana"><img class="imgWrapedonaya img-responsiveedonyana" src="http://img.youtube.com/vi/sLwrG2bwBDI/'+data[i]["picture_url"]+'" alt="polaroid"/><a href="/OurWorld-video/'+data[i]["id"]+'"><div class="imgDescriptione"><span id="articleimg"><img src="/images/pictures//donyana/video.png"/></span><span id="txtdonyanaarticle">'+data[i]["title"]+'</span></div></a></div><div style=" padding-top:5px;text-align:right;font-family: ebold;font-size: 14px;">'+data[i]["subject"].substr(0, 150)+'</div><hr style="margin-top: 10px!important;"/></div><img style="position: relative;top: -14px;right: 150px;" src="/images/pictures/donyana/1.png "></div></div>');
+                                }else{
+                                    $(".row1").append('<div class="menu-category list-group "><div class=" col-xs-12 col-sm-6 col-md-4 col-lg-3" style="width:100%;padding: 0!important;"> <div style="padding: 20px;  border-radius:5px;background-color:white;margin-left: 15px!important; min-height: 155px"> <div class="imgWrapedonaya img-responsiveedonyana"> <img class="imgWrapedonaya img-responsiveedonyana" src="/uploadfiles/articles/'+data[i]["title"]+'/'+data[i]["picture_url"]+'" alt="polaroid"/> <a href="/OurWorld-Article/'+data[i]["id"]+'"><div class="imgDescriptione"><span id="articleimg"><img src="/images/pictures//donyana/txt.png"/></span></div></a></div><div style=" padding-top:5px;text-align:right;font-family: ebold;font-size: 14px;">'+data[i]["subject"].substr(0, 150)+'</div></div><hr style="margin-top: 10px!important;"/></div><img style="position: relative;top: -14px;right: 150px;" src="/images/pictures/donyana/1.png "></div>');
+                                }
+                            }
+                        });
+
+        });
+
+    });
+</script>
 
 
 

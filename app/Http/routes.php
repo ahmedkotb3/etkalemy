@@ -157,3 +157,4 @@ Route::get('payment/status', array(
 
 Route::post('/article_like_save','pagescontroller@article_like_save');
 Route::post('/test_save_seeen','pagescontroller@test_save_seeen');
+Route::get('/article_search/{name}','pagescontroller@article_search');

@@ -443,4 +443,12 @@ class pagescontroller extends Controller
 		$replay->save();
 
 	}
+	public function article_search($name){
+	return json_decode(Article::where('title','=',$name)->get());
+//		return array(
+//			'name'=>'hend',
+//				'age'=>'32'
+//		);
+
+	}
 }
