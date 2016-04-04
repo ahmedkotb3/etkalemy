@@ -19,7 +19,7 @@
                 <img src="/images/pictures/fo.png"/>
                 <hr style=" margin-right:0px;color: white; pull:right;"/>
             </div>
-            <div style="height: 238px; font-family: elight; text-align:right; font-size:18px; color: white;">
+            <div style="height: 221px; font-family: elight; text-align:right; font-size:18px; color: white;">
                 كى يصلك كل جديد و لمعرفة أهم اخبارنا و تجمعاتنا القادمة
 
                     ادخل ايميلك الان و أنتظر

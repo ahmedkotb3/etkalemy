@@ -15,10 +15,10 @@
                         <span>
                             <?php  $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";?>
                             <a href="https://twitter.com/share?url={{$actual_link}}" target="_blank">
-                                <img src="/images/pictures/tagmoevent/twitter.png" style="max-width: 45%;">
+                                <img src="/images/pictures/video/twitter.png" style="max-width: 45%;">
                             </a>
                             <a href="http://www.facebook.com/sharer.php?u={{$actual_link}}" target="_blank">
-                                <img src="/images/pictures/tagmoevent/facebook.png" style="max-width: 45%;">
+                                <img src="/images/pictures/video/facebook.png" style="max-width: 45%;">
                             </a>
                             {{--<a href=""><img src="/images/pictures/tagmoevent/facebook.png" style="max-width: 45%;"></a>--}}
                             {{--<a href=""><img src="/images/pictures/tagmoevent/twitter.png" style="max-width: 45%;"></a>--}}
@@ -33,7 +33,7 @@
                                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                                         <input type="hidden" name="article_id" value="{{$article->id}}">
                                         <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
-                                        <button class="pull-left" type="submit"><img   src="/images/pictures/like.png"></button>
+                                        <button class="pull-left" type="submit"><img   src="/images/pictures/video/like.png"></button>
                                         <span class="db_like_count">{{$likes_count}}</span>
                                         <span class="jq_like_count"></span>
                                     </form>
@@ -41,14 +41,14 @@
                             @foreach($likes as $like)
                                 @if($like->user_id == Auth::user()->id)
                                     @if ($like->like_status == "1")
-                                        <button class="pull-left" type="submit" disabled><img   src="/images/pictures/like.png"></button>
+                                        <button class="pull-left" type="submit" disabled><img   src="/images/pictures/video/like.png"></button>
                                         <span class="">{{$likes_count}}</span>
                                     @else
                                         <form class="like">
                                             <input type="hidden" name="_token" value="{{csrf_token()}}">
                                             <input type="hidden" name="article_id" value="{{$data->id}}">
                                             <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
-                                            <button class="pull-left" type="submit"><img   src="/images/pictures/like.png"></button>
+                                            <button class="pull-left" type="submit"><img   src="/images/pictures/video/like.png"></button>
                                             <span class="db_like_count">{{$likes_count}}</span>
                                             <span class="jq_like_count"></span>
                                         </form>
@@ -57,12 +57,12 @@
                             @endforeach
 
                         @else
-                            <button class="pull-left" type="submit" disabled><img   src="/images/pictures/like.png"></button><span class="pull-left">{{$likes_count}}</span>
+                            <button class="pull-left" type="submit" disabled><img   src="/images/pictures/video/like.png"></button><span style="font-size:30px;padding: 5px;" class="pull-left">{{$likes_count}}</span>
                         @endif
 
                         </span>
 
-                        <span class=" pull-right"><button class="pull-left" type="submit" disabled><img   src="/images/pictures/seen.png"></button>{{$seens_count}}</span>
+                        <div class="pull-left" type="submit" disabled><img  style="padding-left: 10px;padding-top: 10px;"src="/images/pictures/video/seen.png"></div><span style="font-size:30px;padding: 5px;"class=" pull-right">{{$seens_count}}</span>
                     </div>
                 </div>
                 <hr style=" width: 100%!important;"/>
