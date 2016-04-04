@@ -111,7 +111,7 @@
         <div class="row">
             <div class="imgWrap img-responsive" style=" height:595px!important;width: 100%!important;">
                 <img class="imgWrap img-responsive" src="/images/pictures/tagmoevent/2.jpg" alt="polaroid" id="picevent"/>
-                <a href="/etkalemy">
+                <a href="/Speak">
                     <button id="sharewithus" class="btn btn-primary"> و شاركى معانا الان</button>
                 </a>
             </div>
@@ -135,7 +135,7 @@
                                     <img class="imgWrape img-responsivee"
                                          src="http://img.youtube.com/vi/{{$vedio_name}}/{{$vedio->image}} "
                                          alt="polaroid"/>
-                                    <a href="#">
+                                    <a href="/tagmoatna-videoplay/{{$vedio->id}}">
                                         <p class="imgDescriptione">
                                             <span id="txtimge1"> {{$vedio->title}}</span>
                                             {{--<span id="txtimge2"> كيف تصل الى هدفك بالطريقة الصحيحة </span>--}}
@@ -156,7 +156,7 @@
                                         <img class="imgWrape img-responsivee"
                                              src="http://img.youtube.com/vi/{{$vedio_name}}/{{$vedio->image}} "
                                              alt="polaroid"/>
-                                        <a href="#">
+                                        <a href="/tagmoatna-videoplay/{{$vedio->id}}">
                                             <p class="imgDescriptione">
                                                 <span id="txtimge1"> {{$vedio->title}}</span>
                                                 {{--<span id="txtimge2"> كيف تصل الى هدفك بالطريقة الصحيحة </span>--}}

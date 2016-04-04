@@ -1,4 +1,37 @@
 
+
+<img src=/uploadfiles/user_photo/{{$comment->user_name}}/{{$comment->user_image}}"
+     width="60px">
+
+
+<img src=/uploadfiles/user_photo/{{$comment->user_name}}/{{$comment->user_image}}" width="60px">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <div class="row1 world" style=" direction:rtl;width: 100%;">
     <div class="menu-category list-group ">
         <div class=" col-xs-12 col-sm-6 col-md-4 col-lg-3" style="width:100%;padding: 0!important;">

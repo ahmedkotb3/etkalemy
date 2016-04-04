@@ -65,8 +65,38 @@
                     </span>
                     </div>
                     <div class="pull-left">
-                        <span class=""><img   src="/images/pictures/like.png"></span>
-                        <span class=""><img   src="/images/pictures/seen.png"></span>
+                        <!-- Start the code of like -->
+                        @if(Auth::check())
+                            @if(count($likes)=="0")
+                                <form style="display: inline-block" class="like">
+                                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                    <input type="hidden" name="vedio_id" value="{{$vedio->id}}">
+                                    <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                                    <button type="submit"><img   src="/images/pictures/like.png"></button>
+                                </form>
+                            @else
+                                @foreach($likes as $like)
+                                    @if($like->user_id == Auth::user()->id)
+                                        @if($like->like_status == "1")
+                                            <img   src="/images/pictures/like.png">
+                                            @else
+                                            <form style="display: inline-block" class="like">
+                                                <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                                <input type="hidden" name="vedio_id" value="{{$vedio->id}}">
+                                                <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                                                <button type="submit"><img   src="/images/pictures/like.png"></button>
+                                            </form>
+                                            @endif
+                                        @endif
+                                    @endforeach
+                            @endif
+                        @else
+                            <img   src="/images/pictures/like.png">
+                            @endif
+
+                            <span class="db_count">{{count($likes)}}</span>
+                            <span class="jq_count"></span>
+                        <span class=""><img   src="/images/pictures/seen.png">{{count($seens)}}</span>
                     </div>
                 </div>
                 <hr style=" width: 100%!important;"/>
@@ -154,7 +184,7 @@
                     </div>
             </div>
                 @if(Auth::check())
-                 <form class="form-inline" role="form" style="text-align:right; padding-top: 2%; padding-bottom: 2%;">
+                 <form class="form-inline comment_form" role="form" style="text-align:right; padding-top: 2%; padding-bottom: 2%;">
 
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <input type="hidden" name="vedio_id" value="{{$vedio->id}}">
@@ -181,7 +211,7 @@
     <script>
         $(document).ready(function(){
             $(".ajax_comment").hide();
-            $("form").submit(function(event){
+            $("comment_form").submit(function(event){
                 event.preventDefault();
                 var comment=$('.comment').val();
                 var user_pic = $(this).parent().find('input[type="hidden"][name="user_image"]').val();
@@ -208,7 +238,7 @@
                     }});
             });
             $(document).ajaxComplete(function() {
-                $('form').each(function () {
+                $('comment_form').each(function () {
                     this.reset();
                 });
             });
@@ -217,6 +247,30 @@
 
 
     </script>
+    <script>
+        $(".like").submit(function (event) {
+            var like_num = parseInt($(".db_count").text());
+            var num = 1;
+            var count = like_num+num;
+            event.preventDefault();
+            $('button').prop('disabled', true);
+            $.ajax({
+                url: '/save_event_vedio_like',
+                type: 'POST',
+                data: new FormData(this),
+                processData: false,
+                contentType: false,
+                success: function (data) {
+
+                }
+            });
+
+            $(".db_count").css("display","none");
+            $(".jq_count").append(count);
+
+        });
+    </script>
+
     {{--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>--}}
     {{--<script>--}}
         {{--$(document).ready(function(){--}}

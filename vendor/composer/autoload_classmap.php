@@ -21,6 +21,8 @@ return array(
     'CreatePicturesTable' => $baseDir . '/database/migrations/2016_03_10_095038_create_pictures_table.php',
     'CreateSlidersTable' => $baseDir . '/database/migrations/2016_03_10_100143_create_sliders_table.php',
     'CreateSpeechCommentsTable' => $baseDir . '/database/migrations/2015_12_14_101205_create_Speech_Comments_table.php',
+    'CreateSpeechLikesTable' => $baseDir . '/database/migrations/2016_04_03_145550_create_speech_likes_table.php',
+    'CreateSpeechSeensTable' => $baseDir . '/database/migrations/2016_04_03_145604_create_speech_seens_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
     'CreateVoteAnswersTable' => $baseDir . '/database/migrations/2015_12_13_113702_create_Vote_Answers_table.php',
     'CreateVotesTable' => $baseDir . '/database/migrations/2015_12_13_113343_create_Votes_table.php',

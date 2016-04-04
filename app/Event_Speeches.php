@@ -24,6 +24,14 @@ class Event_Speeches extends Model {
         return $this->hasMany("App\Speech_Comments","speech_id");
     }
 
+    public function likes(){
+        return $this->hasMany("App\SpeechLikes","speech_id");
+    }
+
+    public function seens(){
+        return $this->hasMany("App\SpeechSeens","speech_id");
+    }
+
     /* add vedios to specified event */
 
     public static function add_event_vedios($event_id,$title,$desc,$youtube_url,$image){

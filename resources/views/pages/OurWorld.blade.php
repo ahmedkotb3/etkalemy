@@ -59,11 +59,29 @@
                                                 <span id="articleimg"><img src="/images/pictures//donyana/txt.png"/></span>
                                                 <!-- Start check the seen users -->
                                                 @if(Auth::check())
-                                                   @foreach($seens as $seen)
-                                                        @if($seen->article_id == $data->id)
-                                                            @if($seen->user_id == Auth::user()->id && $seen->seen_status =="1")
-                                                                <button disabled><span id="txtdonyanaarticle">{{$data->title}}</span></button>
-                                                            @else
+                                                    @if(count($seens) == "0")
+                                                        <form class="seen">
+                                                            <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                                            <input type="hidden" name="article_id" value="{{$data->id}}">
+                                                            <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                                                            <button><span id="txtdonyanaarticle">{{$data->title}}</span></button>
+                                                        </form>
+                                                        @else
+                                                        @foreach($seens as $seen)
+
+                                                            @if($seen->article_id == $data->id)
+                                                                @if($seen->user_id == Auth::user()->id && $seen->seen_status =="1")
+
+                                                                    <button disabled><span id="txtdonyanaarticle">{{$data->title}}</span></button>
+                                                                @else
+                                                                    <form class="seen">
+                                                                        <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                                                        <input type="hidden" name="article_id" value="{{$data->id}}">
+                                                                        <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                                                                        <button><span id="txtdonyanaarticle">{{$data->title}}</span></button>
+                                                                    </form>
+                                                                @endif
+                                                                @else
                                                                 <form class="seen">
                                                                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                                                                     <input type="hidden" name="article_id" value="{{$data->id}}">
@@ -71,8 +89,9 @@
                                                                     <button><span id="txtdonyanaarticle">{{$data->title}}</span></button>
                                                                 </form>
                                                             @endif
-                                                        @endif
-                                                    @endforeach
+                                                        @endforeach
+                                                    @endif
+
                                                 @else
                                                     <button disabled><span id="txtdonyanaarticle">{{$data->title}}</span></button>
                                                 @endif
@@ -102,7 +121,7 @@
                                                 @if(Auth::check())
                                                     <form class="like" style="display: inline-block;">
                                                         <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                                        <input type="hidden" name="article_id" value="{{$data->id}}">
+                                                        <input type="hidden" name="article_id" value="{{$data->id}}" id="article_id">
                                                         <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                                                         <button class="pull-left like_click" type="submit" ><img src="/images/pictures/donyana/like1.png"/></button>
                                                     </form>
@@ -132,7 +151,7 @@
                                             @endif
 
                                             <span class="pull-right db_count" style=" padding-top:5px;padding-left: 7px;"><a id="clicks2">{{$like_count}}</a></span>
-                                            <span class="pull-right jq_count" style=" padding-top:5px;padding-left: 7px;"></span>
+                                            <span class="pull-right jq_count_{{$data->id}}" style=" padding-top:5px;padding-left: 7px;"></span>
                                         </span>
 
                                         <span class="pull-right" style="padding-top: 7px;">
@@ -162,6 +181,14 @@
                                         <a href="/OurWorld-video/{{$data->id}}">  <div class="imgDescriptione">
                                                 <span id="articleimg"><img src="/images/pictures//donyana/video.png"/></span>
                                                 @if(Auth::check())
+                                                    @if(count($seens) == "0")
+                                                        <form class="seen">
+                                                            <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                                            <input type="hidden" name="article_id" value="{{$data->id}}">
+                                                            <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                                                            <button><span id="txtdonyanaarticle">{{$data->title}}</span></button>
+                                                        </form>
+                                                    @else
                                                     @foreach($seens as $seen)
                                                         @if($seen->article_id == $data->id)
                                                             @if($seen->user_id == Auth::user()->id && $seen->seen_status =="1")
@@ -174,8 +201,17 @@
                                                                     <button><span id="txtdonyanaarticle">{{$data->title}}</span></button>
                                                                 </form>
                                                             @endif
+
+                                                            @else
+                                                                <form class="seen">
+                                                                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                                                    <input type="hidden" name="article_id" value="{{$data->id}}">
+                                                                    <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                                                                    <button><span id="txtdonyanaarticle">{{$data->title}}</span></button>
+                                                                </form>
                                                         @endif
                                                     @endforeach
+                                                    @endif
                                                 @else
                                                     <button disabled><span id="txtdonyanaarticle">{{$data->title}}</span></button>
                                                 @endif
@@ -234,7 +270,7 @@
                                                 <button class="pull-left" type="submit" disabled><img src="/images/pictures/donyana/like1.png"/></button>
                                             @endif
                                                 <span class="pull-right db_count" style=" padding-top:5px;padding-left: 7px;"><a id="clicks2">{{$like_count}}</a></span>
-                                                <span class="pull-right jq_count" style=" padding-top:5px;padding-left: 7px;"></span>
+                                                <span class="pull-right jq_count_{{$data->id}}" style=" padding-top:5px;padding-left: 7px;"></span>
                                         </span>
 
                                         <span class="pull-right" style="padding-top: 7px;">
@@ -274,6 +310,14 @@
                                         <div class="imgDescriptione">
                                             <span id="articleimg"><img src="/images/pictures//donyana/txt.png"/></span>
                                             @if(Auth::check())
+                                                @if(count($seens) == "0")
+                                                    <form class="seen">
+                                                        <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                                        <input type="hidden" name="article_id" value="{{$article->id}}">
+                                                        <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                                                        <button><span id="txtdonyanaarticle">{{$article->title}}</span></button>
+                                                    </form>
+                                                @else
                                                 @foreach($seens as $seen)
                                                     @if($seen->article_id == $article->id)
                                                         @if($seen->user_id == Auth::user()->id && $seen->seen_status =="1")
@@ -286,8 +330,16 @@
                                                                 <button><span id="txtdonyanaarticle">{{$article->title}}</span></button>
                                                             </form>
                                                         @endif
+                                                        @else
+                                                            <form class="seen">
+                                                                <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                                                <input type="hidden" name="article_id" value="{{$article->id}}">
+                                                                <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                                                                <button><span id="txtdonyanaarticle">{{$article->title}}</span></button>
+                                                            </form>
                                                     @endif
                                                 @endforeach
+                                                @endif
                                             @else
                                                 <button disabled><span id="txtdonyanaarticle">{{$article->title}}</span></button>
                                             @endif
@@ -346,7 +398,7 @@
                                                     @endif
 
                                                     <span class="pull-right db_count" style=" padding-top:5px;padding-left: 7px;"><a id="clicks2">{{$like_count}}</a></span>
-                                                    <span class="pull-right jq_count" style=" padding-top:5px;padding-left: 7px;"></span>
+                                                    <span class="pull-right jq_count_{{$article->id}}" style=" padding-top:5px;padding-left: 7px;"></span>
                                         </span>
 
                                         <span class="pull-right" style="padding-top: 7px;">
@@ -384,6 +436,14 @@
                                 <a href="/OurWorld-video/{{$vedio->id}}">  <div class="imgDescriptione">
                                         <span id="articleimg"><img src="/images/pictures//donyana/video.png"/></span>
                                         @if(Auth::check())
+                                            @if(count($seens) == "0")
+                                                <form class="seen">
+                                                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                                    <input type="hidden" name="article_id" value="{{$vedio->id}}">
+                                                    <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                                                    <button><span id="txtdonyanaarticle">{{$vedio->title}}</span></button>
+                                                </form>
+                                            @else
                                             @foreach($seens as $seen)
                                                 @if($seen->article_id == $vedio->id)
                                                     @if($seen->user_id == Auth::user()->id && $seen->seen_status =="1")
@@ -396,8 +456,16 @@
                                                             <button><span id="txtdonyanaarticle">{{$data->title}}</span></button>
                                                         </form>
                                                     @endif
+                                                    @else
+                                                        <form class="seen">
+                                                            <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                                            <input type="hidden" name="article_id" value="{{$vedio->id}}">
+                                                            <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                                                            <button><span id="txtdonyanaarticle">{{$vedio->title}}</span></button>
+                                                        </form>
                                                 @endif
                                             @endforeach
+                                            @endif
                                         @else
                                             <button disabled><span id="txtdonyanaarticle">{{$vedio->title}}</span></button>
                                         @endif
@@ -456,7 +524,7 @@
                                                     @endif
 
                                                     <span class="pull-right db_count" style=" padding-top:5px;padding-left: 7px;"><a id="clicks2">{{$like_count}}</a></span>
-                                                    <span class="pull-right jq_count" style=" padding-top:5px;padding-left: 7px;"></span>
+                                                    <span class="pull-right jq_count_{{$vedio->id}}" style=" padding-top:5px;padding-left: 7px;"></span>
                                         </span>
 
                                         <span class="pull-right" style="padding-top: 7px;">
@@ -497,6 +565,14 @@
                                             <div class="imgDescriptione">
                                                 <span id="articleimg"><img src="/images/pictures//donyana/txt.png"/></span>
                                                 @if(Auth::check())
+                                                    @if(count($seens) == "0")
+                                                        <form class="seen">
+                                                            <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                                            <input type="hidden" name="article_id" value="{{$oldest->id}}">
+                                                            <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                                                            <button><span id="txtdonyanaarticle">{{$oldest->title}}</span></button>
+                                                        </form>
+                                                    @else
                                                     @foreach($seens as $seen)
                                                         @if($seen->article_id == $oldest->id)
                                                             @if($seen->user_id == Auth::user()->id && $seen->seen_status =="1")
@@ -509,8 +585,16 @@
                                                                     <button><span id="txtdonyanaarticle">{{$oldest->title}}</span></button>
                                                                 </form>
                                                             @endif
+                                                            @else
+                                                                <form class="seen">
+                                                                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                                                    <input type="hidden" name="article_id" value="{{$oldest->id}}">
+                                                                    <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                                                                    <button><span id="txtdonyanaarticle">{{$oldest->title}}</span></button>
+                                                                </form>
                                                         @endif
                                                     @endforeach
+                                                    @endif
                                                 @else
                                                     <button disabled><span id="txtdonyanaarticle">{{$oldest->title}}</span></button>
                                                 @endif
@@ -569,7 +653,7 @@
                                                     @endif
 
                                                     <span class="pull-right db_count" style=" padding-top:5px;padding-left: 7px;"><a id="clicks2">{{$like_count}}</a></span>
-                                                    <span class="pull-right jq_count" style=" padding-top:5px;padding-left: 7px;"></span>
+                                                    <span class="pull-right jq_count_{{$oldest->id}}" style=" padding-top:5px;padding-left: 7px;"></span>
                                         </span>
 
                                         <span class="pull-right" style="padding-top: 7px;">
@@ -601,14 +685,22 @@
                                 <div style="padding: 10px;  border-radius:5px;background-color:white;margin-left: 15px!important;">
                                     <!--img style="margin-left: auto; margin-right: auto; display: block; vertical-align: middle;" class="img-responsive" src="/images/pictures/e.png"/-->
                                     <div class="imgWrapedonaya img-responsiveedonyana">
-                                        <img class="imgWrapedonaya img-responsiveedonyana" src="http://img.youtube.com/vi/sLwrG2bwBDI/{{$data->picture_url}}" alt="polaroid"/>
+                                        <img class="imgWrapedonaya img-responsiveedonyana" src="http://img.youtube.com/vi/sLwrG2bwBDI/{{$oldest->picture_url}}" alt="polaroid"/>
                                         <a href="/OurWorld-video/{{$oldest->id}}">  <div class="imgDescriptione">
                                                 <span id="articleimg"><img src="/images/pictures//donyana/video.png"/></span>
                                                 @if(Auth::check())
+                                                    @if(count($seens) == "0")
+                                                        <form class="seen">
+                                                            <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                                            <input type="hidden" name="article_id" value="{{$oldest->id}}">
+                                                            <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                                                            <button><span id="txtdonyanaarticle">{{$oldest->title}}</span></button>
+                                                        </form>
+                                                    @else
                                                     @foreach($seens as $seen)
                                                         @if($seen->article_id == $oldest->id)
                                                             @if($seen->user_id == Auth::user()->id && $seen->seen_status =="1")
-                                                                <button disabled><span id="txtdonyanaarticle">{{$data->title}}</span></button>
+                                                                <button disabled><span id="txtdonyanaarticle">{{$oldest->title}}</span></button>
                                                             @else
                                                                 <form class="seen">
                                                                     <input type="hidden" name="_token" value="{{csrf_token()}}">
@@ -617,8 +709,16 @@
                                                                     <button><span id="txtdonyanaarticle">{{$oldest->title}}</span></button>
                                                                 </form>
                                                             @endif
+                                                            @else
+                                                                <form class="seen">
+                                                                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                                                    <input type="hidden" name="article_id" value="{{$oldest->id}}">
+                                                                    <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                                                                    <button><span id="txtdonyanaarticle">{{$oldest->title}}</span></button>
+                                                                </form>
                                                         @endif
                                                     @endforeach
+                                                    @endif
                                                 @else
                                                     <button disabled><span id="txtdonyanaarticle">{{$oldest->title}}</span></button>
                                                 @endif
@@ -677,7 +777,7 @@
                                                     @endif
 
                                                     <span class="pull-right db_count" style=" padding-top:5px;padding-left: 7px;"><a id="clicks2">{{$like_count}}</a></span>
-                                                    <span class="pull-right jq_count" style=" padding-top:5px;padding-left: 7px;"></span>
+                                                    <span class="pull-right jq_count_{{$oldest->id}}" style=" padding-top:5px;padding-left: 7px;"></span>
                                         </span>
 
                                         <span class="pull-right" style="padding-top: 7px;">
@@ -691,7 +791,7 @@
                                             ?>
                                             <img class="pull-left" src="/images/pictures/donyana/seen.png"/>
                                             <span class="pull-right db_seen_count" style="margin-top: -3px;padding-left: 7px;"><a id="clicks3">{{$seen_count}}</a></span>
-                                            <span class="pull-right jq_seen_count" style="margin-top: -3px;padding-left: 7px;"></span>
+                                            <span class="pull-right jq_seen_count_{{$data->id}}" style="margin-top: -3px;padding-left: 7px;"></span>
                                         </span>
                                     </div>
                                     <hr style="margin-top: 10px!important;"/>
@@ -718,6 +818,14 @@
                                             <div class="imgDescriptione">
                                                 <span id="articleimg"><img src="/images/pictures//donyana/txt.png"/></span>
                                                 @if(Auth::check())
+                                                    @if(count($seens) == "0")
+                                                        <form class="seen">
+                                                            <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                                            <input type="hidden" name="article_id" value="{{$newest->id}}">
+                                                            <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                                                            <button><span id="txtdonyanaarticle">{{$newest->title}}</span></button>
+                                                        </form>
+                                                    @else
                                                     @foreach($seens as $seen)
                                                         @if($seen->article_id == $newest->id)
                                                             @if($seen->user_id == Auth::user()->id && $seen->seen_status =="1")
@@ -730,8 +838,16 @@
                                                                     <button><span id="txtdonyanaarticle">{{$newest->title}}</span></button>
                                                                 </form>
                                                             @endif
+                                                            @else
+                                                                <form class="seen">
+                                                                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                                                    <input type="hidden" name="article_id" value="{{$newest->id}}">
+                                                                    <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                                                                    <button><span id="txtdonyanaarticle">{{$newest->title}}</span></button>
+                                                                </form>
                                                         @endif
                                                     @endforeach
+                                                    @endif
                                                 @else
                                                     <button disabled><span id="txtdonyanaarticle">{{$newest->title}}</span></button>
                                                 @endif
@@ -790,7 +906,7 @@
                                                     @endif
 
                                                     <span class="pull-right db_count" style=" padding-top:5px;padding-left: 7px;"><a id="clicks2">{{$like_count}}</a></span>
-                                                    <span class="pull-right jq_count" style=" padding-top:5px;padding-left: 7px;"></span>
+                                                    <span class="pull-right jq_count_{{$newest->id}}" style=" padding-top:5px;padding-left: 7px;"></span>
                                         </span>
 
                                         <span class="pull-right" style="padding-top: 7px;">
@@ -826,6 +942,14 @@
                                         <a href="/OurWorld-video/{{$newest->id}}">  <div class="imgDescriptione">
                                                 <span id="articleimg"><img src="/images/pictures//donyana/video.png"/></span>
                                                 @if(Auth::check())
+                                                    @if(count($seens) == "0")
+                                                        <form class="seen">
+                                                            <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                                            <input type="hidden" name="article_id" value="{{$newest->id}}">
+                                                            <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                                                            <button><span id="txtdonyanaarticle">{{$newest->title}}</span></button>
+                                                        </form>
+                                                    @else
                                                     @foreach($seens as $seen)
                                                         @if($seen->article_id == $newest->id)
                                                             @if($seen->user_id == Auth::user()->id && $seen->seen_status =="1")
@@ -838,8 +962,16 @@
                                                                     <button><span id="txtdonyanaarticle">{{$newest->title}}</span></button>
                                                                 </form>
                                                             @endif
+                                                            @else
+                                                                <form class="seen">
+                                                                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                                                    <input type="hidden" name="article_id" value="{{$newest->id}}">
+                                                                    <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                                                                    <button><span id="txtdonyanaarticle">{{$newest->title}}</span></button>
+                                                                </form>
                                                         @endif
                                                     @endforeach
+                                                    @endif
                                                 @else
                                                     <button disabled><span id="txtdonyanaarticle">{{$newest->title}}</span></button>
                                                 @endif
@@ -898,7 +1030,7 @@
                                                     @endif
 
                                                     <span class="pull-right db_count" style=" padding-top:5px;padding-left: 7px;"><a id="clicks2">{{$like_count}}</a></span>
-                                                    <span class="pull-right jq_count" style=" padding-top:5px;padding-left: 7px;"></span>
+                                                    <span class="pull-right jq_count_{{$newest->id}}" style=" padding-top:5px;padding-left: 7px;"></span>
                                         </span>
 
                                         <span class="pull-right" style="padding-top: 7px;">
@@ -930,6 +1062,7 @@
 
             <div class="row1 seens hidden_div" style=" direction:rtl;width: 100%;">
                 @foreach($last as $more_seen)
+
                     @if($more_seen['type'] == "2")
                     <div class="menu-category list-group ">
                         <div class=" col-xs-12 col-sm-6 col-md-4 col-lg-3" style="width:100%;padding: 0!important;">
@@ -941,6 +1074,14 @@
                                         <div class="imgDescriptione">
                                             <span id="articleimg"><img src="/images/pictures//donyana/txt.png"/></span>
                                             @if(Auth::check())
+                                                @if(count($seens) == "0")
+                                                    <form class="seen">
+                                                        <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                                        <input type="hidden" name="article_id" value="{{$more_seen['id']}}">
+                                                        <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                                                        <button><span id="txtdonyanaarticle">{{$more_seen['title']}}</span></button>
+                                                    </form>
+                                                @else
                                                 @foreach($seens as $seen)
                                                     @if($seen->article_id == $more_seen['id'])
                                                         @if($seen->user_id == Auth::user()->id && $seen->seen_status =="1")
@@ -953,8 +1094,16 @@
                                                                 <button><span id="txtdonyanaarticle">{{$more_seen['title']}}</span></button>
                                                             </form>
                                                         @endif
+                                                        @else
+                                                            <form class="seen">
+                                                                <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                                                <input type="hidden" name="article_id" value="{{$more_seen['id']}}">
+                                                                <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                                                                <button><span id="txtdonyanaarticle">{{$more_seen['title']}}</span></button>
+                                                            </form>
                                                     @endif
                                                 @endforeach
+                                                @endif
                                             @else
                                                 <button disabled><span id="txtdonyanaarticle">{{$more_seen['title']}}</span></button>
                                             @endif
@@ -1013,7 +1162,7 @@
                                                     @endif
 
                                                     <span class="pull-right db_count" style=" padding-top:5px;padding-left: 7px;"><a id="clicks2">{{$like_count}}</a></span>
-                                                    <span class="pull-right jq_count" style=" padding-top:5px;padding-left: 7px;"></span>
+                                                    <span class="pull-right jq_count_{{$more_seen['id']}}" style=" padding-top:5px;padding-left: 7px;"></span>
                                         </span>
 
                                         <span class="pull-right" style="padding-top: 7px;">
@@ -1045,6 +1194,14 @@
                                         <a href="/OurWorld-video/{{$more_seen['id']}}">  <div class="imgDescriptione">
                                                 <span id="articleimg"><img src="/images/pictures//donyana/video.png"/></span>
                                                 @if(Auth::check())
+                                                    @if(count($seens) == "0")
+                                                        <form class="seen">
+                                                            <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                                            <input type="hidden" name="article_id" value="{{$more_seen['id']}}">
+                                                            <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                                                            <button><span id="txtdonyanaarticle">{{$more_seen['title']}}</span></button>
+                                                        </form>
+                                                    @else
                                                     @foreach($seens as $seen)
                                                         @if($seen->article_id == $more_seen['id'])
                                                             @if($seen->user_id == Auth::user()->id && $seen->seen_status =="1")
@@ -1057,8 +1214,16 @@
                                                                     <button><span id="txtdonyanaarticle">{{$more_seen['title']}}</span></button>
                                                                 </form>
                                                             @endif
+                                                            @else
+                                                                <form class="seen">
+                                                                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                                                    <input type="hidden" name="article_id" value="{{$more_seen['id']}}">
+                                                                    <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                                                                    <button><span id="txtdonyanaarticle">{{$more_seen['title']}}</span></button>
+                                                                </form>
                                                         @endif
                                                     @endforeach
+                                                    @endif
                                                 @else
                                                     <button disabled><span id="txtdonyanaarticle">{{$more_seen['title']}}</span></button>
                                                 @endif
@@ -1117,7 +1282,7 @@
                                                     @endif
 
                                                     <span class="pull-right db_count" style=" padding-top:5px;padding-left: 7px;"><a id="clicks2">{{$like_count}}</a></span>
-                                                    <span class="pull-right jq_count" style=" padding-top:5px;padding-left: 7px;"></span>
+                                                    <span class="pull-right jq_count_{{$more_seen['id']}}" style=" padding-top:5px;padding-left: 7px;"></span>
                                         </span>
 
                                         <span class="pull-right" style="padding-top: 7px;">
@@ -1191,8 +1356,9 @@
 
                 }
             });
+            var article_id = $('#article_id').val();
             $(".db_count").css("display","none");
-            $(".jq_count").append('<a id="clicks2">'+count+'</a>');
+            $(".jq_count_"+article_id+"").append('<a id="clicks2">'+count+'</a>');
 
         });
         $(".seen").submit(function (event) {
@@ -1219,12 +1385,20 @@
             var keyword = $("#search").val();
                 $.get( "/article_search/"+keyword)
                         .done(function( data ) {
-                           $(".world,.articles,.oldtonew,.vedios,.seens,.newtoold").children().hide() ;
+
                             for(var i=0;i<data.length;i++){
                                 if(data[0]["type"] == "1"){
-
-                                    $(".row1").append('<div class="menu-category list-group "><div class=" col-xs-12 col-sm-6 col-md-4 col-lg-3" style="width:100%;padding: 0!important;min-height: 300px"><div style="padding: 10px;  border-radius:5px;background-color:white;margin-left: 15px!important;"><div class="imgWrapedonaya img-responsiveedonyana"><img class="imgWrapedonaya img-responsiveedonyana" src="http://img.youtube.com/vi/sLwrG2bwBDI/'+data[i]["picture_url"]+'" alt="polaroid"/><a href="/OurWorld-video/'+data[i]["id"]+'"><div class="imgDescriptione"><span id="articleimg"><img src="/images/pictures//donyana/video.png"/></span><span id="txtdonyanaarticle">'+data[i]["title"]+'</span></div></a></div><div style=" padding-top:5px;text-align:right;font-family: ebold;font-size: 14px;">'+data[i]["subject"].substr(0, 150)+'</div><hr style="margin-top: 10px!important;"/></div><img style="position: relative;top: -14px;right: 150px;" src="/images/pictures/donyana/1.png "></div></div>');
+                                    $(".world,.articles,.oldtonew,.vedios,.seens,.newtoold").children().hide() ;
+                                    $(".row1").append('<div class="menu-category list-group "><div class=" col-xs-12 col-sm-6 col-md-4 col-lg-3"' +
+                                            ' style="width:100%;padding: 0!important;min-height: 300px"><div style="padding: 10px;  border-radius:5px;background-color:white;' +
+                                            'margin-left: 15px!important;"><div class="imgWrapedonaya img-responsiveedonyana">' +
+                                            '<img class="imgWrapedonaya img-responsiveedonyana" src="http://img.youtube.com/vi/sLwrG2bwBDI/'+data[i]["picture_url"]+'" alt="polaroid"/>' +
+                                            '<a href="/OurWorld-video/'+data[i]["id"]+'"><div class="imgDescriptione"><span id="articleimg"><img src="/images/pictures//donyana/video.png"/>' +
+                                            '</span><span id="txtdonyanaarticle">'+data[i]["title"]+'</span></div></a></div><div style=" padding-top:5px;text-align:right;font-family: ebold;' +
+                                            'font-size: 14px;">'+data[i]["subject"].substr(0, 150)+'</div><hr style="margin-top: 10px!important;"/></div><img style="position: relative;' +
+                                            'top: -14px;right: 150px;" src="/images/pictures/donyana/1.png "></div></div>');
                                 }else{
+                                    $(".world,.articles,.oldtonew,.vedios,.seens,.newtoold").children().hide() ;
                                     $(".row1").append('<div class="menu-category list-group "><div class=" col-xs-12 col-sm-6 col-md-4 col-lg-3" style="width:100%;padding: 0!important;"> <div style="padding: 20px;  border-radius:5px;background-color:white;margin-left: 15px!important; min-height: 155px"> <div class="imgWrapedonaya img-responsiveedonyana"> <img class="imgWrapedonaya img-responsiveedonyana" src="/uploadfiles/articles/'+data[i]["title"]+'/'+data[i]["picture_url"]+'" alt="polaroid"/> <a href="/OurWorld-Article/'+data[i]["id"]+'"><div class="imgDescriptione"><span id="articleimg"><img src="/images/pictures//donyana/txt.png"/></span></div></a></div><div style=" padding-top:5px;text-align:right;font-family: ebold;font-size: 14px;">'+data[i]["subject"].substr(0, 150)+'</div></div><hr style="margin-top: 10px!important;"/></div><img style="position: relative;top: -14px;right: 150px;" src="/images/pictures/donyana/1.png "></div>');
                                 }
                             }

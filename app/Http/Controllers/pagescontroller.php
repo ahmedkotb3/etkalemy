@@ -15,6 +15,7 @@ use App\Http\Controllers\Controller;
 
 use App\Slider;
 use App\Speech_Comments;
+use App\SpeechLikes;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -153,6 +154,8 @@ class pagescontroller extends Controller
 
 		}
 		$comments = $vedio->comments;
+		 $likes = $vedio->likes;
+		 $seens = $vedio->seens;
 
 		/***** comments from youtube ******/
 		    $event_of_vedio = Events::where('id','=',$vedio->event_id)->get()->first();
@@ -171,7 +174,8 @@ class pagescontroller extends Controller
 			);
 			array_push($eventnames_and_year,$array);
 		}
-		return view('pages/tagmoatna-videoplay',array('years'=>array_unique($years),'eventnames_and_year'=>$eventnames_and_year,'event_of_vedio'=>$event_of_vedio,'vedio'=>$vedio,'youtube_comments'=>$youtube_comments,'comments'=>$comments));
+		return view('pages/tagmoatna-videoplay',array('years'=>array_unique($years),'eventnames_and_year'=>$eventnames_and_year,'event_of_vedio'=>$event_of_vedio,'vedio'=>$vedio,
+				'youtube_comments'=>$youtube_comments,'comments'=>$comments,'likes'=>$likes,'seens'=>$seens));
 	}
 	public function tagmoatnapictures($id)
 	{
@@ -222,7 +226,7 @@ class pagescontroller extends Controller
 		}
 		rsort($seen_arr);
 		$last = array();
-		for($i=0;$i<count($seen_arr);$i++){
+		for($i=0;$i<count(array_unique($seen_arr));$i++){
 			foreach($more_seen as $seen_data){
 				if( $seen_data['seen_num'] == $seen_arr[$i]){
 					array_push($last,$seen_data);
@@ -450,5 +454,25 @@ class pagescontroller extends Controller
 //				'age'=>'32'
 //		);
 
+	}
+
+	public function Article_likes_count($id){
+
+		return count(Article::find($id)->likes) ;
+
+	}
+	public function save_event_vedio_like(){
+		$like = new SpeechLikes;
+		$like->speech_id = Input::get('vedio_id');
+		$like->user_id = Input::get('user_id');
+		$like->like_status = "1";
+		$like->save();
+
+	}
+	public function get_article_comments($id){
+		return json_decode(Article_Comments::where('article_id','=',$id)->get());
+	}
+	public function get_article_comment_replays($id){
+		return json_decode(ArticleCommentReplays::where('comment_id','=',$id)->get());
 	}
 }
