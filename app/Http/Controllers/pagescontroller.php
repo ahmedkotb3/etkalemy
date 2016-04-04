@@ -7,6 +7,7 @@ use App\Article_Likes;
 use App\Article_Seen;
 use App\ArticleCommentReplays;
 use App\Event_Speeches;
+use App\EventCommentReplays;
 use App\Events;
 use App\Events_Comments;
 use App\Http\Requests;
@@ -89,13 +90,14 @@ class pagescontroller extends Controller
 		}
 		$vedioes = Events::find($id)->speeches;
 		$pictures = Events::find($id)->pictures;
+		 $replays = Events::find($id)->replays;
 		$number_of_vedios = count($vedioes);
 		$number_of_pictures = count($pictures);
 
 		$comments =Events_Comments::where('event_id','=',$id)->get();
 
 		return view('pages/tagmoatna-event',array('event_data'=>$event_data,'years'=>array_unique($years),'eventnames_and_year'=>$eventnames_and_year,'vedioes'=>$vedioes,
-				'number_of_vedios'=>$number_of_vedios,'pictures'=>$pictures,'number_of_pictures'=>$number_of_pictures,'comments'=>$comments));
+				'number_of_vedios'=>$number_of_vedios,'pictures'=>$pictures,'number_of_pictures'=>$number_of_pictures,'comments'=>$comments,'replays'=>$replays));
 	}
 
 
@@ -273,6 +275,7 @@ class pagescontroller extends Controller
 	public function OurWorldvideo($id)
 	{
 		$vedio = Article::find($id);
+		 $replays = $vedio->replays;
 		$likes = $vedio->likes;
 		$seens = $vedio->seens;
 		$likes_count = count($likes);
@@ -303,7 +306,8 @@ class pagescontroller extends Controller
 		/***** comments from youtube ******/
 		$vedio = Article::find($id);
 		$comments = $vedio->comments;
-		return view('pages/OurWorld-video',array('vedio'=>$vedio,'comments'=>$comments,'youtube_comments'=>$youtube_comments,'likes'=>$likes,'likes_count'=>$likes_count,'seens_count'=>$seens_count));
+		return view('pages/OurWorld-video',array('vedio'=>$vedio,'comments'=>$comments,'youtube_comments'=>$youtube_comments,'likes'=>$likes,'likes_count'=>$likes_count,
+				'seens_count'=>$seens_count,'replays'=>$replays));
 	}
 	public function Gallery()
 	{
@@ -474,5 +478,23 @@ class pagescontroller extends Controller
 	}
 	public function get_article_comment_replays($id){
 		return json_decode(ArticleCommentReplays::where('comment_id','=',$id)->get());
+	}
+	public function get_event_comments($id){
+		return json_decode(Events_Comments::where('event_id','=',$id)->get());
+	}
+	public function get_event_comment_replays($id){
+		return json_decode(EventCommentReplays::where('comment_id','=',$id)->get());
+	}
+	public function event_comment_replay(){
+
+		$replay = new EventCommentReplays;
+		$replay->event_id=Input::get('event_id');
+		$replay->user_id=Input::get('user_id');
+		$replay->comment_id= Input::get('comment_id');
+		$replay->text=Input::get('replay');
+		$replay->user_name=Input::get('user_name');
+		$replay->user_image=Input::get('user_image');
+		$replay->save();
+
 	}
 }

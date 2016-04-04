@@ -1,10 +1,61 @@
 
+    <div class="row" style="margin-top: 20px!important;">
+        <!-- Start Show replay of comments -->
+        @foreach($replays as $replay)
+            @if($replay->comment_id == $comment->id )
+                <div>
+                    @if(empty($replay->user_image))
+                        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" style="padding-right: 85px;">
+                            <img style="width: 60px;" src="/uploadfiles/user_photo/e.jpg"></div>
+                    @else
+                        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" style="padding-right: 85px;">
+                            <img style="width: 60px;"src="/uploadfiles/user_photo/{{$replay->user_image}}"></div>
+                    @endif
+                    <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10" style="padding-right: 85px;"><span>{{$replay->user_name}}</span></div>
+                    <div class="row pull-right" > <p>{{$replay->text}}</p></div>
+                </div>
+                <!-- End Show replay of comments -->
+                @endif
+                @endforeach
 
-<img src=/uploadfiles/user_photo/{{$comment->user_name}}/{{$comment->user_image}}"
-     width="60px">
+    </div>
+
+    <!-- Start insert replays of comment -->
+    <div class="row" style="margin-top: 15px!important;">
+        @if (Auth::check())
+            <form class="form-inline replay_form" role="form" style="text-align:right; padding-top: 2%; padding-bottom: 2%;">
+                <input type="hidden" name="_token" value="{{csrf_token()}}">
+                <input type="hidden" name="article_id" value="{{$article->id}}">
+                <input type="hidden" name="user_name" class="user_name" value="{{Auth::user()->english_name}}">
+                <input type="hidden" name="comment_id" class="user_name" value="{{$comment->id}}">
+                <input type="hidden" name="user_id" class="user_name" value="{{Auth::user()->id}}">
+                <input type="hidden" name="user_image" class="user_pic" value="{{Auth::user()->profile_image}}">
+                <div class="form-group" style=" height:50px; width: 100%;">
+                    <div class=" col-xs-4 col-sm-4 col-md-3 col-lg-2 pull-right"
+                         style="padding-left:0;padding-right: 0;">
+                        <button class="btn btn-info" id="ersal">
+                            اضافة رد
+                        </button>
+                    </div>
+
+                    <div class=" col-xs-8 col-sm-8 col-md-9 col-lg-10 pull-left"
+                         style=" padding-left:0;padding-right: 0;">
+                        <input type="text" class="form-control replay" id="email-term"
+                               style=" height:50px!important;background-color: white!important; border-radius: 0!important;" name="replay">
+                    </div>
+                </div>
+            </form>
+        @endif
+        {{--<hr/>--}}
+        {{--<div class="pull-right" style="font-family: ebold;font-size: 18px;color: #8A9596;">--}}
+        {{----}}
+        {{--</div>--}}
+    </div>
+    <!-- End replays of comment -->
+</div>
 
 
-<img src=/uploadfiles/user_photo/{{$comment->user_name}}/{{$comment->user_image}}" width="60px">
+
 
 
 

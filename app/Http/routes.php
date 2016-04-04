@@ -157,8 +157,11 @@ Route::get('payment/status', array(
 
 Route::post('/article_like_save','pagescontroller@article_like_save');
 Route::post('/test_save_seeen','pagescontroller@test_save_seeen');
+Route::post('/event_comment_replay','pagescontroller@event_comment_replay');
 Route::get('/article_search/{name}','pagescontroller@article_search');
 Route::get('/Article_likes_count/{id}','pagescontroller@Article_likes_count');
 Route::post('/save_event_vedio_like','pagescontroller@save_event_vedio_like');
 Route::get('/get_article_comments/{id}','pagescontroller@get_article_comments');
 Route::get('/get_article_comment_replays/{id}','pagescontroller@get_article_comment_replays');
+Route::get('/get_event_comments/{id}','pagescontroller@get_event_comments');
+Route::get('/get_event_comment_replays/{id}','pagescontroller@get_event_comment_replays');

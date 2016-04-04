@@ -89,7 +89,7 @@
 
             <div id="container" class="container-fluid comments_box" style="height:780px;background-color: white; padding: 10px;">
                 @foreach($comments as $comment)
-                    <div style="background-color:#EEF4F5; padding:20px;height:200px; margin:25px;">
+                    <div style="background-color:#EEF4F5; padding:20px; margin:25px; height: 200px;overflow: auto;">
                         <div class="row ">
                             <!-- Show the Image of the user -->
                             <div class="col-lg-1 user_pic" style="padding-right: 85px;">
@@ -109,9 +109,11 @@
                             <!-- ******************************** -->
                         </div>
                         <!-- Show the comment with replays -->
-                        <div class="row pull-right comments" style="font-family: ebold; font-size:18px; ">
-                           <p>{{$comment->text}}</p>
+                        <div class="row pull-right comments" style="margin-bottom: 20px!important;font-family: ebold; font-size:18px; ">
+                           {{$comment->text}}
+                                   </div>
                             <!-- Start Show replay of comments -->
+                        <div class="row" style="margin-top: 20px!important;">
                             @foreach($replays as $replay)
                                 @if($replay->comment_id == $comment->id )
                                     <div class="replay_data">
@@ -209,7 +211,7 @@
                                 .done(function( data ) {
                                     $('.comments_box').children().hide();
                                     for(var i=0;i<data.length;i++){
-                                        if(data[i]["user_image"]){
+                                        if(data[i]["user_image"] ==""){
                                             $(".comments_box").append('<div style="background-color:#EEF4F5; padding:20px;height:200px; margin:25px;">' +
                                                     '<div class="row "><div class="col-lg-1 user_pic" style="padding-right: 85px;">' +
                                                     '<img src="/uploadfiles/user_photo/e.png" width="60px"></div>' +

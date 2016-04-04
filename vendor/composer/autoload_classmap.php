@@ -13,6 +13,7 @@ return array(
     'CreateArticleSeensTable' => $baseDir . '/database/migrations/2016_03_30_141935_create_article__seens_table.php',
     'CreateArticlesTable' => $baseDir . '/database/migrations/2015_12_14_102240_create_Articles_table.php',
     'CreateEventAttendersTable' => $baseDir . '/database/migrations/2015_12_14_093349_create_Event_attenders_table.php',
+    'CreateEventCommentReplaysTable' => $baseDir . '/database/migrations/2016_04_04_134823_create_event_comment_replays_table.php',
     'CreateEventPicturesTable' => $baseDir . '/database/migrations/2015_12_14_090642_create_Event_Pictures_table.php',
     'CreateEventSpeechesTable' => $baseDir . '/database/migrations/2015_12_14_100121_create_Event_Speeches_table.php',
     'CreateEventsCommentsTable' => $baseDir . '/database/migrations/2015_12_14_081248_create_Events_Comments_table.php',

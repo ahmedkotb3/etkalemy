@@ -1038,14 +1038,14 @@ background-color: #C4E9F2; font-family: ebold; font-size: 15px; width: 171px; di
 @media (min-width:992px ){
     .imgWrap {
         position: relative;
-        height: 385px;
+        /*height: 385px;*/
         width: 570px;
     }
 }
 
  .imgWrap .img-responsive {
     position: relative;
-    height: 385px;
+    /*height: 385px;*/
     margin-bottom: 25px;
      width: 100%;
 }

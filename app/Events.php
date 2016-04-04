@@ -15,6 +15,9 @@ class Events extends Model {
     public function comments(){
         return $this->hasMany("App\Events_Comments","event_id");
     }
+    public function replays(){
+        return $this->hasMany("App\EventCommentReplays","event_id");
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

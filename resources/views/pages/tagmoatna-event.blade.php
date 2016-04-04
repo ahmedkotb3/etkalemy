@@ -348,11 +348,12 @@
                 <hr class="col-xs-5 col-sm-7 col-md-8 col-lg-9" id="hrte">
             </div>
 
-            <div id="container" class="container-fluid" style=" overflow:auto;height:780px;background-color: white; padding: 10px;">
+            <div id="container" class="container-fluid comment-box" style=" overflow:auto;height:780px;background-color: white; padding: 10px;">
                 @foreach($comments as $comment)
-                    <div style="background-color:#EEF4F5; padding:20px;height:200px; margin:25px;">
+                    <div style="background-color:#EEF4F5; padding:20px; margin:25px; height: 200px;overflow: auto;">
                         <div class="row ">
-                            <div class="col-lg-1 " style="padding-right: 85px;">
+                            <!-- Show the Image of the user -->
+                            <div class="col-lg-1 user_pic" style="padding-right: 85px;">
                                 @if(empty($comment->user_image))
                                     <img src="/uploadfiles/user_photo/e.png" width="60px">
                                 @else
@@ -360,49 +361,66 @@
                                          width="60px">
                                 @endif
                             </div>
-
-                            <div class="col-lg-10">
-                                <p style="font-family:Calibri;font-size: 23px; margin: 0;"
-                                   class=""> {{$comment->user_name}}</p>
+                            <!-- ******************************** -->
+                            <!-- Show the Name of the user -->
+                            <div class="col-lg-10 user_name">
+                                <p style="font-family:Calibri;font-size: 23px; margin: 0;" class=""> {{$comment->user_name}}</p>
                                 {{--<p style="font-family:Calibri;font-size: 16px;"> 20 mintues</p>--}}
                             </div>
+                            <!-- ******************************** -->
                         </div>
-                        <div class="row pull-right " style="font-family: ebold; font-size:18px; ">
+                        <!-- Show the comment with replays -->
+                        <div class="row pull-right comments" style="margin-bottom: 20px!important;font-family: ebold; font-size:18px; ">
                             {{$comment->text}}
                         </div>
-                        <div class="row" style="margin-top: 15px!important;">
-                            <hr/>
-                            <div class="pull-right" style="font-family: ebold;font-size: 18px;color: #8A9596;">
-                                <button>
-                                    إضافة رد
-                                </button>
-                            </div>
+                        <!-- Start Show replay of comments -->
+                        <div class="row" style="margin-top: 20px!important;">
+                            @foreach($replays as $replay)
+                                @if($replay->comment_id == $comment->id )
+                                    <div class="replay_data">
+                                        <div>
+                                            @if(empty($replay->user_image))
+                                                <img src="/uploadfiles/user_photo/e.png">
+                                            @else
+                                                <img src="/uploadfiles/user_photo/{{$replay->user_image}}">
+                                            @endif
+                                            <span>{{$replay->user_name}}</span>
+                                            <p>{{$replay->text}}</p>
+                                        </div>
+                                    </div>
+                                    <!-- End Show replay of comments -->
+                                @endif
+                            @endforeach
+                        </div>
+                        <div class="row replay_box" style="margin-top: 15px!important;">
+                            @if(Auth::check())
+                                <form class="form-inline replay_form" role="form" style="text-align:right; padding-top: 2%; padding-bottom: 2%;">
+                                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                    <input type="hidden" name="event_id" value="{{$data->id}}">
+                                    <input type="hidden" name="user_name" class="user_name" value="{{Auth::user()->english_name}}">
+                                    <input type="hidden" name="comment_id" class="user_name" value="{{$comment->id}}">
+                                    <input type="hidden" name="user_id" class="user_name" value="{{Auth::user()->id}}">
+                                    <input type="hidden" name="user_image" class="user_pic" value="{{Auth::user()->profile_image}}">
+                                    <div class="form-group" style=" height:50px; width: 100%;">
+                                        <div class=" col-xs-4 col-sm-4 col-md-3 col-lg-2 pull-right"
+                                             style="padding-left:0;padding-right: 0;">
+                                            <button class="btn btn-info" id="ersal">
+                                                اضافة رد
+                                            </button>
+                                        </div>
+
+                                        <div class=" col-xs-8 col-sm-8 col-md-9 col-lg-10 pull-left"
+                                             style=" padding-left:0;padding-right: 0;">
+                                            <input type="text" class="form-control replay" id="email-term"
+                                                   style=" height:50px!important;background-color: white!important; border-radius: 0!important;" name="replay">
+                                        </div>
+                                    </div>
+                                </form>
+                            @endif
                         </div>
                     </div>
                 @endforeach
-                <div style="background-color:#EEF4F5; padding:20px;height:200px; margin:25px;" class="ajax_comment">
-                    <div class="row cont">
-                        <div class="col-lg-1 user_pic" style="padding-right: 85px;">
 
-                        </div>
-
-                        <div class="col-lg-10 user_name">
-
-                            {{--<p style="font-family:Calibri;font-size: 16px;"> 20 mintues</p>--}}
-                        </div>
-                    </div>
-                    <div class="row pull-right commentbox" style="font-family: ebold; font-size:18px; ">
-
-                    </div>
-                    <div class="row" style="margin-top: 15px!important;">
-                        <hr/>
-                        <div class="pull-right" style="font-family: ebold;font-size: 18px;color: #8A9596;">
-                            <button>
-                                إضافة رد
-                            </button>
-                        </div>
-                    </div>
-                </div>
             </div>
 
 
@@ -445,46 +463,112 @@
 
             });
 
-            $(".ajax_comment").hide();
             $(".comment_form").submit(function (event) {
                 event.preventDefault();
 
-                var comment=$('.comment').val();
-                var user_name = $(this).parent().find('input[type="hidden"][name="user_name"]').val();
-                var user_pic = $(this).parent().find('input[type="hidden"][name="user_image"]').val();
+                var user_name ='<?php echo Auth::user()->english_name; ?>' ;
+                var user_pic = '<?php echo Auth::user()->profile_image; ?>';
+                var user_id = '<?php echo Auth::user()->id; ?>';
+                var event_id = '<?php echo $data->id; ?>';
+                var token = '<?php echo csrf_token();?>';
 
    $.ajax( {
-
-
                     url: '/event_comment',
                     type: 'POST',
                     data: new FormData(this),
                     processData: false,
                     contentType: false,
                     success: function (data) {
-                        $(".ajax_comment").show();
 
-                        var t1 = $('.commentbox').append(comment); // list of comments. its inserting your last comment at the end of line.
-                        var t2 = $('.user_name').append('<p style="font-family:Calibri;font-size: 23px; margin: 0;" >'+user_name+'</p>'); // list of comments. its inserting your last comment at the end of line.
-                        if(user_pic == ''){
-                            var t3 = $('.user_pic').append('<img src="/uploadfiles/user_photo/e.png" width="60px">');
-                        }else{
-                          var t3 =  $('.user_pic').append('<img src="/uploadfiles/user_photo/'+user_name+'/'+user_pic+'" width="60px">');
-                        }
-//                         $('.user_pic').append("</br>"+user_pic); // list of comments. its inserting your last comment at the end of line.
-                        $('.cont').append(t3,t2,t1);
+                        $.get( "/get_event_comments/"+event_id)
+                                .done(function( data ) {
+                                    $('.comment-box').children().hide();
+                                    for(var i=0;i<data.length;i++){
+                                        if(data[i]["user_image"] == ""){
+                                            $(".comment-box").append('<div style="background-color:#EEF4F5; padding:20px;height:200px; margin:25px;">' +
+                                                    '<div class="row "><div class="col-lg-1 user_pic" style="padding-right: 85px;">' +
+                                                    '<img src="/uploadfiles/user_photo/e.png" width="60px"></div>' +
+                                                    '<div class="col-lg-10 user_name"><p style="font-family:Calibri;font-size: 23px; margin: 0;" class="">'+data[i]["user_name"]+'</p></div>' +
+                                                    '</div><div class="row pull-right comments" style="font-family: ebold; font-size:18px; "><p>'+data[i]["text"]+'</p></div>' +
+                                                    '<div class="row replay_box" style="margin-top: 15px!important;"> ' +
+                                                    '<form class="form-inline replay_form" role="form" style="text-align:right; padding-top: 2%; padding-bottom: 2%;">' +
+                                                    '<input type="hidden" name="_token" value="'+token+'"><input type="hidden" name="article_id" value="'+data[i]["event_id"]+'">' +
+                                                    '<input type="hidden" name="user_name" class="user_name" value="'+user_name+'"> ' +
+                                                    '<input type="hidden" name="comment_id" class="user_name" value="'+data[i]["id"]+'">' +
+                                                    '<input type="hidden" name="user_id" class="user_name" value="'+user_id+'">' +
+                                                    '<input type="hidden" name="user_image" class="user_pic" value="'+user_pic+'">' +
+                                                    '<div class="form-group" style=" height:50px; width: 100%;">' +
+                                                    '<div class=" col-xs-4 col-sm-4 col-md-3 col-lg-2 pull-right"style="padding-left:0;padding-right: 0;">' +
+                                                    '<button class="btn btn-info" id="ersal">اضافة رد </button></div>' +
+                                                    '<div class=" col-xs-8 col-sm-8 col-md-9 col-lg-10 pull-left"style=" padding-left:0;padding-right: 0;">' +
+                                                    '<input type="text" class="form-control replay" id="email-term"style=" height:50px!important;background-color: white!important; border-radius: 0!important;" name="replay"> </div> </div> </form> </div></div>');
+                                        }else{
+                                            $(".comment-box").append('<div style="background-color:#EEF4F5; padding:20px;height:200px; margin:25px;">' +
+                                                    '<div class="row "><div class="col-lg-1 user_pic" style="padding-right: 85px;">' +
+                                                    '<img src=/uploadfiles/user_photo/'+data[i]["user_name"]+'/'+data[i]["user_image"]+'" width="60px"></div>' +
+                                                    '<div class="col-lg-10 user_name"><p style="font-family:Calibri;font-size: 23px; margin: 0;" class="">'+data[i]["user_name"]+'</p></div>' +
+                                                    '</div><div class="row pull-right comments" style="font-family: ebold; font-size:18px; "><p>'+data[i]["text"]+'</p></div>' +
+                                                    '<div class="row replay_box" style="margin-top: 15px!important;"> ' +
+                                                    '<form class="form-inline replay_form" role="form" style="text-align:right; padding-top: 2%; padding-bottom: 2%;">' +
+                                                    '<input type="hidden" name="_token" value="'+token+'"><input type="hidden" name="article_id" value="'+data[i]["event_id"]+'">' +
+                                                    '<input type="hidden" name="user_name" class="user_name" value="'+user_name+'"> ' +
+                                                    '<input type="hidden" name="comment_id" class="user_name" value="'+data[i]["id"]+'">' +
+                                                    '<input type="hidden" name="user_id" class="user_name" value="'+user_id+'">' +
+                                                    '<input type="hidden" name="user_image" class="user_pic" value="'+user_pic+'">' +
+                                                    '<div class="form-group" style=" height:50px; width: 100%;">' +
+                                                    '<div class=" col-xs-4 col-sm-4 col-md-3 col-lg-2 pull-right"style="padding-left:0;padding-right: 0;">' +
+                                                    '<button class="btn btn-info" id="ersal">اضافة رد </button></div>' +
+                                                    '<div class=" col-xs-8 col-sm-8 col-md-9 col-lg-10 pull-left"style=" padding-left:0;padding-right: 0;">' +
+                                                    '<input type="text" class="form-control replay" id="email-term"style=" height:50px!important;background-color: white!important; border-radius: 0!important;" name="replay"> </div> </div> </form> </div></div>');
+
+                                        }
+
+                                    }
+                                });
 
 
                     }
                 });
             });
+
+            $(".replay_form").submit(function (event) {
+                event.preventDefault();
+                var comment_id = $(this).parent().find('input[type="hidden"][name="comment_id"]').val();
+
+                $.ajax({
+                    url: '/event_comment_replay',
+                    type: 'POST',
+                    data: new FormData(this),
+                    processData: false,
+                    contentType: false,
+                    success: function (data) {
+                        $.get( "/get_event_comment_replays/"+comment_id)
+                                .done(function( data ) {
+                                    $(".replay_data").children().hide();
+                                    for(var i=0;i<data.length;i++){
+
+                                        if(data[i]['user_image'] == ""){
+
+                                            $(".replay_data").append('<div><img src="/uploadfiles/user_photo/e.png"><span>'+data[i]["user_name"]+'</span><p>'+data[i]["text"]+'</p></div>');
+                                        }else{
+                                            $(".replay_data").append('<img src="/uploadfiles/user_photo/'+data[i]["user_image"]+'"><span>'+data[i]["user_name"]+'</span><p>'+data[i]["text"]+'</p>');
+                                        }
+
+                                    }
+                                });
+
+                    }
+                });
+            });
+
+
+
             $(document).ajaxComplete(function () {
                 $('.comment_form').each(function () {
                     this.reset();
                 });
             });
         });
-
 
     </script>
 
