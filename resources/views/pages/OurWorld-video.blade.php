@@ -17,10 +17,10 @@
                         <span>
                             <?php  $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";?>
                             <a href="https://twitter.com/share?url={{$actual_link}}" target="_blank">
-                                <img src="/images/pictures/tagmoevent/twitter.png" style="max-width: 45%;">
+                                <img src="/images/pictures/video/twitter.png" style="max-width: 45%;">
                             </a>
                             <a href="http://www.facebook.com/sharer.php?u={{$actual_link}}" target="_blank">
-                                <img src="/images/pictures/tagmoevent/facebook.png" style="max-width: 45%;">
+                                <img src="/images/pictures/video/facebook.png" style="max-width: 45%;">
                             </a>
                             {{--<a href=""><img src="/images/pictures/tagmoevent/facebook.png" style="max-width: 45%;"></a>--}}
                             {{--<a href=""><img src="/images/pictures/tagmoevent/twitter.png" style="max-width: 45%;"></a>--}}
@@ -58,12 +58,12 @@
                                 @endforeach
 
                             @else
-                                <button class="pull-left" type="submit" disabled><img   src="/images/pictures/like.png"></button><span class="">{{$likes_count}}</span>
+                                <button class="pull-left" type="submit" disabled><img   src="/images/pictures/video/like.png"></button><span class="">{{$likes_count}}</span>
                             @endif
 
                         </span>
 
-                        <span class=""><button class="pull-left" type="submit" disabled><img   src="/images/pictures/seen.png">{{$seens_count}}</button> </span>
+                        <span class=""><button class="pull-left" type="submit" disabled><img   src="/images/pictures/video/seen.png">{{$seens_count}}</button> </span>
                     </div>
                 </div>
                 <hr style=" width: 100%!important;"/>
