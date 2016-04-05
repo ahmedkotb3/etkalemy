@@ -36,12 +36,12 @@
 
                 @if(Auth::check())
                     <?php $arr = explode(' ',trim(Auth::user()->english_name)); ?>
-                    <a href=""><img src="/images/twitter.png"></a><span style="color: #376773;text-transform: capitalize;">Hello,{{$arr[0]}}</span>
+                    <a href=""><img src="/images/sm-user.png"></a><span style="color: #376773;text-transform: capitalize;">  Hello,{{$arr[0]}}</span>
                     <div class="content1 addtriangle row">
                         <div class="row" style="background-color: #D5E4E8;">
                         <div class="col-md-3" style="padding: 10px">
                             @if(empty(Auth::user()->profile_image))
-                                <img src="/uploadfiles/user_photo/e.png" class="img-responsive ">
+                                <img src="/uploadfiles/user_photo/md-user.png" class="img-responsive ">
                             @else
                                 <img src="/uploadfiles/user_photo/{{Auth::user()->english_name}}}}/{{Auth::user()->profile_image}}" class="img-responsive ">
                             @endif

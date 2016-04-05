@@ -23,7 +23,9 @@ class Event_Speeches extends Model {
     public function comments(){
         return $this->hasMany("App\Speech_Comments","speech_id");
     }
-
+    public function replays(){
+        return $this->hasMany("App\SpeechCommentReplays","speech_id");
+    }
     public function likes(){
         return $this->hasMany("App\SpeechLikes","speech_id");
     }

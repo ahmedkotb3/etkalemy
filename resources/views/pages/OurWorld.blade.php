@@ -38,8 +38,7 @@
                 <img class="img-responsive newest" title="Sort From Newest To Oldest" style=" cursor: pointer; padding-right:10px;padding-left:10px;border-left:1px solid #9DA8AB;float: right;" src="/images/pictures/donyana/button4.png"/>
                 <img class="img-responsive oldest" title="Sort From Oldest To Newest" style=" cursor: pointer; padding-right:10px;padding-left:10px;border-left:1px solid #9DA8AB;float: right;" src="/images/pictures/donyana/button5.png"/>
                 <img class="img-responsive more_seen" title="Top View" style=" cursor: pointer; padding-right:10px;padding-left:10px;float: right;" src="/images/pictures/donyana/button6.png"/>
-                <input type="text"  style="background-color: #D5E4E8; font-family: elight;text-align: right; border: none;"
-                       placeholder="إبحث هنا  "/>
+                <input type="text"  style="background-color: #D5E4E8; font-family: elight;text-align: right; border: none;" placeholder="إبحث هنا  " id="search"/>
                 <img  style=" cursor: pointer;" src="/images/pictures/donyana/search.png">
             </div>
         </div>
@@ -1387,7 +1386,6 @@
             var keyword = $("#search").val();
                 $.get( "/article_search/"+keyword)
                         .done(function( data ) {
-
                             for(var i=0;i<data.length;i++){
                                 if(data[0]["type"] == "1"){
                                     $(".world,.articles,.oldtonew,.vedios,.seens,.newtoold").children().hide() ;

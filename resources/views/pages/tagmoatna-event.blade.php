@@ -135,13 +135,38 @@
                                     <img class="imgWrape img-responsivee"
                                          src="http://img.youtube.com/vi/{{$vedio_name}}/{{$vedio->image}} "
                                          alt="polaroid"/>
-                                    <a href="/tagmoatna-videoplay/{{$vedio->id}}">
-                                        <p class="imgDescriptione">
-                                            <span id="txtimge1"> {{$vedio->title}}</span>
-                                            {{--<span id="txtimge2"> كيف تصل الى هدفك بالطريقة الصحيحة </span>--}}
-                                            <span id="txtimge3"><img src="/images/pictures/tagmoevent/4.png"/> </span>
-                                        </p>
-                                    </a>
+                                        @if(Auth::check())
+                                            @if(count($seens) == "0")
+                                                <form class="seen">
+                                                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                                    <input type="hidden" name="speech_id" value="{{$vedio->id}}">
+                                                    <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                                                    <button> <a href="/tagmoatna-videoplay/{{$vedio->id}}"><p class="imgDescriptione"><span id="txtimge1"> {{$vedio->title}}</span>
+                                                                <span id="txtimge3"><img src="/images/pictures/tagmoevent/4.png"/> </span></p></a></button>
+                                                </form>
+                                                @else
+                                                @foreach($seens as $seen)
+                                                    @if(($seen->user_id == Auth::user()->id)&&($seen->speech_id == $vedio->id))
+                                                       @if($seen->seen_status == "1")
+                                                            <a href="/tagmoatna-videoplay/{{$vedio->id}}"><p class="imgDescriptione"><span id="txtimge1"> {{$vedio->title}}</span>
+                                                                    <span id="txtimge3"><img src="/images/pictures/tagmoevent/4.png"/> </span></p></a>
+                                                           @else
+                                                            <form class="seen">
+                                                                <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                                                <input type="hidden" name="speech_id" value="{{$vedio->id}}">
+                                                                <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                                                                <button> <a href="/tagmoatna-videoplay/{{$vedio->id}}"><p class="imgDescriptione"><span id="txtimge1"> {{$vedio->title}}</span>
+                                                                            <span id="txtimge3"><img src="/images/pictures/tagmoevent/4.png"/> </span></p></a></button>
+                                                            </form>
+                                                        @endif
+                                                        @endif
+                                                    @endforeach
+                                            @endif
+
+                                          @else
+                                        <a href="/tagmoatna-videoplay/{{$vedio->id}}"><p class="imgDescriptione"><span id="txtimge1"> {{$vedio->title}}</span>
+                                                <span id="txtimge3"><img src="/images/pictures/tagmoevent/4.png"/> </span></p></a>
+                                        @endif
                                 </div>
                             </span>
                         </div>
@@ -156,13 +181,9 @@
                                         <img class="imgWrape img-responsivee"
                                              src="http://img.youtube.com/vi/{{$vedio_name}}/{{$vedio->image}} "
                                              alt="polaroid"/>
-                                        <a href="/tagmoatna-videoplay/{{$vedio->id}}">
-                                            <p class="imgDescriptione">
-                                                <span id="txtimge1"> {{$vedio->title}}</span>
-                                                {{--<span id="txtimge2"> كيف تصل الى هدفك بالطريقة الصحيحة </span>--}}
-                                                <span id="txtimge3"><img src="/images/pictures/tagmoevent/4.png"/> </span>
-                                            </p>
-                                        </a>
+                                            <a href="/tagmoatna-videoplay/{{$vedio->id}}"><p class="imgDescriptione"><span id="txtimge1"> {{$vedio->title}}</span>
+                                                                    <span id="txtimge3"><img src="/images/pictures/tagmoevent/4.png"/> </span></p></a>
+
                                     </div>
                                 </span>
                             </div>
@@ -453,6 +474,7 @@
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    @if(Auth::check())
     <script>
 
         $(document).ready(function () {
@@ -561,7 +583,17 @@
                 });
             });
 
+            $(".seen").submit(function (event) {
+                event.preventDefault();
+                $.ajax({
+                    url: '/save_speech_seen',
+                    type: 'POST',
+                    data: new FormData(this),
+                    processData: false,
+                    contentType: false
 
+                });
+            });
 
             $(document).ajaxComplete(function () {
                 $('.comment_form').each(function () {
@@ -571,6 +603,7 @@
         });
 
     </script>
+    @endif
 
 
 @stop

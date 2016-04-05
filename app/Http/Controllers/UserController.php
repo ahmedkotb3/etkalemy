@@ -65,7 +65,7 @@ class UserController extends Controller
 
 	public function store()
 	{
-		$inputs = Input::all();
+		return $inputs = Input::all();
 		$password = Input::get('password');
 		$re_password = Input::get('re_password');
 		$encrypt_password = Hash::make(Input::get('password'));

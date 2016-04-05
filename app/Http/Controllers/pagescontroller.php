@@ -16,7 +16,9 @@ use App\Http\Controllers\Controller;
 
 use App\Slider;
 use App\Speech_Comments;
+use App\SpeechCommentReplays;
 use App\SpeechLikes;
+use App\SpeechSeens;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -31,8 +33,7 @@ class pagescontroller extends Controller
 	public function index()
 	{
 
-		$sliders = Slider::all();
-		return view('pages/home',array('sliders'=>$sliders));
+		return view('pages/home');
 	}
 
 	public function tagmoatna()
@@ -95,9 +96,10 @@ class pagescontroller extends Controller
 		$number_of_pictures = count($pictures);
 
 		$comments =Events_Comments::where('event_id','=',$id)->get();
+		$seens = SpeechSeens::all();
 
 		return view('pages/tagmoatna-event',array('event_data'=>$event_data,'years'=>array_unique($years),'eventnames_and_year'=>$eventnames_and_year,'vedioes'=>$vedioes,
-				'number_of_vedios'=>$number_of_vedios,'pictures'=>$pictures,'number_of_pictures'=>$number_of_pictures,'comments'=>$comments,'replays'=>$replays));
+				'number_of_vedios'=>$number_of_vedios,'pictures'=>$pictures,'number_of_pictures'=>$number_of_pictures,'comments'=>$comments,'replays'=>$replays,'seens'=>$seens));
 	}
 
 
@@ -156,6 +158,7 @@ class pagescontroller extends Controller
 
 		}
 		$comments = $vedio->comments;
+		 $replays = $vedio->replays;
 		 $likes = $vedio->likes;
 		 $seens = $vedio->seens;
 
@@ -177,7 +180,7 @@ class pagescontroller extends Controller
 			array_push($eventnames_and_year,$array);
 		}
 		return view('pages/tagmoatna-videoplay',array('years'=>array_unique($years),'eventnames_and_year'=>$eventnames_and_year,'event_of_vedio'=>$event_of_vedio,'vedio'=>$vedio,
-				'youtube_comments'=>$youtube_comments,'comments'=>$comments,'likes'=>$likes,'seens'=>$seens));
+				'youtube_comments'=>$youtube_comments,'comments'=>$comments,'likes'=>$likes,'seens'=>$seens,'replays'=>$replays));
 	}
 	public function tagmoatnapictures($id)
 	{
@@ -485,6 +488,12 @@ class pagescontroller extends Controller
 	public function get_event_comment_replays($id){
 		return json_decode(EventCommentReplays::where('comment_id','=',$id)->get());
 	}
+	public function get_speech_comments($id){
+		return json_decode(Speech_Comments::where('speech_id','=',$id)->get());
+	}
+	public function get_speech_comment_replays($id){
+		return json_decode(SpeechCommentReplays::where('comment_id','=',$id)->get());
+	}
 	public function event_comment_replay(){
 
 		$replay = new EventCommentReplays;
@@ -496,5 +505,24 @@ class pagescontroller extends Controller
 		$replay->user_image=Input::get('user_image');
 		$replay->save();
 
+	}
+	public function speech_comment_replay(){
+
+		$replay = new SpeechCommentReplays();
+		$replay->speech_id=Input::get('speech_id');
+		$replay->user_id=Input::get('user_id');
+		$replay->comment_id= Input::get('comment_id');
+		$replay->text=Input::get('replay');
+		$replay->user_name=Input::get('user_name');
+		$replay->user_image=Input::get('user_image');
+		$replay->save();
+
+	}
+	public function save_speech_seen(){
+		$seen = new SpeechSeens;
+		$seen->speech_id=Input::get('speech_id');
+		$seen->user_id =Input::get('user_id') ;
+		$seen->seen_status="1";
+		$seen->save();
 	}
 }
